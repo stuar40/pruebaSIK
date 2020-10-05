@@ -102,7 +102,8 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       <span class="text-danger">*</span>
                       </label>
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="proveedorNIT" id="proveedorNIT"
+                        <input class="form-control form__input" type="text" name="proveedorNIT" id="proveedorNIT" required
+                              minlength="3" maxlength="12"
                                placeholder="Ingrese NIT del proveedor"> <!-- se asignan identificadores y detalles al campo de texto del NIT  comercial del proveedor -->
                       </div>
                     </div>
@@ -122,7 +123,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       </label>
 
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="proveedorDireccion" id="proveedorDireccion" required
+                        <input class="form-control form__input" type="text" name="proveedorDireccion" id="proveedorDireccion" 
                                placeholder="Ingrese Direccion comercial del proveedor"
                                data-msg="Por favor ingrese la direccion"
                                data-error-class="u-has-error"
@@ -142,7 +143,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       </label>
 
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="telefonoProveedor" id="telefonoProveedor"
+                        <input class="form-control form__input" type="text" name="telefonoProveedor" id="telefonoProveedor" minlength="3" maxlength="12"
                                placeholder="Ingrese No. de Telefono"> <!-- se asignan identificadores y detalles al campo de texto del No telefono del proveedor -->
                       </div>
                     </div>
