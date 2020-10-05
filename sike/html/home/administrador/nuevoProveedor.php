@@ -55,7 +55,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
 
         <div class="col-lg-12 order-lg-1">
           <!-- Checkout Form -->
-          <form class="form-horizontal" method="post" id="guardar_empresa" name="guardar_empresa">  <!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
+          <form class="form-horizontal" method="post" id="guardar_Proveedor" name="guardar_Proveedor">  <!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
               
             <!-- Step Form Header -->
             <ul id="stepFormProgress" class="js-step-progress list-inline u-shopping-cart-step-form mb-4">
@@ -217,8 +217,10 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   </a>
   <!-- End Go to Top -->
 
+  <!-- Aqui se llaman a los archivos jquery con la funcion ready para poder ejecutar los archivos ajax  -->
   <script type="text/javascript" src="js/jquery.min.js">  </script> 
    <script type="text/javascript" src="js/usuarios.js">  </script> 
+   <script type="text/javascript" src="js/proveedores.js">  </script> 
 
   <!-- JS Global Compulsory -->
   <script src="../../../assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -255,16 +257,17 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   <!-- JS Plugins Init. -->
   <script>
     $(window).on('load', function () {
-      // initialization of HSMegaMenu component
-      $('.js-mega-menu').HSMegaMenu({
-        event: 'hover',
-        pageContainer: $('.container'),
-        breakpoint: 991,
-        hideTimeOut: 0
-      });
-    });
+          // initialization of HSMegaMenu component
+          $('.js-mega-menu').HSMegaMenu({
+                                      event: 'hover',
+                                      pageContainer: $('.container'),
+                                      breakpoint: 991,
+                                      hideTimeOut: 0
+                                    });
+                                    });
 
     $(document).on('ready', function () {
+      
       // initialization of header
       $.HSCore.components.HSHeader.init($('#header'));
 

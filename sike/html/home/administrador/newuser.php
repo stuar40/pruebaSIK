@@ -398,9 +398,7 @@ include("enca.php");
                 <input  type="text" name="intencion" id="intencion" value="intencion" hidden>
                 <!-- Buttons -->
                 <div class="d-sm-flex justify-content-sm-center align-items-sm-center">
-                  
-
-                  <input type="submit" class="btn btn-facebook btn-xs text-center"  data-next-step="agregar" value="Agregar" name="insertar"></input>
+                <input type="submit" class="btn btn-facebook btn-xs text-center"  data-next-step="agregar" value="Agregar" name="insertar"></input>
  
 
           </form>
