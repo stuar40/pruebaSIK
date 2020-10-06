@@ -55,14 +55,14 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
 
         <div class="col-lg-12 order-lg-1">
           <!-- Checkout Form -->
-          <form class="form-horizontal" method="post" id="guardar_asesor" name="guardar_asesor"><!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
+          <form class="form-horizontal" method="post" id="editar_asesor" name="editar_asesor"><!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
               
             <!-- Step Form Header -->
             <ul id="stepFormProgress" class="js-step-progress list-inline u-shopping-cart-step-form mb-4">
               <!-- Step Form Item -->
               <li class="list-inline-item u-shopping-cart-step-form__item mb-3">
                
-                <span class="u-shopping-cart-step-form__title">Asignar Asesor a Proveedor</span> <!-- titulo del formulario en texto-->
+                <span class="u-shopping-cart-step-form__title">Actualizar datos del Asesor Proveedor</span> <!-- titulo del formulario en texto-->
               </li>
             </ul>
             <!-- End Step Form Header -->
@@ -70,7 +70,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
             <!-- Step Form Content -->
             <div id="stepFormContent">
               <!-- Customer Info -->
-              <div id="formNuevoAsesor" class="active"> <!-- asigna un id al bloque donde estan los campos de nuevo asesor proveedor-->
+              <div id="formEditarAsesor" class="active"> <!-- asigna un id al bloque donde estan los campos de nuevo asesor proveedor-->
                 
                 <!-- Billing Form -->
                 <div class="row">
@@ -181,6 +181,22 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
 
 
                   <div class="col-md-6">
+                                    <!-- Input tercer bloque donde se ingresa el ID del asesor-->
+                                    <div class="js-form-message mb-6">
+                                    <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se almacena el numero de ID del asesor del proveedor -->
+                                    ID
+                                    <span class="text-danger">*</span>
+                                    </label>
+
+                                    <div class="js-focus-state input-group form">
+                                        <input class="form-control form__input" type="text" name="idAsesor" id="idAsesor" required
+                                            placeholder=""
+                                            data-msg="Ingrese idAsesor."
+                                            data-error-class="u-has-error"
+                                            data-success-class="u-has-success"> <!-- se asignan identificadores y detalles a la caja de texto del numero del idAsesor asesor de proveedores -->
+                                    </div>
+                                    </div>
+                                    <!-- End Input -->
                   </div>
   
 
@@ -189,11 +205,11 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                   
                 </div>
                 <!-- End Billing Form -->
-                <input  type="text" name="action" id="action" value="agregar_Asesor" hidden>
+                <input  type="text" name="action" id="action" value="editar_Asesor" hidden>
                 <input  type="text" name="intencion" id="intencion" value="intencion" hidden>
                 <!-- Buttons -->
                 <div class="d-sm-flex justify-content-sm-center align-items-sm-center">
-                <input type="submit" class="btn btn-facebook btn-xs text-center"  data-next-step="asignarAsesor" value="Asignar Asesor" name="asignarAsesor"></input>
+                <input type="submit" class="btn btn-facebook btn-xs text-center"  data-next-step="editarAsesor" value="Editar Asesor" name="editarAsesor"></input>
  
 
           </form>

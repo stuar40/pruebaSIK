@@ -84,7 +84,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       </label>
 
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="pnombre" id="pnombre" required
+                        <input class="form-control form__input" type="text" name="nombreComercial" id="nombreComercial" required
                                placeholder="Ingrese Nombre Comercial del proveedor"
                                data-msg="Ingrese Nombre Comercial."
                                data-error-class="u-has-error"
