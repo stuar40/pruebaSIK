@@ -130,6 +130,50 @@ $("#guardar_asesor").submit(function( event ) {
     event.preventDefault();
   }) //fin de la funcion de Actualizar Asesor Proveedor
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  // Actualizar PROVEEDOR
+
+  $("#editar_Proveedor").submit(function( event ) { //id  del formulario donde esta el input
+    $('#editar_proveedor').attr("disabled", true); //nombre ???
+    var parametros = $(this).serialize();
+       $.ajax({
+                type: "POST",
+                url: "ajax/ajaxEditarProveedor.php",
+                data: parametros,
+                beforeSend: function(objeto){},
+                success: function(response){
+                 console.log(response);
+                if(response == 'successful' ){
+                        Swal.fire({
+                        title: "El Proveedor Actualizado",
+                        icon: 'success',
+                        
+                        });
+                        $('#idAsesor').val('');
+                        }
+                if (response == 'replica') {
+                    Swal.fire({
+                            title: "Proveedor No Existe",
+                            icon: 'error',
+                            });
+                 
+                            $('#nombreComercial').val('');
+                            $('#proveedorNIT').val('');
+                            $('#proveedorDireccion').val('');
+                            $('#telefonoProveedor').val('');
+                            $('#descripcionProveedor').val('');
+                            $('#idProveedor').val('');
+                
+            }
+            }/*,
+            error: function() {
+              console.log("No se ha podido obtener la información");
+            }*/
+      });
+    event.preventDefault();
+  }) //fin de la funcion de Actualizar Asesor Proveedor
+
 
 
 
