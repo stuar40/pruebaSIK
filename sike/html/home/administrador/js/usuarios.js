@@ -22,7 +22,7 @@ $(document).ready(function(){
                                     },
         success: function(response){
         if (response == 'notData') {
-        dataContact = "No hay registros para mostrar";
+        dataContact = "No hay registros para mostrar44";
         }else{
         var info = JSON.parse(response);
         dataContact = info;
@@ -51,7 +51,7 @@ $(document).ready(function(){
         beforeSend: function(){ },
         success: function(response){
         if (response == 'notData') {
-            dataContact = "No hay registros para mostrar";
+            dataContact = "No hay registros para mostrar33";
         }else{
         var info = JSON.parse(response);
         dataContact = info; 
@@ -182,7 +182,7 @@ $( "#editar_usuario" ).submit(function( event ) {
     
     success: function(response){
         if(response == 'notData'){
-            data = "No hay datos para mostrar";
+            data = "No hay datos para mostrar22";
         }else{
     var data = JSON.parse(response);
 

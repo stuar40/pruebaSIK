@@ -1,0 +1,3 @@
+Formulario Asesor 
+    *el correo es unico, se necesita un validador para el correo de lo contrarion no muestra error
+    

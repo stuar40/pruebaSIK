@@ -359,7 +359,7 @@ if(isset($_POST['action']) == 'editar_usuario'  AND !empty($_POST['id_usu'])){
 
 
 
-$res=mysqli_query($con,$sql);
+    $res=mysqli_query($con,$sql);
     if($res){
       echo 'Success';
 
