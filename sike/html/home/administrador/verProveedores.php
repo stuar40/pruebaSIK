@@ -4,6 +4,10 @@ require_once ("../config/db.php");//Contiene las variables de configuracion para
 require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 
 include("enca.php");
+
+// consulta para llenar tabla 
+$query_select = mysqli_query($con,"SELECT id, nombre, telefono, descripcion From sike.empresa  ORDER BY id desc");
+$num_rows = mysqli_num_rows($query_select);
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +49,8 @@ include("enca.php");
     </div>
   </a>
   <!-- End Skippy -->
- <!-- ========== MAIN CONTENT ========== -->
+
+<!-- ========== MAIN CONTENT ========== -->
   <main id="content" role="main">
   <div class="container space-2 space-3-top--lg space-2-bottom--lg">
       <div class="row">
@@ -85,39 +90,66 @@ include("enca.php");
 <!-- Busqueda -->
     <div class="col-12 mb-5 ">
       <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand "></a>
-        <div class="form-inline">
-        <label for="buscar">Busqueda:</label>
-        <input type="search " id="txtSearch" class="form-control " placeholder="Nombre / NIT" aria-label="Search">
+       
+        <div class="col-6 mb-1 " class="form-inline">
+        <input type="submit" class="btn btn-facebook btn-md text-center"  class="form-control " data-next-step="Crear" id= "nuevoProveedor" value="Nuevo Proveedor (+)" name="nuevoProveedor"></input>
+        </div>
+        <div class="col-6 " class="form-inline">
         
         </div>
       </nav>
     </div>
 
+          
+
+
+
               <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
 					
-                    <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tblUsuarios">
+                    <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaProveedores">
                         <thead >
                             <tr class="bgcolor btn-facebook">									
                                
-                                <th class="text-center">ID</th>
+                                <th class="text-center">Codigo</th>
                                 <th class="text-center">Proveedor</th>
                                 <th class="text-center">Telefono </th>
                                 <th class="text-center">Descripcion</th>
-                                <th class="text-center">Editar</th>
-                                <th class="text-center">Act/Des</th>
-                            
+                                <th class="text-center">Acciones</th>
+                               
                             </tr>
                         </thead>
-                    <tbody id="rowsUsuarios">
-                         </tr>
-                    </tbody>
+                        
+                        <tbody>
+                        <?php
+                        if ($num_rows > 0) {
+                              # code...
+                              $htmlTable = '';
+                              while ($row = mysqli_fetch_assoc($query_select)) {
+                              $htmlTable = '';
+                              console.log("tabla");
+                              
+                              console.log($row['id']);
+                        ?>          
+                                 
+                                  <tr>
+                                  <td class="text-center"><?php echo $row['id']?></td>
+                                  <td><?php echo $row['nombre']?></td>
+                                  <td><?php echo $row['telefono']?></td>
+                                  <td><?php echo $row['descripcion']?> </td>
+                                  <td class="text-center"> </td>
+                                  </tr>
+                        <?php }
+                          
+                            
+                          }else{
+                              
+                              echo "notData";
+                          } 
+                        ?>
+                        </tbody>
                                               
                     </table>
               </div>
-
-
-
 
 
                 <section class="d-flex justify-content-center responsive-mode" >
@@ -145,6 +177,7 @@ include("enca.php");
 			</div>
 	</section>
 
+  
                   
                 </div>
             
@@ -154,11 +187,14 @@ include("enca.php");
         </div>
       </div>
   </main>
+  btnVer
+  
   <!-- ========== END MAIN CONTENT ========== -->
 
   <!-- ========== LLama a ventanas Modales ========== -->
         <?php
-              include("modal/editarProveedor.php") ; // modal que permite editar el usuario
+             include("modal/modalCRUDProveedor.php") ; // modal que permite Guardar el usuario
+            
         
         ?>
         
@@ -211,6 +247,12 @@ include("enca.php");
   <script src="../../../assets/js/components/hs.go-to.js"></script>
 
   <!-- JS Plugins Init. -->
+  <!-- Libreria DataTables para talbas -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+ 
+<!-- End Skippy -->
   <script>
     $(window).on('load', function () {
       // initialization of HSMegaMenu component
@@ -274,5 +316,6 @@ include("enca.php");
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- ========== FIN DE ARCHIVOS NECESARIOS ========== -->
+  
 </body>
 </html>

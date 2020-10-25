@@ -63,8 +63,9 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                         <span class="text-danger">*</span>
                         </label>
                         <div class="js-focus-state input-group form">
-                          <input class="form-control form__input" type="text" name="proveedorNIT" id="proveedorNIT" required
-                                minlength="3" maxlength="12"
+                          <input class="form-control form__input" 
+                          type="text" name="proveedorNIT" id="proveedorNIT" required
+                          pattern="[0-9]{8,12}"                                 
                                  placeholder="Ingrese NIT del proveedor"> <!-- se asignan identificadores y detalles al campo de texto del NIT  comercial del proveedor -->
                         </div>
                       </div>
@@ -104,7 +105,7 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                         </label>
   
                         <div class="js-focus-state input-group form">
-                          <input class="form-control form__input" type="text" name="telefonoProveedor" id="telefonoProveedor" minlength="3" maxlength="12"
+                          <input class="form-control form__input" type="tel" name="telefonoProveedor" id="telefonoProveedor" minlength="3" maxlength="12"
                                  placeholder="Ingrese No. de Telefono"> <!-- se asignan identificadores y detalles al campo de texto del No telefono del proveedor -->
                         </div>
                       </div>
@@ -153,7 +154,7 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                  -->
                   <!-- Buttons -->
                   <div class="d-sm-flex justify-content-sm-center align-items-sm-center">
-                  <input type="submit" class="btn btn-facebook btn-xs text-center"  data-next-step="agregar" value="Guardar" name="insertar"></input>
+                  <input type="submit" class="btn btn-facebook btn-xs text-center"  data-next-step="agregar" value="Guardar" id="btnGuardarProveedor" name="insertar"></input>
    
                   
               

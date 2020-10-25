@@ -14,7 +14,7 @@ tablaProveedores = $('#tablaProveedores').DataTable({  // incializa la tabla pro
       "targets": -1,
       "data":null,
       // incia 3 botones del dataTable 
-      "defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-info btnVer' data-backdrop='false'>ver</button> <button class='btn btn-primary btnEditar'>Editar</button>  <button class='btn btn-danger btnAsesor'>Asesor</button></div></div>"  
+      "defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-info btnVer'><i class='far fa-eye'></i></button> <button class='btn btn-primary btnEditar'><i class='far fa-edit'></i></button>  <button class='btn btn-danger btnAsesor'>Asesor <i class='fas fa-user-friends'></i></button></div></div>"  
      }],
       
       //Para cambiar el lenguaje a español
@@ -41,7 +41,7 @@ tablaverAsesores = $('#tablaverAsesores').DataTable({
     "targets": -1,
     "data":null,
     //configura 3 botones en la columana vacia del dataTable y su identificador lo coloca en el class en estos casos btnAsesor btnEditarAsesor
-    "defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-info btnVerAsesor' data-backdrop='false'>ver</button> <button class='btn btn-primary btnEditarAsesor'>Editar</button>  <button class='btn btn-danger btnBorrarAsesor'>Borrar</button></div></div>"  
+    "defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-info btnVerAsesor' data-backdrop='false'> <i class='far fa-eye'></i></button> <button class='btn btn-primary btnEditarAsesor'><i class='far fa-edit'></i></button>  <button class='btn btn-danger btnBorrarAsesor'><i class='fas fa-trash-alt'></i></button></div></div>"  
    }],
     
     //Para cambiar el lenguaje a español
@@ -62,8 +62,14 @@ tablaverAsesores = $('#tablaverAsesores').DataTable({
     }
 });
 //------------fin inicializacion de la estructura de DataTable 
+
   //boton que incia el modal de ingresar nuevo proveedor 
 $("#nuevoProveedor").click(function(){
+  $('#nombreComercial').val(''); // carga el valor de data2.nombre en un input del modal nuevo_proveedor el cual tenga el id nombreComercial y los de abajo tambien
+  $('#proveedorNIT').val(''); // carga en el inpunt del modal con el id proveedorNIT lo que obtuvo de vuelta de la funcion obtener_datos del ajaxProveedore
+  $('#proveedorDireccion').val('');
+  $('#telefonoProveedor').val('');
+  $('#descripcionProveedor').val('');
   $("#guardar_Proveedor").trigger("reset"); //vacia los campos de texto cuando se abree el modal
   $(".modal-header").css("background-color","#3b5998");//cambia de colo el header del modal
   $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
@@ -73,11 +79,28 @@ $("#nuevoProveedor").click(function(){
   opcion = 1; //guardar
   action = 'agregar_Proveedor'; // la accion que va a buscar  en el ajaxProveedores.php en el cual va acompara la funcion para inciar al presionar el boton
   //al presionar el boton nuevo la variable global action cambia a agregar producto 
+   // data = JSON.parse(data);
+  
 }); // fin del modal
 
 
 //------------btnEditar Proveedores del DataTable para cargar y editar datos del proveedor tomando base la fila 
 $(document).on("click", ".btnEditar", function(){
+  
+  // estado de inputs o botons habilita o deshabilita
+  $('#nombreComercial').prop('disabled', false);
+  $('#proveedorNIT').prop('disabled', false);
+  $('#telefonoAsesor').prop('disabled', false);
+  $('#proveedorDireccion').prop('disabled', false);
+  $('#telefonoProveedor').prop('disabled', false);
+  $('#descripcionProveedor').prop('disabled', false);
+  //$('#estadoAsesor').prop('disabled', true);
+  
+
+  const $estadoBTNGuardar = document.querySelector("#btnGuardarProveedor");//selecciona el elemento del modal y lo pasa a una variable local
+  $estadoBTNGuardar.style.display = "block"; // muestra el boton guardar
+
+
   fila = $(this).closest("tr"); //varialbe que toma la fila del dataTable
 
   id = parseInt(fila.find('td:eq(0)').text()); // toma la 0 posicion de la fila donde se esta clickeando el btnEditar
@@ -116,6 +139,91 @@ $(document).on("click", ".btnEditar", function(){
                     
   
                     $(".modal-header").css("background-color","#21c87a");//cambia de colo el header del modal
+                    $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
+                    $(".modal-title").text("Editar Proveedor");//titulo del header
+                    $("#Modal_Nuevo_Proveedor").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
+                    opcion = 2; //editar/*where id ='<!--$d1-->
+                    idProveedor= id;
+                    action = 'editar_Proveedor'; // la accion que va a buscar  en el ajaxProveedores.php en el cual va acompara la funcion para inciar al presionar el boton
+                    //al finalizar la carga de datos la variable global action cambia a editar  producto  para cuando le de en submit busque action= editar proveedor
+                    console.log("Imprimir Datos2");
+                    console.log(action);
+                  }else{
+                
+                console.log("No existen datos")
+                
+                    }
+            
+
+            },
+            error: function(error){
+            console.log(error);
+            }
+            
+                });
+  
+  
+ 
+});
+
+
+//------------btnVER Proveedores del Formulario verProveedor
+$(document).on("click", ".btnVer", function(){
+  
+                
+  // estado de inputs o botons habilita o deshabilita
+   $('#nombreComercial').prop('disabled', true);
+   $('#proveedorNIT').prop('disabled', true);
+   $('#telefonoAsesor').prop('disabled', true);
+   $('#proveedorDireccion').prop('disabled', true);
+   $('#telefonoProveedor').prop('disabled', true);
+   $('#descripcionProveedor').prop('disabled', true);
+   //$('#estadoAsesor').prop('disabled', true);
+   
+
+   const $estadoBTNGuardar = document.querySelector("#btnGuardarProveedor");//selecciona el elemento del modal y lo pasa a una variable local
+   $estadoBTNGuardar.style.display = "none"; // oculta el boton guardar
+
+  
+  
+  fila = $(this).closest("tr"); //varialbe que toma la fila del dataTable
+
+  id = parseInt(fila.find('td:eq(0)').text()); // toma la 0 posicion de la fila donde se esta clickeando el btnEditar
+  proveedor = fila.find('td:eq(1)').text();// toma la 1 posicion de la fila donde se esta clickeando el btnEditar
+  telefono = fila.find('td:eq(2)').text();// toma la 2 primera posicion de la fila donde se esta clickeando el btnEditar
+  descripcion = fila.find('td:eq(3)').text();// toma la 3 posicion de la fila donde se esta clickeando el btnEditar
+
+  action = 'obtener_datos';// la accion que va a buscar  en el ajaxProveedores.php en el cual va acompara la funcion para inciar al presionar el boton
+  //al presionar el boton nuevo la variable global action cambia a agregar producto 
+  id_empleado = id; //genera una variable local que se utiliza para enviarse al ajax donde se valida la busqueda
+  
+
+          $.ajax({ //ajax que va obtener valores de tabla de proveedor con id
+            url: './ajax/ajaxProveedores.php', //al documento php ajax al cual iran los datos y de donde retornara valores de la consulta
+            type: "POST",
+            async: true,
+            data: {action:action, id_empleado:id_empleado }, //envia valores al ajax action y el id
+            
+            success: function(response){ //recibe una respuesta con una array json
+              console.log("Imprimir Datos1");
+              console.log(action);
+             
+                if (response != 'error') {
+
+                
+                    
+                   console.log(response); // imprimimos en consola para saber el array que nos devuelve
+                   var data2 = JSON.parse(response); //parsea a fotmato el array del ajax en json
+                   
+                   // data = JSON.parse(data);
+                    $('#nombreComercial').val(data2.nombre); // carga el valor de data2.nombre en un input del modal nuevo_proveedor el cual tenga el id nombreComercial y los de abajo tambien
+                    $('#proveedorNIT').val(data2.nit); // carga en el inpunt del modal con el id proveedorNIT lo que obtuvo de vuelta de la funcion obtener_datos del ajaxProveedore
+                    $('#proveedorDireccion').val(data2.direccion);
+                    $('#telefonoProveedor').val(data2.telefono);
+                    $('#descripcionProveedor').val(data2.descripcion);
+                    
+  
+                    $(".modal-header").css("background-color","#00dffc");//cambia de colo el header del modal
                     $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
                     $(".modal-title").text("Editar Proveedor");//titulo del header
                     $("#Modal_Nuevo_Proveedor").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
