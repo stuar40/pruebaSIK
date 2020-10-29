@@ -14,7 +14,7 @@ tablaProveedores = $('#tablaProveedores').DataTable({  // incializa la tabla pro
       "targets": -1,
       "data":null,
       // incia 3 botones del dataTable 
-      "defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-info btnVer'><i class='far fa-eye'></i></button> <button class='btn btn-primary btnEditar'><i class='far fa-edit'></i></button>  <button class='btn btn-danger btnAsesor'>Asesor <i class='fas fa-user-friends'></i></button></div></div>"  
+      "defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-info btnVer'><i class='far fa-eye'></i></button> <button class='btn btn-primary btnEditar'><i class='far fa-edit'></i></button>  <button class='btn btn-danger btnAsesorAsociado'>Asesor <i class='fas fa-user-friends'></i></button></div></div>"  
      }],
       
       //Para cambiar el lenguaje a español
@@ -62,9 +62,41 @@ tablaverAsesores = $('#tablaverAsesores').DataTable({
     }
 });
 //------------fin inicializacion de la estructura de DataTable 
-
+//------------Inicializa la tabla tablaAsesoresAsociados
+tablaverAsesores = $('#tablaAsesoresAsociados').DataTable({
+  
+    
+    //Para cambiar el lenguaje a español
+"language": {
+        "lengthMenu": "Mostrar _MENU_ registros",
+        "zeroRecords": "No se encontraron resultados",
+        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sSearch": "Buscar:",
+        "oPaginate": {
+            "sFirst": "Primero",
+            "sLast":"Último",
+            "sNext":"Siguiente",
+            "sPrevious": "Anterior"
+         },
+         "sProcessing":"Procesando...",
+    }
+});
+//----------Fin de la inicializacion de la tabla tablaAsesoresAsociados
   //boton que incia el modal de ingresar nuevo proveedor 
 $("#nuevoProveedor").click(function(){
+   //habilita o deshabilita campos o botones
+   $('#nombreComercial').prop('disabled', false);
+   $('#proveedorNIT').prop('disabled', false);
+   $('#proveedorDireccion').prop('disabled', false);
+   $('#correoAsesor').prop('disabled', false);
+   $('#telefonoProveedor').prop('disabled', false);
+   $('#descripcionProveedor').prop('disabled', false);
+   //$('#btnGuardarAsesor').prop('disabled', false);
+   const $estadoBTNGuardar = document.querySelector("#btnGuardarProveedor"); //selecciona el elemento del modal y lo pasa a una variable local
+   $estadoBTNGuardar.style.display = "block"; // muestra el boton guardar
+   
   $('#nombreComercial').val(''); // carga el valor de data2.nombre en un input del modal nuevo_proveedor el cual tenga el id nombreComercial y los de abajo tambien
   $('#proveedorNIT').val(''); // carga en el inpunt del modal con el id proveedorNIT lo que obtuvo de vuelta de la funcion obtener_datos del ajaxProveedore
   $('#proveedorDireccion').val('');
@@ -623,7 +655,6 @@ $("#guardar_asesor").submit(function( event ) {
   //================ finalizada  Editar asesor
 
   // ---------------VER ASESORES-----------------
-
   $(document).on("click", ".btnVerAsesor", function(){
     // estado de inputs o botons habilita o deshabilita
     $('#ProveedorAsesor').prop('disabled', true);
@@ -701,8 +732,7 @@ $("#guardar_asesor").submit(function( event ) {
     
     
    
-  });
-  
+  }); 
   //================acciones finalizada para ver asesor
 
 
@@ -824,21 +854,18 @@ $("#seleccionaProveedor").change(function(){
 
     
       if(data2 == 'replica'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
-        tablaverAsesores.clear(); 
+        
           Swal.fire({
             title: "Proveedor sin Asesores", //titulo del modal
             icon: 'error', //tipo de advertencia modal
             });
-            tablaverAsesores.clear();
+            var tablaverAsesores2 = $('#tablaverAsesores').DataTable();
+            tablaverAsesores2.clear(); //limpia la tabla 
+            tablaverAsesores2.draw(); //incializa la tabla con ninguna fila
             console.log("rechazado la consulta de asesores de un proveedor");   // // imprime en consola para el desarrolador ver el valro que esta obteniendo 
+           
           }
       else  { // de lo contrario el msj sera usuario guardado 
-        /*Swal.fire({
-                title: "Usuario Guardado",
-                icon: 'success',
-                });*/
-
-                console.log("tablaAsesoresP"); 
                 id=data2[0];
                 nombreAsesor=data2[1];
                 telefonoAsesor=data2[2];
@@ -852,24 +879,127 @@ $("#seleccionaProveedor").change(function(){
                         estadoAsesor="INACTIVO";
                     
                       } //fin de condicional
-                     
-                tablaverAsesores.clear();
+                
+                console.log("tablaAsesoresP"); 
+                var tablaverAsesores = $('#tablaverAsesores').DataTable();
+                tablaverAsesores.clear(); //limpia la tabla 
                 tablaverAsesores.row.add([id,nombreAsesor,telefonoAsesor,estadoAsesor]).draw();
+               /*
+                tablaverAsesores.clear();
+                tablaverAsesores.row.add([id,nombreAsesor,telefonoAsesor,estadoAsesor]).draw();*/
 
-               }
-}
-});
+             }
+              }
+    });
 //event.preventDefault();
 
-  
-  //alert('Selected value: ' + $(this).val());
-
 });
-
-
 ///------------FIN SELECTED
 
 
+///-------------- Funcion al clickar btn Asesosore del formulario Proveedores  cargara los asesores asociados a un proveedor-------
+$(document).on("click", ".btnAsesorAsociado", function(){
+
+  var parametros = $(this).serialize();
+
+  fila = $(this).closest("tr"); //variable que toma la fila 
+  
+  idProveedoAsesor=parseInt(fila.find('td:eq(0)').text()); //obitne el value de la primera columan de la fila donde estamos clickeando que estamos seleccionamos
+  nombreProveedorAsesor=fila.find('td:eq(1)').text();
+  telefonoProveedorAsesor=parseInt(fila.find('td:eq(2)').text());
+
+  action = 'cargar_Asesores';
+  console.log(idProveedor); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
+  console.log(idProveedoAsesor); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
+  console.log(action); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
+
+  intencion = 'intencion'; //incializa la variable para que pueda encajar en el AJAX 
+  
+  $.ajax({ //aqui se indica que vamos a hacer con los datos obtenidos del formulario
+    type: "POST",
+    url: "ajax/ajaxAsesores.php", //indica el Ajax donde se procesara los parametros enviados 
+    //data: parametros,
+    data: {action:action,intencion:intencion,idProveedoAsesor:idProveedoAsesor},
+    dataType: 'json', //indica que el valor que devuelve el ajax es json para poder manipular en js
+    beforeSend: function(objeto){},
+    success: function(data2){
+      console.log("imprimir DATA"); 
+      console.log(data2);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
+      console.log(data2[0]);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
+      console.log(data2[1]);
+     
+      console.log(idProveedoAsesor);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
+
+    
+      if(data2 == 'replica'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
+       // tablaAsesoresAsociados.clear(); 
+          Swal.fire({
+            title: "Proveedor sin Asesores", //titulo del modal
+            icon: 'error', //tipo de advertencia modal
+            });
+            tablaverAsesores.clear();
+            console.log("rechazado la consulta de asesores de un proveedor");   // // imprime en consola para el desarrolador ver el valro que esta obteniendo 
+          }
+      else  { 
+        
+         $('#nombreProveedorAsociado').val(nombreProveedorAsesor); // carga el valor de data2.nombre en un input del modal nuevo_proveedor el cual tenga el id nombreComercial y los de abajo tambien
+         $('#idProveedorAsociado').val(idProveedoAsesor);
+         $('#telefonoProveedorAsociado').val(telefonoProveedorAsesor);
+                 
+
+         $(".modal-header").css("background-color","#da4b48");//cambia de colo el header del modal
+         $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
+         $(".modal-title").text("Asesores Asociados");//titulo del header 
+         $("#Modal_Nuevo_Proveedor").modal("hide"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
+        
+         $("#Modal_AsesorAsociado2").modal('show'); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
+        
+         opcion = 2; //editar/*where id ='<!--$d1-->
+         
+         action = 'editar_Proveedor'; // la accion que va a buscar  en el ajaxProveedores.php en el cual va acompara la funcion para inciar al presionar el boton
+         //al finalizar la carga de datos la variable global action cambia a editar  producto  para cuando le de en submit busque action= editar proveedor
+         console.log("Imprimir Datos2");
+         console.log(action);
+
+
+                console.log("tablaAsesoresAsociados"); 
+               id=data2[0];
+                nombreAsesor=data2[1];
+                telefonoAsesor=data2[2];
+                console.log("etrando a condicional de activo");
+                  if(data2[3]=='1') //condicional que pasa el estado de 1/0 del asesor a un ACTIVO/INACTIVO
+                      {
+                        estadoAsesor="ACTIVO";
+                      }
+                  else
+                      {
+                        estadoAsesor="INACTIVO";
+                    
+                      } //fin de condicional
+                   
+                    var t = $('#tablaAsesoresAsociados').DataTable();
+                    t.clear(); //limpia la tabla 
+                    t.row.add([id,nombreAsesor,telefonoAsesor,estadoAsesor]).draw();
+                      
+                    
+                    /* PRUEBA
+
+                    var t = $('#tablaAsesoresAsociados').DataTable();
+                    t.clear(); //limpia la tabla 
+                   var datosAsesoresAsociado = JSON.parse(response);
+                    dataAsesores = datosAsesoresAsociado;
+                    $('#filaAsesoresAsociados').html(dataAsesores);*/
+
+
+
+
+               }
+}
+});//fin del ajax
+
+
+});// fin de la funcion del btn asesores asociados
+/////----------------------Fin de funcion que carga asesores asosciados
 
 
 
@@ -884,68 +1014,3 @@ $("#seleccionaProveedor").change(function(){
 //====================FIN de FUNCIONES=======================
 
 
-// Insertar Proveedor Nuevo
-/*
-$("#guardar_Proveedor").submit(function( event ) {
-    //$('#guardar_datos').attr("disabled", true);
-    var parametros = $(this).serialize();
-    action = 'agregar_Proveedor';
-    intencion = 'intencion';
-      $.ajax({ //aquei se indica que vamos a hacer con los datos obtenidos del formulario
-                type: "POST",
-                url: "ajax/ajaxProveedores.php",
-                data: parametros,
-                //data: {action:action, intencion:intencion },
-                dataType: 'json', //indica que el valor que devuelve el ajax es json para poder manipular en js
-                beforeSend: function(objeto){},
-                success: function(data2){
-                  console.log("imprimir DATA"); 
-                  console.log(data2);
-                  console.log(data2[0]);
-                  console.log(data2[1]);
-                  console.log(data2[2]);
-                  console.log(data2[3]);
-                 
-                  
-                 
-
-                //if(data2.estado == 'replica'){
-                  if(data2 == 'replica'){
-                        Swal.fire({
-                        title: "El usuario Ya existe",
-                        icon: 'error',
-                        });
-                        $('#proveedorNIT').val('');
-                        console.log("rechazado");   
-                      }
-               // if (data2['estado'] == 'successful' ) {
-                  else  {
-                    Swal.fire({
-                            title: "Usuario Guardado",
-                            icon: 'success',
-                            });
-
-                            console.log("ingresado"); 
-                 
-                          // $('#nombreComercial').val('');
-                         //   $('#proveedorNIT').val('');
-                           // $('#proveedorDireccion').val('');
-                            //$('#telefonoProveedor').val('');
-                            //$('#descripcionProveedor').val('');
-                            
-                            //console.log(data2);
-                          
-
-                            id=data2[0];
-                            nombreProveedor=data2[1];
-                            telefonoProveedor=data2[2];
-                            descripcionProveedor=data2[3];
-                         
-                            tablaProveedores.row.add([id,nombreProveedor,telefonoProveedor,descripcionProveedor]).draw();
-
-                           }
-            }
-      });
-    event.preventDefault();
-  }) //fin de la funcion de instertar Proveedor*/
-  

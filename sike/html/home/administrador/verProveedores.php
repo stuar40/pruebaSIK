@@ -194,7 +194,7 @@ $num_rows = mysqli_num_rows($query_select);
   <!-- ========== LLama a ventanas Modales ========== -->
         <?php
              include("modal/modalCRUDProveedor.php") ; // modal que permite Guardar el usuario
-            
+            // include("modal/modalAsesorAsociado.php") ;
         
         ?>
         

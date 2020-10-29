@@ -115,7 +115,7 @@ if (isset($_POST['action']) == 'editar_Asesor' AND !empty($_POST['intencion'])) 
 //Guardar Asesor de Porveedor
 //fin guardar edicion
 
-//////consulta datos del asesor para el dataTable
+//////consulta datos del asesores asociados a un proveedores para el dataTable************************************
 if (isset($_POST['action']) == 'cargar_Asesores' AND !empty($_POST['intencion'])) {
     
     # code...
@@ -123,6 +123,7 @@ if (isset($_POST['action']) == 'cargar_Asesores' AND !empty($_POST['intencion'])
     $action = $_POST['action']; //obtiene la variable que se recibe desde jquery
     
     if($action=='cargar_Asesores'){ // compara la accion que se esta recibiendo desde proveedores js en este caso desde el select de asesores
+        
         $idProveedoAsesor=$_POST['idProveedoAsesor'];//captura la variable que recibe desde jquery proveedores.js
         $sqlConsulta= "SELECT id,nombre,telefono,estado,empresa_id   FROM asesor where empresa_id = $idProveedoAsesor"; //realiza una consulta para ver los asesores que estas asociados al id del proveedor
         $res1=mysqli_query($con,$sqlConsulta);
@@ -149,13 +150,49 @@ if (isset($_POST['action']) == 'cargar_Asesores' AND !empty($_POST['intencion'])
        // echo json_encode($data2); //devuelve el resultado
         exit;
             }
-    else  {
+    else   {
         die("Error".mysqli_error($con));
            } 
                
-} //fin del if que consulta datos del asesor
+} //fin del if que consulta datos del asesor 
 
-} //=========================fin del if del AJAXX==============
+
+//////PRUEBAAAA datos del asesores asociados a un proveedores para el dataTable************************************
+/*f (isset($_POST['action']) == 'cargar_Asesores' AND !empty($_POST['intencion'])) {
+   $idProveedoAsesor=$_POST['idProveedoAsesor'];//captura la variable que recibe desde jquery proveedores.js
+   $sqlConsulta= "SELECT id,nombre,telefono,estado,empresa_id   FROM asesor where empresa_id = $idProveedoAsesor"; //realiza una consulta para ver los asesores que estas asociados al id del proveedor
+   $num_rows = mysqli_num_rows($sqlConsulta); //consulta la cantidad de filas de la consulta
+   $data2 = '';
+   if ($num_rows > 0) 
+   {
+       
+        while ($row = mysqli_fetch_assoc($sqlConsulta)) 
+        {
+            $data2 .= '<tr" >
+            <th>'.$row['id'].'</th>
+            <th>'.$row['nombre'].'</th>
+            <th>'.$row['telefono'].'</th>
+            <th>'.$row['estado'].' </th>
+            </tr> ';  
+        }
+        echo json_encode($data2,JSON_UNESCAPED_UNICODE);
+        exit;
+   }
+   else
+   {
+   echo "notData";
+   $data2 = 'replica';
+    }
+    exit;
+  
+   
+   
+
+} //fin del if que consulta datos del asesor */
+
+
+
+} //=========================fin del if del AJAXX===============================================================================================================================================================
 
 //===================fin del archivo ajaxAsesores
 ?>

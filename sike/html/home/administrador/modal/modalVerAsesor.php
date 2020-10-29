@@ -8,7 +8,7 @@ $query_select = mysqli_query($con,"SELECT * FROM asesor");
 $num_rows = mysqli_num_rows($query_select);
 ?>
 	
-	<!-- Modal -->
+	<!-- Modal VER / EDITAR Asesor-->
 	<div class="modal fade" id="Modal_Ver_Asesor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"> 	<!-- etiqueta y de id al modal -->
 	  <div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content modal-xl">
@@ -19,7 +19,7 @@ $num_rows = mysqli_num_rows($query_select);
 		    <div class="modal-body">
     
                 <!-- Checkout Form -->
-                <form class="form-horizontal" method="post" id="ListarAsesor" name="ListarAsesor"><!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
+          <form class="form-horizontal" method="post" id="ListarAsesor" name="ListarAsesor"><!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
               
             <!-- Step Form Header -->
             <ul id="stepFormProgress" class="js-step-progress list-inline u-shopping-cart-step-form mb-4">

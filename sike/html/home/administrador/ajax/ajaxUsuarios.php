@@ -237,7 +237,9 @@ else{
 exit;
 }
 
-// Obtener datos
+
+
+//----------------- Obtener datos
 if (isset($_POST['action']) == 'obtener_datos' ) {
     # code...
     if (!empty($_POST['id_empleado'])) {
@@ -321,15 +323,12 @@ $res=mysqli_query($con,$sql);
 }
 
 
-
-
-
-
-
 }
 
 
 }
+
+
 // Editar Editar Usuarios
 if(isset($_POST['action']) == 'editar_usuario'  AND !empty($_POST['id_usu'])){
 

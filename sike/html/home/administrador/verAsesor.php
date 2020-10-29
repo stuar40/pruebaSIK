@@ -123,66 +123,66 @@ $num_rows = mysqli_num_rows($query_select);
 
                   <div class="w-100"></div>
                   
-                  <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
-					
-          <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaverAsesores">
-              <thead >
-                  <tr class="bgcolor btn-facebook">									
-                     
-                      <th class="text-center">Codigo</th>
-                      <th class="text-center">Nombre</th>
-                      <th class="text-center">Telefono </th>
+                    <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
                       
-                      <th class="text-center">Estado</th>
-                      <th class="text-center">Acciones</th>
-                     
-                  </tr>
-              </thead>
-              
-              <tbody>
-                <?php 
-                $query_select = mysqli_query($con,"SELECT *  FROM asesor ");
-                $num_rows = mysqli_num_rows($query_select);
-                ?>
-              <?php
-              if ($num_rows > 0) {
-                    # code...
-                    $htmlTable = '';
-                    while ($row = mysqli_fetch_assoc($query_select)) {
-                    $htmlTable = '';
-                   
-              ?>          
-                       
-                        <tr>
-                        <td class="text-center"><?php echo $row['id']?></td>
-                        <td><?php echo $row['nombre']?></td>
-                        <td><?php echo $row['telefono']?></td>
-                        <td class="text-center"><?php
-                         if($row['estado'] =='1') //condicional que pasa el estado de 1/0 del asesor a un ACTIVO/INACTIVO
-                         {
-                           $estadoAsesor="ACTIVO";
-                         }
-                     else
-                         {
-                          $estadoAsesor="INACTIVO";
-                       
-                         } //fin de condicional
-                         echo $estadoAsesor
-                         ?> </td>
-                        <td class="text-center"> </td>
-                        </tr>
-              <?php }
-                
-                  
-                }else{
-                    
-                    echo "notData";
-                } 
-              ?>
-              </tbody>
-                                    
-          </table>
-    </div>
+                      <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaverAsesores">
+                          <thead >
+                              <tr class="bgcolor btn-facebook">									
+                                
+                                  <th class="text-center">Codigo</th>
+                                  <th class="text-center">Nombre</th>
+                                  <th class="text-center">Telefono </th>
+                                  
+                                  <th class="text-center">Estado</th>
+                                  <th class="text-center">Acciones</th>
+                                
+                              </tr>
+                          </thead>
+                          
+                          <tbody>
+                            <?php 
+                            $query_select = mysqli_query($con,"SELECT *  FROM asesor ");
+                            $num_rows = mysqli_num_rows($query_select);
+                            ?>
+                          <?php
+                          if ($num_rows > 0) {
+                                # code...
+                                $htmlTable = '';
+                                while ($row = mysqli_fetch_assoc($query_select)) {
+                                $htmlTable = '';
+                              
+                          ?>          
+                                  
+                                    <tr>
+                                    <td class="text-center"><?php echo $row['id']?></td>
+                                    <td><?php echo $row['nombre']?></td>
+                                    <td><?php echo $row['telefono']?></td>
+                                    <td class="text-center"><?php
+                                    if($row['estado'] =='1') //condicional que pasa el estado de 1/0 del asesor a un ACTIVO/INACTIVO
+                                    {
+                                      $estadoAsesor="ACTIVO";
+                                    }
+                                else
+                                    {
+                                      $estadoAsesor="INACTIVO";
+                                  
+                                    } //fin de condicional
+                                    echo $estadoAsesor
+                                    ?> </td>
+                                    <td class="text-center"> </td>
+                                    </tr>
+                          <?php }
+                            
+                              
+                            }else{
+                                
+                                echo "notData";
+                            } 
+                          ?>
+                          </tbody>
+                                                
+                      </table>
+                </div>
 
 
     
