@@ -15,12 +15,14 @@ VerProveedores // lista los proveedore
 >Manejar el ID Correlativo 
 boton de nuevo VerProveedor
             *vaciar el modal al darle en nuevo proveedore 
+            **cerrar el modal al guardar un proveedor
             >centrar boton 
             > validad los campos para aceptar tipo de texto o longitud
             > validar longitud de nit y solo numeros
             >validad numeros de telefono en modal
             > al guardar refrescar la pagina o cerrar el modal
-
+Boton Editar Proveedor 
+            > al guardar proveedor actualizar la pagina
 Botono ver Proveedor mostrar un formulario con la informacion del proeveedor
 
 Boton Asesor> al clickear, enviar la pagina de asesores desplegando los asesores asociados que tiene 

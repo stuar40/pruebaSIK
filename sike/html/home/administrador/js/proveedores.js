@@ -394,8 +394,8 @@ $("#guardar_Proveedor2").submit(function( event ) { // cuando tiene un submit el
                   title: "El usuario Fue Actualizado",
                   icon: 'success',
                   });
-                  $('#proveedorNIT').val('');
-                  console.log("ActaualizadoProveedor");   
+                  console.log("ActaualizadoProveedorEDY");  
+                  location.reload();
                }
                 else  { // de lo contrario el msj sera usuario guardado 
                   Swal.fire({
