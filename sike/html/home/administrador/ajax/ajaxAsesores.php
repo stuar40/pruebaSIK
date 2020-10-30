@@ -115,6 +115,38 @@ if (isset($_POST['action']) == 'editar_Asesor' AND !empty($_POST['intencion'])) 
 //Guardar Asesor de Porveedor
 //fin guardar edicion
 
+////// Boton ELIMINAR Asesor ASOCIADO del  DataTable del formulario verAsesor.php 
+if (isset($_POST['action']) == 'borrar_asesorAsociado') {
+    //console.log("Entro A Guardar");
+    # code...
+    $data2 = array();
+    $action = $_POST['action'];
+       
+        if($action=='borrar_asesorAsociado')
+            {
+                    $idborrarAsesor = $_POST['id_asesorAsociado'];
+                    
+                 
+                    # code...
+                    $sql = "DELETE FROM `sike`.`asesor` WHERE `id`='$idborrarAsesor'";
+                
+                    $res=mysqli_query($con,$sql);
+                    if($res){
+                            $data2="eliminado";
+                
+                    }else{
+                            $data2 = 'replica';
+                            die("Error".mysqli_error($con));
+                        
+                    }
+                    echo json_encode($data2); //devuelve el resultado
+                    exit;} 
+                //pruebas 2
+        
+} //FIN del a opcion que ELIMINA un ASESOR ASOCIADO
+
+
+
 //////consulta datos del asesores asociados a un proveedores para el dataTable************************************
 if (isset($_POST['action']) == 'cargar_Asesores' AND !empty($_POST['intencion'])) {
     

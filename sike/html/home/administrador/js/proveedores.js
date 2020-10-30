@@ -736,6 +736,58 @@ $("#guardar_asesor").submit(function( event ) {
   //================acciones finalizada para ver asesor
 
 
+  // accion al clickear boton ELIMINA el ASESOR Asociado a un proveedor en el forumulario verAsesor
+  $(document).on("click", ".btnBorrarAsesor", function(){
+    fila = $(this).closest("tr"); //variabel que toma la fila donde se hace click
+    id = parseInt(fila.find('td:eq(0)').text());//se almacena en una variable el valor de la posicion 0 de la fila clickeada
+    nombreAsesorAsociado = fila.find('td:eq(1)').text();//se almacena en una variable el valor de la posicion 1 de la fila clickeada
+    action = 'borrar_asesorAsociado';// la accion que va a buscar  en el ajaxProveedores.php en el cual va acompara la funcion para inciar al presionar el boton
+    //al presionar el boton nuevo la variable global action cambia a agregar producto 
+    id_asesorAsociado = id;
+    var preguntaEliminar = confirm("!Esta seguro de ELIMINAR el Asesor: "+nombreAsesorAsociado+"!");
+  if (preguntaEliminar){
+            $.ajax({ //ajax que va obtener valores de tabla de proveedor con id
+              url: './ajax/ajaxAsesores.php', //al documento php ajax al cual iran los datos y de donde retornara valores de la consulta
+              type: "POST",
+              async: true,
+              data: {action:action, id_asesorAsociado:id_asesorAsociado }, //envia valores al ajax action y el id
+              dataType: 'json', //indica que el valor que devuelve el ajax es json para poder manipular en js
+              beforeSend: function(objeto){},
+              success: function(data2){ //recibe una respuesta con una array json
+                console.log("ELIMINADNO DATOS");
+                console.log(action);
+               
+                  if (data2 == 'eliminado') {
+                     console.log(data2); // imprimimos en consola para saber el array que nos devuelve
+                     Swal.fire({
+                                title: "Asesor Eliminado Correctamente",
+                                icon: 'success',
+                                });
+                      tablaverAsesores.row(fila.parents("tr")).remove().draw();
+                      console.log("Datos Eliminados correctamente");
+                      console.log(action);
+                      // Recargo la página
+                    location.reload();
+                    }else{
+                  
+                  console.log("Error al eliminar datos")
+                  
+                      }
+              
+  
+              },
+              error: function(error){
+              console.log(error);
+              }
+              
+              });//fin del ajax
+            }//fin de la condicional en caso de que de click en aceptar a la preunta eliminar el registro
+    
+   
+  });
+  
+  //================ finalizada  ELIMINAR asesor
+
 // Funciones al realizar POST en el Formulario ListarAsesro
 // Guardar - Editar -Eliminar ---- ASESOR
 $("#ListarAsesor").submit(function( event ) {
