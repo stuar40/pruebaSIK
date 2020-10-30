@@ -577,7 +577,7 @@ $("#guardar_asesor").submit(function( event ) {
   // accion al clickear boton editar el ASESORs
   $(document).on("click", ".btnEditarAsesor", function(){
     //habilita o deshabilita campos o botones
-    $('#ProveedorAsesor').prop('disabled', true);
+    $('#ProveedorAsesor').prop('disabled', false);
     $('#nombreAsesor').prop('disabled', false);
     $('#telefonoAsesor').prop('disabled', false);
     $('#correoAsesor').prop('disabled', false);
@@ -626,7 +626,7 @@ $("#guardar_asesor").submit(function( event ) {
     
                       $(".modal-header").css("background-color","#21c87a");//cambia de colo el header del modal
                       $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
-                      $(".modal-title").text("Editar Proveedor");//titulo del header
+                      $(".modal-title").text("Editar Asesor");//titulo del header
                       $("#Modal_Ver_Asesor").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
                       opcion = 2; //editar/*where id ='<!--$d1-->
                       idAsesor= id;
@@ -708,7 +708,7 @@ $("#guardar_asesor").submit(function( event ) {
     
                       $(".modal-header").css("background-color","#00dffc");//cambia de colo el header del modal
                       $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
-                      $(".modal-title").text("detalle Asesor");//titulo del header
+                      $(".modal-title").text("Detalles Asesor");//titulo del header
                       $("#Modal_Ver_Asesor").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
                       opcion = 2; //editar/*where id ='<!--$d1-->
                       idProveedor= id;

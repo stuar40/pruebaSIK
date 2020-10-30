@@ -255,6 +255,13 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   <script src="../../../assets/js/components/hs.go-to.js"></script>
 
   <!-- JS Plugins Init. -->
+<!-- Libreria DataTables para talbas -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+ 
+
+
   <script>
     $(window).on('load', function () {
       // initialization of HSMegaMenu component
