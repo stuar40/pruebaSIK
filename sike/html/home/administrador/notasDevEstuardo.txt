@@ -1,6 +1,11 @@
 
+Directorio MODULO PROVEEDOR 
+http://localhost/pruebaSIK/sike/html/home/administrador/nuevoProveedor.php   >> Crea un nuevoProveedor
+
+http://localhost/pruebaSIK/sike/html/home/administrador/verProveedores.php  >> Lista todos los proveedore //  ve los detalles // Modifica info de proveedor // ve asesores asociados
 
 
+http://localhost/pruebaSIK/sike/html/home/administrador/nuevoAsesor.php >> Asocia un Asesor a un Proveedor
 
 
 
@@ -16,11 +21,14 @@ VerProveedores // lista los proveedore
 boton de nuevo VerProveedor
             *vaciar el modal al darle en nuevo proveedore 
             **cerrar el modal al guardar un proveedor
+                **
             >centrar boton 
             > validad los campos para aceptar tipo de texto o longitud
             > validar longitud de nit y solo numeros
             >validad numeros de telefono en modal
             > al guardar refrescar la pagina o cerrar el modal
+            >revisar variables y codigo inutil
+            >
 Boton Editar Proveedor 
             > al guardar proveedor actualizar la pagina
 Botono ver Proveedor mostrar un formulario con la informacion del proeveedor
@@ -32,4 +40,25 @@ tabla donde lista todos los proveedores
 *************************************************
 Formulario Asesor 
     *el correo es unico, se necesita un validador para el correo de lo contrarion no muestra error
-    
+
+**********************************************************
+FORMULARIO NUEVO ASESOR
+validar cuando no selecciona un proveedor no puede asignar
+Modificar longitud de nombre Completo en BD solo tineen 25 caracteres
+validad 2 correos iguales
+
+
+
+Notas
+Tabular pasar en orden de tabulacion a los input
+cambiar variables n y nombres variables
+
+quitar boton nuevo proveedor
+
+Notas Gerardo
+si un producto se asocia a una sucursal hay que vover a ingresar un mismo producto 2 veces solo para asociarlo a otra sucursal  
+
+
+NOTAS ASIGNAR PRECIO sucursal
+-- ver Estado y SubCAGTEGORIA no por ID sino por frase  MOdal ver 
+-- ver  SubCAGTEGORIA no por ID sino por frase  MOdal Asignar 

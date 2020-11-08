@@ -1,8 +1,14 @@
-<?php 
-require_once ("../config/db.php"); // llama las variables de la BD
-require_once ("../config/conexion.php"); // genera la conexion de la BD 
+<?php    
 
-include("enca.php"); // llama al encabezado de la pagina NavBar
+require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
+require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
+
+include("enca.php");
+
+// consultas
+$query_select = mysqli_query($con,"select id,sku,nombre,marca from producto WHERE id NOT IN (SELECT producto_idproducto FROM precios WHERE sucursal_idsucursal = 1 )");
+$num_rows = mysqli_num_rows($query_select);
+
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +42,6 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   <link rel="stylesheet" href="../../../assets/css/theme.css">
 </head>
 
-
 <body class="responsive-mode">
   <!-- Skippy -->
   <a id="skippy" class="sr-only sr-only-focusable u-skippy" href="#content">
@@ -45,7 +50,8 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
     </div>
   </a>
   <!-- End Skippy -->
- <!-- ========== MAIN CONTENT contenido principal del formulario nueva empresa ========== -->
+
+<!-- ========== MAIN CONTENT ========== -->
   <main id="content" role="main">
   <div class="container space-2 space-3-top--lg space-2-bottom--lg">
       <div class="row">
@@ -55,14 +61,14 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
 
         <div class="col-lg-12 order-lg-1">
           <!-- Checkout Form -->
-          <form class="form-horizontal" method="post" id="guardar_asesor" name="guardar_asesor"><!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
+
               
             <!-- Step Form Header -->
             <ul id="stepFormProgress" class="js-step-progress list-inline u-shopping-cart-step-form mb-4">
               <!-- Step Form Item -->
               <li class="list-inline-item u-shopping-cart-step-form__item mb-3">
                
-                <span class="u-shopping-cart-step-form__title">Asignar Asesor a Proveedor</span> <!-- titulo del formulario en texto-->
+                <span class="u-shopping-cart-step-form__title">Productos sin Asignar</span>
               </li>
             </ul>
             <!-- End Step Form Header -->
@@ -70,48 +76,50 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
             <!-- Step Form Content -->
             <div id="stepFormContent">
               <!-- Customer Info -->
-              <div id="formNuevoAsesor" class="active"> <!-- asigna un id al bloque donde estan los campos de nuevo asesor proveedor-->
+              <div id="newuser" class="active">
                 
                 <!-- Billing Form -->
-                <div class="row">
-                  <div class="col-md-6">
+              <div class="row">
+
+              <div class="col-md-6">
                     <!-- Input primer bloque donde selecciona el proveedor al cual asignara el asesor que se ingreseara-->
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase">  <!-- etiqueta del campo de texto  donde se almacena el nombre comercial del proveedor -->
-                        Seleccione Proveedor
+                        Seleccione Sucursal
                         <span class="text-danger">*</span>
                       </label>
 
                       <div class="js-focus-state input-group form">
-                      <select class="custom-select" name="idProveedor" id="idProveedor" required > 
-                        <option value="" selected="true" disabled="disabled" >Seleccione Proveedor</option>                     
+                      <select class="custom-select" name="SeleccionSucursalAsignar" id="SeleccionSucursalAsignar" > 
+                        <option selected="true" disabled="disabled" >Seleccione la Sucursal</option>                     
                            
                               <?php
-                              $sql= "SELECT id, nombre FROM  empresa";
+                              $sql= "SELECT id,numero,direccion FROM sucursal";
                               $res=mysqli_query($con,$sql);
                               while ($data=mysqli_fetch_row($res))
                                       {
-                                        $d1 = $data[0];
-                                        $d2 = $data[1];
+                                        $idSucursal = $data[0];
+                                        $numeroSucursal = $data[1];
+                                        $direccionSucursal = $data[2];
                               ?>
-                                        <option value="<?php echo $d1; ?>"> <?php echo $d2; ?></option>
+                                        <option value="<?php echo $idSucursal; ?>"> <?php echo $numeroSucursal.' '.$direccionSucursal; ?></option>
                               <?php 	} ?>            
-                        </select> <!-- se asignan identificadores y detalles al select de proveedores -->
+                      </select> <!-- se asignan identificadores y detalles al select de proveedores -->
 
                       </div>
                     </div>
                     <!-- End Input -->
-                  </div>
+                  </div>  <!-- fin del div col 6-->
 
                   <div class="col-md-6">
                     <!-- Input segundo bloque donde se ingresa el nombre del asesor de algun proveedor-->
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se almacena el nombre del asesor del proveedor -->
-                        Nombre completo del Asesor
+                        Nombre Sucursal Seleccionada
                         <span class="text-danger">*</span>
                       </label>
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="nombreAsesor" id="nombreAsesor" required
+                        <input class="form-control form__input" type="text" name="nombreSucursalSinAsignar" id="nombreSucursalSinAsignar" required
                                placeholder="Ingrese Nombre Completo"
                                data-msg="Ingrese Nombre Completo."
                                minlength="1" maxlength="22"
@@ -121,94 +129,87 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       </div>
                     </div>
                     <!-- End Input -->
-                  </div>
-
-            
-
-                  <div class="w-100"></div>
-                  
-                  <div class="col-md-6">
-                    <!-- Input tercer bloque donde se ingresa el telefono del asesor-->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se almacena el numero de telefono del asesor del proveedor -->
-                       Telefono
-                      <span class="text-danger">*</span>
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="telefonoAsesor" id="telefonoAsesor" required
-                                minlength="3" maxlength="12"
-                                pattern="[0-9]{3,12}"  title="Telefono. Tamaño mínimo: 3. Tamaño máximo: 12"
-                                placeholder="Ingrese No. de Telefono">  <!-- se asignan identificadores y detalles a la caja de texto del numero del asesor de proveedores -->
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
+                  </div><!-- fin del div col 6-->
 
 
-                  <div class="col-md-6">
-                    <!-- Input cuarto bloque donde se ingres al correo del asesor -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Correo Electronico
-                        <span class="h10 small">(opcional)</span>
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="email" name="correoAsesor" id="correoAsesor" required
-                               placeholder="Ingrese Correo Electronico del Asesor"><!-- se asignan identificadores, validaciones  y detalles a la caja de texto del correoEelctronico del asesor de proveedores -->
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
 
 
-    
-                  <div class="w-100"></div>
+
+                
 
 
-                  <div class="col-md-6">
-                    <!-- Input quinto bloque donde se selecciona el estado del asesor si aun esta activo o inactivo-->
-                    <div class="mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                      Estado de actividad del Asesor
-                        <span class="text-danger">*</span>
-                      </label>
-                        <select class="custom-select" name="estadoAsesor" id="estadoAsesor"> 
+          
+
+
+
+              <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
+					
+                    <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaProductosSinAsignar">
+                        <thead >
+                            <tr class="bgcolor btn-facebook">									
+                               
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Codigo</th>
+                                <th class="text-center">Nombre</th>
+                                <th class="text-center">Marca</th>
+                                
+                                <th class="text-center">Acciones</th>
+                               
+                            </tr>
+                        </thead>
                         
-                            <option selected="true" value="1">ACTIVO</option>
-                            <option value="0">INACTIVO</option>               
-                        </select> <!-- se asignan identificadores y detalles al selector de estado de actividad del asesor de proveedores -->
-                      </div>
-                    <!-- End Input -->
-                  </div>
+                        <tbody> 
+                              
+                        </tbody>
+                                              
+                    </table>
+              </div>
 
 
-                  <div class="col-md-6">
-                  </div>
+                <section class="d-flex justify-content-center responsive-mode" >
+                    
+	
+		<div class="d-flex justify-content-center "  >
+			<div class="page-header justify-center">
+              <h1 class="text-content"><i class="card navicon"></i>  <small></small></h1>
+              
+              
+			</div>
+			</div>
+      
+      <div class="container-fluid ">
+			<div class="row">
+				<div class="container ">
+
+       
+        
   
+        </div>
+        
+      </div>
+      
+			</div>
+	</section>
 
-                <div class="w-100"></div>
-                 
+  
                   
                 </div>
-                <!-- End Billing Form -->
-                <input  type="text" name="action" id="action" value="agregar_Asesor" hidden>
-                <input  type="text" name="intencion" id="intencion" value="intencion" hidden>
-                <!-- Buttons -->
-                <div class="d-sm-flex justify-content-sm-center align-items-sm-center">
-                <input type="submit" class="btn btn-facebook btn-xs text-center"  data-next-step="asignarAsesor" value="Asignar Asesor" name="asignarAsesor"></input>
- 
+            
 
-          </form>
+
           <!-- End Checkout Form -->
         </div>
       </div>
   </main>
+  
+  
   <!-- ========== END MAIN CONTENT ========== -->
 
-
-
+  <!-- ========== LLama a ventanas Modales ========== -->
+        <?php
+             include("modal/modalAsignacionProductos.php") ; // modal que permite Guardar el usuario
+        ?>
+        
 
 
   <!-- ========== ARCHIVOS NECESARIOS PARA EL FUNCIONAMIENTO ========== -->
@@ -223,9 +224,9 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   </a>
   <!-- End Go to Top -->
 
+  <!-- Importar archivos JS que se utilizar  -->
   <script type="text/javascript" src="js/jquery.min.js">  </script> 
-
-  <script type="text/javascript" src="js/proveedores.js">  </script>    <!--agrega loa archivos a los que mandara informacion en el js -->
+  <script type="text/javascript" src="js/asignarProductos.js">  </script> 
 
   <!-- JS Global Compulsory -->
   <script src="../../../assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -259,13 +260,13 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   <script src="../../../assets/js/components/hs.go-to.js"></script>
 
   <!-- JS Plugins Init. -->
-<!-- Libreria DataTables para talbas -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+  <!-- Libreria DataTables para talbas -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
  
-
-
+<!-- End Skippy -->
   <script>
     $(window).on('load', function () {
       // initialization of HSMegaMenu component
@@ -281,23 +282,6 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
       // initialization of header
       $.HSCore.components.HSHeader.init($('#header'));
 
-      // initialization of unfold component
-      $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
-        afterOpen: function () {
-          if (!$('body').hasClass('IE11')) {
-            $(this).find('input[type="search"]').focus();
-          }
-        }
-      });
-
-      // initialization of form validation
-      $.HSCore.components.HSValidation.init('.js-validate', {
-        rules: {
-          confirmPassword: {
-            equalTo: '#password'
-          }
-        }
-      });
 
       // initialization of forms
       $.HSCore.helpers.HSFocusState.init();
@@ -329,5 +313,6 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- ========== FIN DE ARCHIVOS NECESARIOS ========== -->
+  
 </body>
 </html>

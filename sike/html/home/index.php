@@ -28,26 +28,19 @@ if ($login->isUserLoggedIn() == true) {
  include("./classes/sessiones.php");
 
 } else {
-  
-
-
     ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Title -->
-  <title>El Globo</title>
+  <title>SIKE</title>
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="../images/el.ico">
+  <link rel="shortcut icon" href="../../favicon.ico">
 
   <!-- Google Fonts -->
   <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500%7CCharm" rel="stylesheet">
@@ -79,10 +72,9 @@ if ($login->isUserLoggedIn() == true) {
         <nav class="js-mega-menu navbar navbar-expand-lg u-header__navbar">
           <!-- Logo -->
           <div class="u-header__navbar-brand-wrapper">
-            <a class="navbar-brand u-header__navbar-brand" href="#" aria-label="El Globo">
-              <img class="u-header__navbar-brand-default" src="../images/elglobo21.png" alt="Logo">
-              <img class="u-header__navbar-brand-on-scroll" src="../images/elglobo21.png" alt="Logo">
-              <img class="u-header__navbar-brand-mobile" src="../images/elglobo21.png" alt="Logo">
+          <a class="navbar-brand u-header__navbar-brand" href="menuadmin.php" aria-label="Sike">
+              <img class="u-header__navbar-brand-default" src="../img/kairosclaro.png" alt="Logo">
+              <img class="u-header__navbar-brand-mobile" src="../img/sike.png" alt="Logo">
             </a>
           </div>
           <!-- End Logo -->
@@ -146,7 +138,7 @@ if ($login->isUserLoggedIn() == true) {
          data-pagi-classes="position-absolute-bottom-0 text-center u-slick__pagination u-slick__pagination--white">
       <div class="js-slide">
         <!-- Slide #1 -->
-        <div class="d-lg-flex bg-img-hero gradient-overlay-half-dark-v3" style="background-image: url(../../assets/img/1920x1080/img38.jpg);">
+        <div class="d-lg-flex bg-img-hero gradient-overlay-half-dark-v3" style="background-image: url(../img/libreria.jpg);">
           <div class="container d-lg-flex align-items-lg-center flex-lg-wrap height-100vh--lg text-center space-3">
             <div class="w-lg-75 mx-lg-auto">
               
@@ -157,18 +149,7 @@ if ($login->isUserLoggedIn() == true) {
         <!-- End Slide #1 -->
       </div>
 
-      <div class="js-slide">
-        <!-- Slide #1 -->
-        <div class="d-lg-flex bg-img-hero gradient-overlay-half-dark-v3" style="background-image: url(../../assets/img/1920x1080/img39.jpg);">
-          <div class="container d-lg-flex align-items-lg-center flex-lg-wrap height-100vh--lg text-center space-3">
-            <div class="w-lg-75 mx-lg-auto">
-            
-          
-            </div>
-          </div>
-        </div>
-        <!-- End Slide #1 -->
-      </div>
+
     </div>
     <!-- End Hero Section -->
 

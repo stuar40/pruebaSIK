@@ -23,7 +23,7 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                       <!-- Step Form Item -->
                       <li class="list-inline-item u-shopping-cart-step-form__item mb-3">
                       
-                        <span class="u-shopping-cart-step-form__title">Nuevo Proveedor</span>  <!-- titulo del formulario en texto-->
+                        <span class="u-shopping-cart-step-form__title">Proveedor</span>  <!-- titulo del formulario en texto-->
                       </li>
                     </ul>
                     <!-- End Step Form Header -->
@@ -45,11 +45,11 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                               </label>
         
                               <div class="js-focus-state input-group form">
-                                <input class="form-control form__input" type="text" name="nombreComercial" id="nombreComercial" required
-                                      placeholder="Ingrese Nombre Comercial del proveedor"
-                                      data-msg="Ingrese Nombre Comercial."
-                                      data-error-class="u-has-error"
-                                      data-success-class="u-has-success">     <!-- se asignan identificadores y detalles al campo de texto del nombre comercial del proveedor -->
+                                <input  class="form-control form__input" type="text" name="nombreComercial" id="nombreComercial" required
+                                        data-msg="Ingrese Nombre Comercial."
+                                        minlength="1" maxlength="25"
+                                        data-error-class="u-has-error"
+                                        data-success-class="u-has-success">  <!-- se asignan identificadores y detalles al campo de texto del nombre comercial del proveedor -->
                               </div> 
                             </div>
                             <!-- End Input -->
@@ -63,10 +63,10 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                               <span class="text-danger">*</span>
                               </label>
                               <div class="js-focus-state input-group form">
-                                <input class="form-control form__input" 
-                                type="text" name="proveedorNIT" id="proveedorNIT" required
-                                pattern="[0-9]{8,12}"                                 
-                                      placeholder="Ingrese NIT del proveedor"> <!-- se asignan identificadores y detalles al campo de texto del NIT  comercial del proveedor -->
+                                <input  class="form-control form__input" type="text" name="proveedorNIT" id="proveedorNIT" required
+                                        minlength="8" maxlength="9"
+                                        pattern="[0-9]{8,12}"  title="Numero de NIT (Sin Guion) Tamaño mínimo: 8. Tamaño máximo: 12"
+                                        placeholder="Ingrese NIT del proveedor"> <!-- se asignan identificadores y detalles al campo de texto del NIT  comercial del proveedor -->
                               </div>
                             </div>
                             <!-- End Input -->
@@ -89,11 +89,12 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                               </label>
         
                               <div class="js-focus-state input-group form">
-                                <input class="form-control form__input" type="text" name="proveedorDireccion" id="proveedorDireccion" 
-                                      placeholder="Ingrese Direccion comercial del proveedor"
-                                      data-msg="Por favor ingrese la direccion"
-                                      data-error-class="u-has-error"
-                                      data-success-class="u-has-success"> <!-- se asignan identificadores y detalles al campo de texto de la direccion comercial del proveedor -->
+                                <input  class="form-control form__input" type="text" name="proveedorDireccion" id="proveedorDireccion" 
+                                        
+                                        data-msg="Por favor ingrese la direccion"
+                                        minlength="1" maxlength="50"
+                                        data-error-class="u-has-error"
+                                        data-success-class="u-has-success"> <!-- se asignan identificadores y detalles al campo de texto de la direccion comercial del proveedor -->
                               </div>
                             </div>
                             <!-- End Input -->
@@ -109,8 +110,9 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                               </label>
         
                               <div class="js-focus-state input-group form">
-                                <input class="form-control form__input" type="tel" name="telefonoProveedor" id="telefonoProveedor" minlength="3" maxlength="12"
-                                      placeholder="Ingrese No. de Telefono"> <!-- se asignan identificadores y detalles al campo de texto del No telefono del proveedor -->
+                                <input class="form-control form__input" type="num" name="telefonoProveedor" id="telefonoProveedor" required
+                                       minlength="3" maxlength="12"
+                                       pattern="[0-9]{3,12}"  title="Telefono. Tamaño mínimo: 3. Tamaño máximo: 12">  <!-- se asignan identificadores y detalles al campo de texto del No telefono del proveedor -->
                               </div>
                             </div>
                             <!-- End Input -->
@@ -128,12 +130,13 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                               </label>
         
                               <div class="js-focus-state input-group form">
-                                <textarea class="form-control form__input" type="text" name="descripcionProveedor" id="descripcionProveedor" 
-                                      placeholder="Descripcion del Proveedor"
-                                      data-msg="ingrese una descripcion del Proveedor."
-                                      data-error-class="u-has-error"
-                                      data-success-class="u-has-success">
-                                  </textarea> <!-- se asignan identificadores y detalles al campo de texto de la descripcion del proveedor -->
+                              <textarea class="form-control form__input" type="text" name="descripcionProveedor" id="descripcionProveedor" 
+                                        
+                                        data-msg="ingrese una descripcion del Proveedor."
+                                        maxlength="50"
+                                        pattern="[0-9]{0,50}"  title="Números. Tamaño máximo: 12"
+                                        data-error-class="u-has-error"
+                                        data-success-class="u-has-success"></textarea><!-- se asignan identificadores y detalles al campo de texto de la descripcion del proveedor -->
                               </div>
                             </div>
                             <!-- End Input -->
@@ -245,6 +248,7 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                                         <th class="text-center">Nombre</th>
                                         <th class="text-center">Telefono </th>
                                         <th class="text-center">Estado</th>
+                                        
                                       </tr>
                                     </thead>
                                     <tbody>

@@ -40,14 +40,16 @@
   <!-- End Skippy -->
 
   <!-- ========== HEADER ========== -->
-  <header id="header" class="u-header u-header--modern  u-header--bordered u-header--sticky-top-lg ">
-    <div class="u-header__section">
+  <header id="header" class="u-header u-header--modern u-header--bordered u-header--sticky-top-lg"
+  data-header-fix-moment="500"
+          data-header-fix-effect="slide">  
+  <div class="u-header__section">
       <div id="logoAndNav" class="container-fluid">
         <!-- Nav -->
         <nav class="js-mega-menu navbar navbar-expand-lg u-header__navbar">
           <!-- Logo -->
           <div class="u-header__navbar-brand-wrapper">
-            <a class="navbar-brand u-header__navbar-brand" href="menuadmin" aria-label="SIKE">
+            <a class="navbar-brand u-header__navbar-brand" href="menuadmin.php" aria-label="Sike">
               <img class="u-header__navbar-brand-default" src="../../img/kairos.png" alt="Logo">
               <img class="u-header__navbar-brand-mobile" src="../../img/sike.png" alt="Logo">
             </a>
@@ -90,7 +92,7 @@
                 <ul id="usuarioSubMenu" class="list-inline hs-sub-menu u-header__sub-menu mb-0" style="min-width: 260px;"
                     aria-labelledby="usuarioMegaMenu">
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="newuser.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/user.svg" alt="Image Description">
                         <div class="media-body">
@@ -101,7 +103,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="user.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/setting.svg" alt="Image Description">
                         <div class="media-body">
@@ -138,7 +140,7 @@
                        aria-haspopup="true"
                        aria-expanded="false"
                        aria-controls="navSubmenuproveedorClassic">
-                      Nuevo Proveedor
+                       Proveedores
                       <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
                     </a>
 
@@ -146,40 +148,67 @@
                     <ul id="navSubmenuproveedorClassic" class="hs-sub-menu list-unstyled u-header__sub-menu u-header__sub-menu-offset" style="min-width: 220px;"
                         aria-labelledby="navLinkproveedorClassic">
                         <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevoProveedor.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/provider.svg" alt="Image Description">
                         <div class="media-body">
                           <span class="d-block text-dark font-weight-medium">Empresa</span>
-                          <small class="d-block">Nueva Empresa</small>
+                          <small class="d-block">Nuevo Proveedor</small>
                         </div>
                       </div>
                     </a>
                   </li>
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="verProveedores.php">
                       <div class="media align-items-center">
-                        <img class="max-width-5 mr-3" src="../../img/adviser.svg" alt="Image Description">
+                        <img class="max-width-5 mr-3" src="../../img/configuracion.svg" alt="Image Description">
                         <div class="media-body">
-                          <span class="d-block text-dark font-weight-medium">Asesor</span>
-                          <small class="d-block">Nuevo Asesor</small>
+                          <span class="d-block text-dark font-weight-medium">Configuracion</span>
+                          <small class="d-block">Buscar/Ver/Editar</small>
                         </div>
                       </div>
                     </a>
                   </li>
                     </ul>
                     <!-- End Submenu (level 2) -->
-                  </li>
-                  <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+          </li>
+
+                   <li class="dropdown-item hs-has-sub-menu">
+                    <a id="navLinkproveedorClassic" class="nav-link u-header__sub-menu-nav-link" href="javascript:;"
+                       aria-haspopup="true"
+                       aria-expanded="false"
+                       aria-controls="navSubmenuproveedorClassic">
+                       Asesores
+                      <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
+                    </a>
+
+                    <!-- Submenu (level 2) ASESORES -->
+                    <ul id="navSubmenuproveedorClassic" class="hs-sub-menu list-unstyled u-header__sub-menu u-header__sub-menu-offset" style="min-width: 220px;"
+                        aria-labelledby="navLinkproveedorClassic">
+                        <li class="dropdown-item u-header__sub-menu-list-item py-0">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevoAsesor.php">
                       <div class="media align-items-center">
-                        <img class="max-width-5 mr-3" src="../../img/configuracion.svg" alt="Image Description">
+                        <img class="max-width-5 mr-3" src="../../img/adviser.svg" alt="Image Description">
                         <div class="media-body">
-                          <span class="d-block text-dark font-weight-medium">Nuevo</span>
-                          <small class="d-block">Crear Cliente</small>
+                          <span class="d-block text-dark font-weight-medium">Asesor</span>
+                          <small class="d-block">Asociar Nuevo Asesor</small>
                         </div>
                       </div>
                     </a>
+                  </li>
+                  <li class="dropdown-item u-header__sub-menu-list-item py-0">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="verAsesor.php">
+                      <div class="media align-items-center">
+                        <img class="max-width-5 mr-3" src="../../img/config-asesor.svg" alt="Image Description">
+                        <div class="media-body">
+                          <span class="d-block text-dark font-weight-medium">Configuracion</span>
+                          <small class="d-block">Buscar/Ver/Editar/Eliminar</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                    </ul>
+                    <!-- End Submenu (level 2) -->
                   </li>
                 </ul>
             </li>
@@ -202,7 +231,7 @@
                 <ul id="clientesSubMenu" class="list-inline hs-sub-menu u-header__sub-menu mb-0" style="min-width: 260px;"
                     aria-labelledby="clientesMegaMenu">
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevoCliente.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/client.svg" alt="Image Description">
                         <div class="media-body">
@@ -464,10 +493,10 @@
           <!-- End Navigation -->
 
           <ul class="navbar-nav flex-row u-header__secondary-nav">
-            <li class="nav-item u-header__navbar-icon-wrapper u-header__navbar-icon">
+            <li class="nav-item u-header__navbar-icon u-header__navbar-v-divider">
             <!-- Button -->
             <li class="nav-item u-header__navbar-icon-wrapper u-header__navbar-icon align-content-center">
-            <a class="btn btn-xs btn-icon btn-text-dark" href="javascript:;" role="button">
+            <a class="btn btn-xs btn-icon btn-text-dark"  href="../classes/logout.php" role="button">
                   <span class="fa fa-sign-in-alt"></span>
                 </a>
             </li>

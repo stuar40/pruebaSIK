@@ -89,7 +89,7 @@ $num_rows = mysqli_num_rows($query_select);
                       <select class="custom-select" name="seleccionaProveedor" id="seleccionaProveedor"> 
                             <option selected="true" disabled="disabled">Seleccione Proveedor</option>                     
                             <?php
-                              $sql= "SELECT id, nombre,telefono  FROM  sike.empresa";
+                              $sql= "SELECT id, nombre,telefono  FROM  empresa";
                               $res=mysqli_query($con,$sql);
                               while ($data=mysqli_fetch_row($res)){
                                                     $d1 = $data[0];

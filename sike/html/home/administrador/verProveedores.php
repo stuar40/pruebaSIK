@@ -6,7 +6,7 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
 include("enca.php");
 
 // consulta para llenar tabla 
-$query_select = mysqli_query($con,"SELECT id, nombre, telefono, descripcion From sike.empresa  ORDER BY id desc");
+$query_select = mysqli_query($con,"SELECT id, nombre, telefono, descripcion From empresa  ORDER BY id desc");
 $num_rows = mysqli_num_rows($query_select);
 ?>
 
@@ -88,17 +88,7 @@ $num_rows = mysqli_num_rows($query_select);
 
                 
 <!-- Busqueda -->
-    <div class="col-12 mb-5 ">
-      <nav class="navbar navbar-light bg-light">
-       
-        <div class="col-6 mb-1 " class="form-inline">
-        <input type="submit" class="btn btn-facebook btn-md text-center"  class="form-control " data-next-step="Crear" id= "nuevoProveedor" value="Nuevo Proveedor (+)" name="nuevoProveedor"></input>
-        </div>
-        <div class="col-6 " class="form-inline">
-        
-        </div>
-      </nav>
-    </div>
+   
 
           
 
@@ -123,12 +113,10 @@ $num_rows = mysqli_num_rows($query_select);
                         <?php
                         if ($num_rows > 0) {
                               # code...
-                              $htmlTable = '';
+                              //$htmlTable = '';
                               while ($row = mysqli_fetch_assoc($query_select)) {
-                              $htmlTable = '';
-                              console.log("tabla");
+                              //$htmlTable = '';
                               
-                              console.log($row['id']);
                         ?>          
                                  
                                   <tr>
@@ -143,7 +131,7 @@ $num_rows = mysqli_num_rows($query_select);
                             
                           }else{
                               
-                              echo "notData";
+                              echo " ";
                           } 
                         ?>
                         </tbody>
@@ -187,7 +175,7 @@ $num_rows = mysqli_num_rows($query_select);
         </div>
       </div>
   </main>
-  btnVer
+  
   
   <!-- ========== END MAIN CONTENT ========== -->
 

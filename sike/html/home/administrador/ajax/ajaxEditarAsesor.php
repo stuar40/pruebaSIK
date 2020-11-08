@@ -31,7 +31,7 @@ include("../../config/conexion.php");
                                                 }
     
             if ($numero > 0)   {
-                $sql="UPDATE `sike`.`asesor` SET `nombre`='$n1', `telefono`='$n2', `correo`='$n3', `estado`='$n4', `empresa_id`='$n5' WHERE `id`='$n6'";
+                $sql="UPDATE `asesor` SET `nombre`='$n1', `telefono`='$n2', `correo`='$n3', `estado`='$n4', `empresa_id`='$n5' WHERE `id`='$n6'";
                     $res=mysqli_query($con,$sql);
                     if($res){
                             echo 'successful';

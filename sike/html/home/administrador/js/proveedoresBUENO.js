@@ -35,15 +35,13 @@ tablaProveedores = $('#tablaProveedores').DataTable({  // incializa la tabla pro
       }
   });
   //------------fin inicializacion de la estructura de DataTable que lista los proveedores 
-
 //incializa la tablaAsesores con la libreria DataTable que lista todos los asesores segun el Proveedor
-
 tablaverAsesores = $('#tablaverAsesores').DataTable({
   "columnDefs":[{
     "targets": -1,
     "data":null,
     //configura 3 botones en la columana vacia del dataTable y su identificador lo coloca en el class en estos casos btnAsesor btnEditarAsesor
-    "defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-success btnVerAsesor' data-backdrop='false'> <i class='far fa-eye'></i></button> <button class='btn btn-warning btnEditarAsesor'><i class='far fa-edit'></i></button>  <button class='btn btn-danger btnBorrarAsesor'><i class='fas fa-trash-alt'></i></button></div></div>"  
+    "defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-info btnVerAsesor' data-backdrop='false'> <i class='far fa-eye'></i></button> <button class='btn btn-primary btnEditarAsesor'><i class='far fa-edit'></i></button>  <button class='btn btn-danger btnBorrarAsesor'><i class='fas fa-trash-alt'></i></button></div></div>"  
    }],
     
     //Para cambiar el lenguaje a español
@@ -63,12 +61,9 @@ tablaverAsesores = $('#tablaverAsesores').DataTable({
          "sProcessing":"Procesando...",
     }
 });
-
 //------------fin inicializacion de la estructura de DataTable 
-
-
-//------------Inicializa la tabla tablaAsesoresAsociados en el formulario Ver PROVEEDORES
-tablaverAsesoresAsociados = $('#tablaAsesoresAsociados').DataTable({
+//------------Inicializa la tabla tablaAsesoresAsociados
+tablaverAsesores = $('#tablaAsesoresAsociados').DataTable({
   
     
     //Para cambiar el lenguaje a español
@@ -175,7 +170,7 @@ $(document).on("click", ".btnEditar", function(){
                     $('#descripcionProveedor').val(data2.descripcion);
                     
   
-                    $(".modal-header").css("background-color","#ffbc42");//cambia de colo el header del modal
+                    $(".modal-header").css("background-color","#21c87a");//cambia de colo el header del modal
                     $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
                     $(".modal-title").text("Editar Proveedor");//titulo del header
                     $("#Modal_Nuevo_Proveedor").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
@@ -225,17 +220,13 @@ $(document).on("click", ".btnVer", function(){
   
   fila = $(this).closest("tr"); //varialbe que toma la fila del dataTable
 
- // id = parseInt(fila.find('td:eq(0)').text()); // toma la 0 posicion de la fila donde se esta clickeando el btnEditar
   id = parseInt(fila.find('td:eq(0)').text()); // toma la 0 posicion de la fila donde se esta clickeando el btnEditar
-  console.log(id);
-  
   proveedor = fila.find('td:eq(1)').text();// toma la 1 posicion de la fila donde se esta clickeando el btnEditar
-   console.log(proveedor);
-   telefono = fila.find('td:eq(2)').text();// toma la 2 primera posicion de la fila donde se esta clickeando el btnEditar
+  telefono = fila.find('td:eq(2)').text();// toma la 2 primera posicion de la fila donde se esta clickeando el btnEditar
   descripcion = fila.find('td:eq(3)').text();// toma la 3 posicion de la fila donde se esta clickeando el btnEditar
 
-  action = "obtener_datos";// la accion que va a buscar  en el ajaxProveedores.php en el cual va acompara la funcion para inciar al presionar el boton
-  console.log(id);//al presionar el boton nuevo la variable global action cambia a agregar producto 
+  action = 'obtener_datos';// la accion que va a buscar  en el ajaxProveedores.php en el cual va acompara la funcion para inciar al presionar el boton
+  //al presionar el boton nuevo la variable global action cambia a agregar producto 
   id_empleado = id; //genera una variable local que se utiliza para enviarse al ajax donde se valida la busqueda
   
 
@@ -264,7 +255,7 @@ $(document).on("click", ".btnVer", function(){
                     $('#descripcionProveedor').val(data2.descripcion);
                     
   
-                    $(".modal-header").css("background-color","#21c87a");//cambia de colo el header del modal
+                    $(".modal-header").css("background-color","#00dffc");//cambia de colo el header del modal
                     $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
                     $(".modal-title").text("Editar Proveedor");//titulo del header
                     $("#Modal_Nuevo_Proveedor").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
@@ -301,7 +292,7 @@ $(document).on("click", ".btnAsesor", function(){
   //al presionar el boton nuevo la variable global action cambia a agregar producto 
   id_empleado = id;
   
-                $(".modal-header").css("background-color","#3b5998");//cambia de colo el header del modal
+                $(".modal-header").css("background-color","#21c87a");//cambia de colo el header del modal
                 $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
                 $(".modal-title").text("Ver Asesores");//titulo del header
                 $("#Modal_Ver_Asesor").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
@@ -353,65 +344,11 @@ $(document).on("click", ".btnAsesor", function(){
         }
 //fin busqueda de proveedor
 
-//  Submit  Formulario Nuevo Proveeodoe Nuepuede GUardar -- Editar  Proveedores
-$("#Formguardar_Proveedor").submit(function( event ) { // cuando tiene un submit el formulario  con el id guardar_Proveedor2 por un post del un boton del formulario se incia este evento
-  var parametros = $(this).serialize(); 
-  action = 'agregar_Proveedor';
-  intencion = 'intencion'; //incializa la variable para que pueda encajar en el AJAX 
-  nombreComercial = $.trim($("#nombreComercial").val()); // toma el valor que contenga los inputs del formulario con el idnombreComercial y lo ingresa a una variable 
-  proveedorNIT = $.trim($("#proveedorNIT").val());// toma el valor que contenga los inputs del formulario con el id proveedorNIT y lo ingresa a una variable 
-  proveedorDireccion = $.trim($("#proveedorDireccion").val());
-  telefonoProveedor = $.trim($("#telefonoProveedor").val());
-  descripcionProveedor = $.trim($("#descripcionProveedor").val());
 
-    $.ajax({ //aqui se indica que vamos a hacer con los datos obtenidos del formulario
-              type: "POST",
-              url: "ajax/ajaxProveedores.php", //indica el Ajax donde se procesara los parametros enviados 
-              //data: parametros,
-              data: {action:action, intencion:intencion,nombreComercial:nombreComercial,proveedorNIT:proveedorNIT,proveedorDireccion:proveedorDireccion, telefonoProveedor:telefonoProveedor,descripcionProveedor:descripcionProveedor},
-              dataType: 'json', //indica que el valor que devuelve el ajax es json para poder manipular en js
-              beforeSend: function(objeto){},
-              success: function(data2){
-                console.log("imprimir DATA"); 
-                console.log(data2);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
-                console.log(data2[0]);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
-                console.log(data2[1]);
-                             
-                if(data2 == 'replica'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
-                      Swal.fire({
-                      title: "El Usuario/NIT Ya existe", //titulo del modal
-                      icon: 'error', //tipo de advertencia modal
-                      timer: 3000                     
-                      });
-                      $('#proveedorNIT').val(''); // vacia el input ProveedorNIT del modal 
-                      console.log("rechazado NIT REPETIDO");   // // imprime en consola para el desarrolador ver el valro que esta obteniendo 
-                    }
-             
-                else  { // de lo contrario el msj sera usuario guardado 
-                  Swal.fire({
-                          title: "Usuario Guardado",
-                          icon: 'success',
-                          timer: 2000
-                          }).then(function() {
-                            window.location = "verProveedores.php";
-                          });
-
-                          console.log("ingresadoCorrectamente"); 
-                         // var url = 'verProveedores.php';    
-                         // $(location).attr('href',url); //redirecciona al formulario verProveedores
-                         //location.reload(); // actualizar la pagina despues de guardar el archivo 
-                         }
-          }
-    });
-  event.preventDefault();
-}) 
-//************************************* */
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // JS para cuando realizan un POS con el boton Guardar del formulario  
 // puede GUardar -- Editar  Proveedores
 $("#guardar_Proveedor2").submit(function( event ) { // cuando tiene un submit el formulario  con el id guardar_Proveedor2 por un post del un boton del formulario se incia este evento
-  
   //$('#guardar_datos').attr("disabled", true);
   var parametros = $(this).serialize();
   idProv = idProveedor; //en caso de tener id la variable global la almacena en una local
@@ -456,10 +393,9 @@ $("#guardar_Proveedor2").submit(function( event ) { // cuando tiene un submit el
                 Swal.fire({
                   title: "El usuario Fue Actualizado",
                   icon: 'success',
-                  timer: 2000   
-                  }).then(function() {
-                    window.location = "verProveedores.php";
                   });
+                  console.log("ActaualizadoProveedorEDY");  
+                  location.reload();
                }
                 else  { // de lo contrario el msj sera usuario guardado 
                   Swal.fire({
@@ -505,7 +441,7 @@ $("#guardar_asesor").submit(function( event ) {
     var parametros = $(this).serialize();
        $.ajax({
                 type: "POST",
-                url: "ajax/ajaxProveedores.php",
+                url: "ajax/ajaxProveedores2.php",
                 error: function() {
                   console.log("No se ha podido obtener la información");
                 },
@@ -515,9 +451,8 @@ $("#guardar_asesor").submit(function( event ) {
                 console.log(response);
                 if(response == 'replica'){
                         Swal.fire({
-                        title: "El usuario/Correo Ya existe",
+                        title: "El usuario Ya existe",
                         icon: 'error',
-                        timer: 2000
                         });
                         $('#correoAsesor').val('');
                         }
@@ -525,11 +460,8 @@ $("#guardar_asesor").submit(function( event ) {
                     Swal.fire({
                             title: "Usuario Guardado",
                             icon: 'success',
-                            timer: 2000
-                            }).then(function() {
-                              window.location = "verAsesor.php";
                             });
-  
+                 
                 $('#idProveedor').val('Seleccione Proveedor');
                 $('#nombreAsesor').val('');
                 $('#telefonoAsesor').val('');
@@ -538,7 +470,8 @@ $("#guardar_asesor").submit(function( event ) {
                 console.log("Usuario Guardado Exitosamente");
                 //redireccionamos al formulario de usarios asgnados
                 /* Declaramos la variable para la URL */
-              
+                var url = 'verAsesor.php';    
+                $(location).attr('href',url);
             }
             }/*,
             error: function() {
@@ -595,7 +528,6 @@ $("#guardar_asesor").submit(function( event ) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // Actualizar PROVEEDOR
-
   $("#editar_Proveedor").submit(function( event ) { //id  del formulario donde esta el input
     $('#editar_proveedor').attr("disabled", true); //nombre ???
     var parametros = $(this).serialize();
@@ -635,6 +567,8 @@ $("#guardar_asesor").submit(function( event ) {
       });
     event.preventDefault();
   }) //fin de la funcion de Actualizar Asesor Proveedor
+
+
 
 
 
@@ -692,7 +626,7 @@ $("#guardar_asesor").submit(function( event ) {
                       $('#estadoAsesor').val(data2.estado);
                       
     
-                      $(".modal-header").css("background-color","#ffbc42");//cambia de colo el header del modal
+                      $(".modal-header").css("background-color","#21c87a");//cambia de colo el header del modal
                       $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
                       $(".modal-title").text("Editar Asesor");//titulo del header
                       $("#Modal_Ver_Asesor").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
@@ -774,7 +708,7 @@ $("#guardar_asesor").submit(function( event ) {
                       $('#estadoAsesor').val(data2.estado);
                       
     
-                      $(".modal-header").css("background-color","#21c87a");//cambia de colo el header del modal
+                      $(".modal-header").css("background-color","#00dffc");//cambia de colo el header del modal
                       $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
                       $(".modal-title").text("Detalles Asesor");//titulo del header
                       $("#Modal_Ver_Asesor").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
@@ -828,18 +762,14 @@ $("#guardar_asesor").submit(function( event ) {
                   if (data2 == 'eliminado') {
                      console.log(data2); // imprimimos en consola para saber el array que nos devuelve
                      Swal.fire({
-                      title: "Asesor Eliminado",
-                      icon: 'success',
-                      timer: 2000
-                      }).then(function() {
-                                window.location = "verAsesor.php";
-                      });
-
-                      //tablaverAsesores.row(fila.parents("tr")).remove().draw();
-                      //console.log("Datos Eliminados correctamente");
-                      //console.log(action);
+                                title: "Asesor Eliminado Correctamente",
+                                icon: 'success',
+                                });
+                      tablaverAsesores.row(fila.parents("tr")).remove().draw();
+                      console.log("Datos Eliminados correctamente");
+                      console.log(action);
                       // Recargo la página
-                      //location.reload();
+                    location.reload();
                     }else{
                   
                   console.log("Error al eliminar datos")
@@ -902,7 +832,6 @@ $("#ListarAsesor").submit(function( event ) {
                       Swal.fire({
                       title: "El usuario Ya existe",
                       icon: 'error',
-                      timer: 2000
                       });
                       $('#proveedorNIT').val('');
                       console.log("rechazado");   
@@ -913,12 +842,11 @@ $("#ListarAsesor").submit(function( event ) {
                 Swal.fire({
                   title: "El Asesor Fue Actualizado",
                   icon: 'success',
-                  timer: 2000
-                  }).then(function() {
-                            window.location = "verAsesor.php";
                   });
                   $('#proveedorNIT').val('');
-                  
+                  console.log("Actaualizado2020");  
+                  // Recargo la página
+                  location.reload(); 
                }
                 else  {
                   Swal.fire({
@@ -951,29 +879,35 @@ $("#ListarAsesor").submit(function( event ) {
 //************************************* */
 
 //-------------FUNCION SELECTED DE PROEVEDORE PARA ASESOR--------------
+
 $("#seleccionaProveedor").change(function(){
   var parametros = $(this).serialize();
   idProveedoAsesor= $(this).val(); //obitne el value del option select que estamos seleccionamos
-  action = 'cargar_AsesoresAsociados'; //la accion o el id al cual ingresara en el ajaxAsesores
+  //alert(idProveedoAsesor);
+  action = 'cargar_Asesores';
+  console.log(idProveedor); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
   console.log(idProveedoAsesor); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
   console.log(action); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
+
   intencion = 'intencion'; //incializa la variable para que pueda encajar en el AJAX 
   
-$('#tablaverAsesores').DataTable().destroy();//destruy el datatable en caso de haberse incializado antes
-var tablaAsesoresAsociados2 = $("#tablaverAsesores").DataTable({
-  "ajax":{ //aqui se indica que vamos a hacer con los datos obtenidos del formulario
+  $.ajax({ //aqui se indica que vamos a hacer con los datos obtenidos del formulario
     type: "POST",
     url: "ajax/ajaxAsesores.php", //indica el Ajax donde se procesara los parametros enviados 
-    data: {action:action,intencion:intencion,idProveedoAsesor:idProveedoAsesor},//parametros que va a enviar al ajax en POST
-    //dataType: 'json', //indica que el valor que devuelve el ajax es json para poder manipular en js
-    //beforeSend: function(objeto){},
-    success: function(arreglo){
-      console.log("imprimir DATA Asesor Asociado"); 
-      console.log(arreglo);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
+    //data: parametros,
+    data: {action:action,intencion:intencion,idProveedoAsesor:idProveedoAsesor},
+    dataType: 'json', //indica que el valor que devuelve el ajax es json para poder manipular en js
+    beforeSend: function(objeto){},
+    success: function(data2){
+      console.log("imprimir DATA"); 
+      console.log(data2);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
+      console.log(data2[0]);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
+      console.log(data2[1]);
+     
       console.log(idProveedoAsesor);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
 
     
-      if(arreglo == 'replica'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
+      if(data2 == 'replica'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
         
           Swal.fire({
             title: "Proveedor sin Asesores", //titulo del modal
@@ -986,146 +920,100 @@ var tablaAsesoresAsociados2 = $("#tablaverAsesores").DataTable({
            
           }
       else  { // de lo contrario el msj sera usuario guardado 
-                
+                id=data2[0];
+                nombreAsesor=data2[1];
+                telefonoAsesor=data2[2];
                 console.log("etrando a condicional de activo");
-                //console.log(arreglo.data.id);
-               $('#tablaverAsesores').DataTable().destroy();
-               var tablaverAsesores2 = $("#tablaverAsesores").DataTable({
+                  if(data2[3]=='1') //condicional que pasa el estado de 1/0 del asesor a un ACTIVO/INACTIVO
+                      {
+                        estadoAsesor="ACTIVO";
+                      }
+                  else
+                      {
+                        estadoAsesor="INACTIVO";
+                    
+                      } //fin de condicional
                 
-                  "ajax":{
-                  "method":"POST",
-                  "data": {action:action,intencion:intencion,idProveedoAsesor:idProveedoAsesor},
-                  "url":"ajax/ajaxAsesores.php"
-                  
-              },
-              
-                "columns":[
-                          {"data":"id"},
-                          {"data":"nombre"},
-                          {"data":"telefono"},
-                          {"data":"estado"},
-                          //{if( data[estado] == '1'){}},
-                          {"defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-success btnVerAsesor' data-backdrop='false'> <i class='far fa-eye'></i></button> <button class='btn btn-warning btnEditarAsesor'><i class='far fa-edit'></i></button>  <button class='btn btn-danger btnBorrarAsesor'><i class='fas fa-trash-alt'></i></button></div></div>" }
-                        ],
-                          //Para cambiar el lenguaje a español
-                "language": {
-                  "lengthMenu": "Mostrar _MENU_ registros",
-                  "zeroRecords": "No se encontraron resultados",
-                  "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                  "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                  "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                  "sSearch": "Buscar:",
-                  "oPaginate": {
-                      "sFirst": "Primero",
-                      "sLast":"Último",
-                      "sNext":"Siguiente",
-                      "sPrevious": "Anterior"
-                   },
-                   "sProcessing":"Procesando...",
-                }
-                        
-                 });
-                
-               console.log("Imprimiendo Arreglo  AsesoresAsociados ")
-               console.log(arreglo);
-             } //cerrando condicional else
-           }//cerrando la funcion succes del ajax general
-    }//cerrando el Ajax General
-   
-   
-}); //fucion datatable verasesores asociado 
+                console.log("tablaAsesoresP"); 
+                var tablaverAsesores = $('#tablaverAsesores').DataTable();
+                tablaverAsesores.clear(); //limpia la tabla 
+                tablaverAsesores.row.add([id,nombreAsesor,telefonoAsesor,estadoAsesor]).draw();
+               /*
+                tablaverAsesores.clear();
+                tablaverAsesores.row.add([id,nombreAsesor,telefonoAsesor,estadoAsesor]).draw();*/
 
-})
-///------------FIN SELECTED 
+             }
+              }
+    });
+//event.preventDefault();
+
+});
+///------------FIN SELECTED
 
 
 ///PRUEBAAAAAASS SELECTED********************
-$("#seleccionaProveedor2").change(function(){
+$("#seleccionaProveedor").change(function(){
   var parametros = $(this).serialize();
   idProveedoAsesor= $(this).val(); //obitne el value del option select que estamos seleccionamos
-  action = 'cargar_AsesoresAsociados'; //la accion o el id al cual ingresara en el ajaxAsesores
+  action = 'cargar_Asesores';
   console.log(idProveedoAsesor); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
   console.log(action); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
   intencion = 'intencion'; //incializa la variable para que pueda encajar en el AJAX 
   
-$('#tablaverAsesores2').DataTable().destroy();//destruy el datatable en caso de haberse incializado antes
-var tablaAsesoresAsociados2 = $("#tablaverAsesores2").DataTable({
-  "ajax":{ //aqui se indica que vamos a hacer con los datos obtenidos del formulario
+  $.ajax({ //aqui se indica que vamos a hacer con los datos obtenidos del formulario
     type: "POST",
     url: "ajax/ajaxAsesores.php", //indica el Ajax donde se procesara los parametros enviados 
     data: {action:action,intencion:intencion,idProveedoAsesor:idProveedoAsesor},
-    //dataType: 'json', //indica que el valor que devuelve el ajax es json para poder manipular en js
-    //beforeSend: function(objeto){},
-    success: function(arreglo){
-      console.log("imprimir DATA Asesor Asociado"); 
-      console.log(arreglo);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
+    dataType: 'json', //indica que el valor que devuelve el ajax es json para poder manipular en js
+    beforeSend: function(objeto){},
+    success: function(data2){
+      console.log("imprimir DATA"); 
+      console.log(data2);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
       console.log(idProveedoAsesor);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
 
     
-      if(arreglo == 'replica'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
+      if(data2 == 'replica'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
         
           Swal.fire({
             title: "Proveedor sin Asesores", //titulo del modal
             icon: 'error', //tipo de advertencia modal
             });
-            var tablaverAsesores2 = $('#tablaverAsesores2').DataTable();
+            var tablaverAsesores2 = $('#tablaverAsesores').DataTable();
             tablaverAsesores2.clear(); //limpia la tabla 
             tablaverAsesores2.draw(); //incializa la tabla con ninguna fila
             console.log("rechazado la consulta de asesores de un proveedor");   // // imprime en consola para el desarrolador ver el valro que esta obteniendo 
            
           }
       else  { // de lo contrario el msj sera usuario guardado 
-                
+                id=data2[0];
+                nombreAsesor=data2[1];
+                telefonoAsesor=data2[2];
                 console.log("etrando a condicional de activo");
-                //console.log(arreglo.data.id);
-               $('#tablaverAsesores2').DataTable().destroy();
-               var tablaverAsesores2 = $("#tablaverAsesores2").DataTable({
+                  if(data2[3]=='1') //condicional que pasa el estado de 1/0 del asesor a un ACTIVO/INACTIVO
+                      {
+                        estadoAsesor="ACTIVO";
+                      }
+                  else
+                      {
+                        estadoAsesor="INACTIVO";
+                    
+                      } //fin de condicional
                 
-                  "ajax":{
-                  "method":"POST",
-                  "data": {action:action,intencion:intencion,idProveedoAsesor:idProveedoAsesor},
-                  "url":"ajax/ajaxListarAsesoresAsociados.php"
-                  
-              },
-              
-                "columns":[
-                          {"data":"id"},
-                          {"data":"nombre"},
-                          {"data":"telefono"},
-                          {"data":"estado"},
-                          //{if( data[estado] == '1'){}},
-                          {"defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-info btnVerAsesor' data-backdrop='false'> <i class='far fa-eye'></i></button> <button class='btn btn-primary btnEditarAsesor'><i class='far fa-edit'></i></button>  <button class='btn btn-danger btnBorrarAsesor'><i class='fas fa-trash-alt'></i></button></div></div>"  }
-                        ],
-                          //Para cambiar el lenguaje a español
-                "language": {
-                  "lengthMenu": "Mostrar _MENU_ registros",
-                  "zeroRecords": "No se encontraron resultados",
-                  "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                  "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                  "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                  "sSearch": "Buscar:",
-                  "oPaginate": {
-                      "sFirst": "Primero",
-                      "sLast":"Último",
-                      "sNext":"Siguiente",
-                      "sPrevious": "Anterior"
-                   },
-                   "sProcessing":"Procesando...",
-                }
-                        
-                 });
+                console.log("Condicional donde encontro datos"); 
                 
-               console.log("Imprimiendo Arreglo  AsesoresAsociados ")
-               console.log(arreglo);
-             } //cerrando condicional else
-           }//cerrando la funcion succes del ajax general
-    }//cerrando el Ajax General
-   
-   
-}); //fucion datatable verasesores asociado 
+                var tablaverAsesores = $('#tablaverAsesores').DataTable();
+                tablaverAsesores.clear(); //limpia la tabla 
+                tablaverAsesores.row.add([id,nombreAsesor,telefonoAsesor,estadoAsesor]).draw();
+               /*
+                tablaverAsesores.clear();
+                tablaverAsesores.row.add([id,nombreAsesor,telefonoAsesor,estadoAsesor]).draw();*/
 
+             }
+              }
+    });
+//event.preventDefault();
 
-})
+});
 ///FIN PRUEBAS SEECTED--------------**********-----------
 
 ///-------------- Funcion al clickar btn Asesosore del formulario Proveedores  cargara los asesores asociados a un proveedor-------
@@ -1139,95 +1027,13 @@ $(document).on("click", ".btnAsesorAsociado", function(){
   nombreProveedorAsesor=fila.find('td:eq(1)').text();
   telefonoProveedorAsesor=parseInt(fila.find('td:eq(2)').text());
 
-  action = 'cargar_AsesoresAsociados'; //la accion o el id al cual ingresara en el ajaxAsesores
+  action = 'cargar_Asesores';
+  console.log(idProveedor); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
   console.log(idProveedoAsesor); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
   console.log(action); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
+
   intencion = 'intencion'; //incializa la variable para que pueda encajar en el AJAX 
   
-  $('#tablaAsesoresAsociados').DataTable().destroy();//destruy el datatable en caso de haberse incializado antes
-  var tablaAsesoresAsociados2 = $("#tablaAsesoresAsociados").DataTable({
-    "ajax":{ //aqui se indica que vamos a hacer con los datos obtenidos del formulario
-      type: "POST",
-      url: "ajax/ajaxAsesores.php", //indica el Ajax donde se procesara los parametros enviados 
-      data: {action:action,intencion:intencion,idProveedoAsesor:idProveedoAsesor},//parametros que va a enviar al ajax en POST
-      success: function(arreglo){
-        console.log("imprimir DATA Asesor Asociado"); 
-        console.log(arreglo);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
-        console.log(idProveedoAsesor);// imprime en consola para el desarrolador ver el valro que esta obteniendo 
-  
-      
-        if(arreglo == 'replica'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
-          
-            Swal.fire({
-              title: "Proveedor sin Asesores", //titulo del modal
-              icon: 'error', //tipo de advertencia modal
-              });
-              var tablaverAsesoresAsociados2 = $('#tablaAsesoresAsociados').DataTable();
-              tablaverAsesoresAsociados2.clear(); //limpia la tabla 
-              tablaverAsesoresAsociados2.draw(); //incializa la tabla con ninguna fila
-              console.log("rechazado la consulta de asesores de un proveedor");   // // imprime en consola para el desarrolador ver el valro que esta obteniendo 
-             
-            }
-        else  { // de lo contrario el msj sera usuario guardado 
-          $('#nombreProveedorAsociado').val(nombreProveedorAsesor); // carga el valor de data2.nombre en un input del modal nuevo_proveedor el cual tenga el id nombreComercial y los de abajo tambien
-          $('#idProveedorAsociado').val(idProveedoAsesor);
-          $('#telefonoProveedorAsociado').val(telefonoProveedorAsesor);
-                  
- 
-          $(".modal-header").css("background-color","#da4b48");//cambia de colo el header del modal
-          $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
-          $(".modal-title").text("Asesores Asociados");//titulo del header 
-        //  $("#Modal_Nuevo_Proveedor").modal("hide"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
-         
-          $("#Modal_AsesorAsociado2").modal('show'); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
-         
-                  console.log("etrando a condicional de activo");
-                  //console.log(arreglo.data.id);
-                 $('#tablaAsesoresAsociados').DataTable().destroy();
-                 var tablaverAsesoresAsociados = $("#tablaAsesoresAsociados").DataTable({
-                  
-                    "ajax":{
-                    "method":"POST",
-                    "data": {action:action,intencion:intencion,idProveedoAsesor:idProveedoAsesor},
-                    "url":"ajax/ajaxAsesores.php"
-                    
-                },
-                
-                  "columns":[
-                            {"data":"id"},
-                            {"data":"nombre"},
-                            {"data":"telefono"},
-                            {"data":"estado"}
-                            //{if( data[estado] == '1'){}},
-                            
-                          ],
-                            //Para cambiar el lenguaje a español
-                  "language": {
-                    "lengthMenu": "Mostrar _MENU_ registros",
-                    "zeroRecords": "No se encontraron resultados",
-                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                    "sSearch": "Buscar:",
-                    "oPaginate": {
-                        "sFirst": "Primero",
-                        "sLast":"Último",
-                        "sNext":"Siguiente",
-                        "sPrevious": "Anterior"
-                     },
-                     "sProcessing":"Procesando...",
-                  }
-                          
-                   });
-                  
-                 console.log("Imprimiendo Arreglo  AsesoresAsociados ")
-                 console.log(arreglo);
-               } //cerrando condicional else
-             }//cerrando la funcion succes del ajax general
-      }//cerrando el Ajax General
-  }); //fucion datatable verasesores asociado 
-
-/*
   $.ajax({ //aqui se indica que vamos a hacer con los datos obtenidos del formulario
     type: "POST",
     url: "ajax/ajaxAsesores.php", //indica el Ajax donde se procesara los parametros enviados 
@@ -1295,15 +1101,20 @@ $(document).on("click", ".btnAsesorAsociado", function(){
                     t.row.add([id,nombreAsesor,telefonoAsesor,estadoAsesor]).draw();
                       
                     
-                   
+                    /* PRUEBA
+
+                    var t = $('#tablaAsesoresAsociados').DataTable();
+                    t.clear(); //limpia la tabla 
+                   var datosAsesoresAsociado = JSON.parse(response);
+                    dataAsesores = datosAsesoresAsociado;
+                    $('#filaAsesoresAsociados').html(dataAsesores);*/
 
 
 
 
                }
 }
-});//fin del ajax 
-*/
+});//fin del ajax
 
 
 });// fin de la funcion del btn asesores asociados

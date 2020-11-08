@@ -55,7 +55,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
 
         <div class="col-lg-12 order-lg-1">
           <!-- Checkout Form -->
-          <form class="form-horizontal" method="post" id="guardar_Proveedor" name="guardar_Proveedor">  <!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
+          <form class="form-horizontal" method="post" id="Formguardar_Proveedor" name="Formguardar_Proveedor">  <!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
               
             <!-- Step Form Header -->
             <ul id="stepFormProgress" class="js-step-progress list-inline u-shopping-cart-step-form mb-4">
@@ -84,9 +84,10 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       </label>
 
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="nombreComercial" id="nombreComercial" required minlength="2" 
+                        <input class="form-control form__input" type="text" name="nombreComercial" id="nombreComercial" required 
                                placeholder="Ingrese Nombre Comercial del proveedor"
                                data-msg="Ingrese Nombre Comercial."
+                               minlength="1" maxlength="25"
                                data-error-class="u-has-error"
                                data-success-class="u-has-success">     <!-- se asignan identificadores y detalles al campo de texto del nombre comercial del proveedor -->
                       </div> 
@@ -102,9 +103,10 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       <span class="text-danger">*</span>
                       </label>
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="proveedorNIT" id="proveedorNIT" required
-                              minlength="3" maxlength="12"
-                               placeholder="Ingrese NIT del proveedor"> <!-- se asignan identificadores y detalles al campo de texto del NIT  comercial del proveedor -->
+                        <input  class="form-control form__input" type="text" name="proveedorNIT" id="proveedorNIT" required
+                                minlength="8" maxlength="9"
+                                pattern="[0-9]{8,12}"  title="Numero de NIT (Sin Guion) Tamaño mínimo: 8. Tamaño máximo: 12"
+                                placeholder="Ingrese NIT del proveedor"> <!-- se asignan identificadores y detalles al campo de texto del NIT  comercial del proveedor -->
                       </div>
                     </div>
                     <!-- End Input -->
@@ -126,6 +128,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                         <input class="form-control form__input" type="text" name="proveedorDireccion" id="proveedorDireccion" 
                                placeholder="Ingrese Direccion comercial del proveedor"
                                data-msg="Por favor ingrese la direccion"
+                               minlength="1" maxlength="50"
                                data-error-class="u-has-error"
                                data-success-class="u-has-success"> <!-- se asignan identificadores y detalles al campo de texto de la direccion comercial del proveedor -->
                       </div>
@@ -139,12 +142,14 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se ingresa el numero del proveedor -->
                         Telefono del Proveedor
-                        <span class="h10 small">(opcional)</span>
+                        <span class="text-danger">*</span>
                       </label>
 
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="telefonoProveedor" id="telefonoProveedor" minlength="3" maxlength="12"
-                               placeholder="Ingrese No. de Telefono"> <!-- se asignan identificadores y detalles al campo de texto del No telefono del proveedor -->
+                        <input  class="form-control form__input" type="num" name="telefonoProveedor" id="telefonoProveedor" required
+                                minlength="3" maxlength="12"
+                                pattern="[0-9]{3,12}"  title="Telefono. Tamaño mínimo: 3. Tamaño máximo: 12"
+                                placeholder="Ingrese No. de Telefono"> <!-- se asignan identificadores y detalles al campo de texto del No telefono del proveedor -->
                       </div>
                     </div>
                     <!-- End Input -->
@@ -154,7 +159,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
     
                   <div class="w-100"></div>   <!-- Bloque de ancho de la fila -->
 
-                  <div class="col-md-6">   <!--Bloque de Columna son 2 columnas por fila -->
+                  <div class="col-md-12">   <!--Bloque de Columna son 2 columnas por fila -->
                     <!-- Input Bloque de ingreso de la descripcion del proveedor-->
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se ingresa la descripcion del proveedor -->
@@ -165,9 +170,10 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                         <textarea class="form-control form__input" type="text" name="descripcionProveedor" id="descripcionProveedor" 
                                placeholder="Descripcion del Proveedor"
                                data-msg="ingrese una descripcion del Proveedor."
+                               maxlength="50"
+                               pattern="[0-9]{0,50}"  title="Números. Tamaño máximo: 12"
                                data-error-class="u-has-error"
-                               data-success-class="u-has-success">
-                           </textarea> <!-- se asignan identificadores y detalles al campo de texto de la descripcion del proveedor -->
+                               data-success-class="u-has-success"></textarea> <!-- se asignan identificadores y detalles al campo de texto de la descripcion del proveedor -->
                       </div>
                     </div>
                     <!-- End Input -->
@@ -252,7 +258,13 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   <script src="../../../assets/js/components/hs.cubeportfolio.js"></script>
   <script src="../../../assets/js/components/hs.video-player.js"></script>
   <script src="../../../assets/js/components/hs.go-to.js"></script>
-
+  
+  <!-- Libreria DataTables para talbas -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+  
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+ 
   
   <!-- JS Plugins Init. -->
   <script>

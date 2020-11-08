@@ -23,7 +23,7 @@ include("../../config/conexion.php");
             $n6=$_POST['idProveedor'];
             
 
-            $sqldpi= "SELECT id FROM sike.empresa where id = $n6";
+            $sqldpi= "SELECT id FROM empresa where id = $n6";
             $res1=mysqli_query($con,$sqldpi);
        
             while ($data=mysqli_fetch_row($res1)){
@@ -31,7 +31,7 @@ include("../../config/conexion.php");
                                                 }
     
             if ($numero > 0)   {
-                $sql="UPDATE `sike`.`empresa` SET `nombre`='$n1', `nit`='$n2', `direccion`='$n3', `telefono`='$n4', `descripcion`='$n5' WHERE `id`='$n6'";
+                $sql="UPDATE `empresa` SET `nombre`='$n1', `nit`='$n2', `direccion`='$n3', `telefono`='$n4', `descripcion`='$n5' WHERE `id`='$n6'";
                     $res=mysqli_query($con,$sql);
                     if($res){
                             echo 'successful';

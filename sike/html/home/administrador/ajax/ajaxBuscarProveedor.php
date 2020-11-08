@@ -15,7 +15,7 @@ if ($_POST['action'] == 'searchContactKey') {
         $searchData = $_POST['dataSearch'];
         $searchData3 = $_POST['dataSearch3'];
     
-        $query_select = mysqli_query($con,"SELECT * FROM sike.empresa where empresa.nombre LIKE '%$searchData%' OR empresa.nit  LIKE '%$searchData%'");
+        $query_select = mysqli_query($con,"SELECT * FROM empresa where empresa.nombre LIKE '%$searchData%' OR empresa.nit  LIKE '%$searchData%'");
     
         $num_rows = mysqli_num_rows($query_select);
         if ($num_rows > 0) {

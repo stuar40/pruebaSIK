@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html>
 
 <html lang="es">
@@ -100,12 +98,12 @@ include ("encabezados/vendedor.php");
 
   <div class="card card-frame mb-7">
     <!-- Listing -->
-    <a class="card-body p-4" href="#">
+    <a class="card-body p-4" href="nuevoProveedor.php">
       <div class="media">
         <img class="max-width-12 mb-2" src="../../img/edificios.svg" alt="Image Description">
         <div class="media-body px-3">
           <h4 class="h6 text-dark mb-1">Empresa</h4>
-          <p>Nueva Empresa Proveedora</p>
+          <p>Proveedores</p>
         </div>
       </div>
     </a>

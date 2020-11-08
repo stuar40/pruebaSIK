@@ -3,6 +3,9 @@ require_once ("../config/db.php"); // llama las variables de la BD
 require_once ("../config/conexion.php"); // genera la conexion de la BD 
 
 include("enca.php"); // llama al encabezado de la pagina NavBar
+// consulta para llenar tabla 
+$query_select = mysqli_query($con,"SELECT * FROM asesor");
+$num_rows = mysqli_num_rows($query_select);
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +65,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
               <!-- Step Form Item -->
               <li class="list-inline-item u-shopping-cart-step-form__item mb-3">
                
-                <span class="u-shopping-cart-step-form__title">Asignar Asesor a Proveedor</span> <!-- titulo del formulario en texto-->
+                <span class="u-shopping-cart-step-form__title">Ver Asesores </span> <!-- titulo del formulario en texto-->
               </li>
             </ul>
             <!-- End Step Form Header -->
@@ -83,19 +86,17 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       </label>
 
                       <div class="js-focus-state input-group form">
-                      <select class="custom-select" name="idProveedor" id="idProveedor" required > 
-                        <option value="" selected="true" disabled="disabled" >Seleccione Proveedor</option>                     
-                           
-                              <?php
-                              $sql= "SELECT id, nombre FROM  empresa";
+                      <select class="custom-select" name="seleccionaProveedor" id="seleccionaProveedor2"> 
+                            <option selected="true" disabled="disabled">Seleccione Proveedor</option>                     
+                            <?php
+                              $sql= "SELECT id, nombre,telefono  FROM  empresa";
                               $res=mysqli_query($con,$sql);
-                              while ($data=mysqli_fetch_row($res))
-                                      {
-                                        $d1 = $data[0];
-                                        $d2 = $data[1];
-                              ?>
-                                        <option value="<?php echo $d1; ?>"> <?php echo $d2; ?></option>
-                              <?php 	} ?>            
+                              while ($data=mysqli_fetch_row($res)){
+                                                    $d1 = $data[0];
+                                                    $d2 = $data[1];
+                            ?>
+                            <option value="<?php echo $d1; ?>"> <?php echo $d2; ?></option>
+                            <?php } ?>            
                         </select> <!-- se asignan identificadores y detalles al select de proveedores -->
 
                       </div>
@@ -107,17 +108,12 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                     <!-- Input segundo bloque donde se ingresa el nombre del asesor de algun proveedor-->
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se almacena el nombre del asesor del proveedor -->
-                        Nombre completo del Asesor
+                        Telefono
                         <span class="text-danger">*</span>
                       </label>
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="nombreAsesor" id="nombreAsesor" required
-                               placeholder="Ingrese Nombre Completo"
-                               data-msg="Ingrese Nombre Completo."
-                               minlength="1" maxlength="22"
-                               title="Nombre Completo Tamaño máximo: 22 Caracteres"
-                               data-error-class="u-has-error"
-                               data-success-class="u-has-success">   <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
+                        <input class="form-control form__input" type="text" name="telefonoProveedor" id="telefonoProveedor"
+                               placeholder="Telefono Proveedor" disabled > <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
                       </div>
                     </div>
                     <!-- End Input -->
@@ -127,77 +123,42 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
 
                   <div class="w-100"></div>
                   
-                  <div class="col-md-6">
-                    <!-- Input tercer bloque donde se ingresa el telefono del asesor-->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se almacena el numero de telefono del asesor del proveedor -->
-                       Telefono
-                      <span class="text-danger">*</span>
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="telefonoAsesor" id="telefonoAsesor" required
-                                minlength="3" maxlength="12"
-                                pattern="[0-9]{3,12}"  title="Telefono. Tamaño mínimo: 3. Tamaño máximo: 12"
-                                placeholder="Ingrese No. de Telefono">  <!-- se asignan identificadores y detalles a la caja de texto del numero del asesor de proveedores -->
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-
-
-                  <div class="col-md-6">
-                    <!-- Input cuarto bloque donde se ingres al correo del asesor -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Correo Electronico
-                        <span class="h10 small">(opcional)</span>
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="email" name="correoAsesor" id="correoAsesor" required
-                               placeholder="Ingrese Correo Electronico del Asesor"><!-- se asignan identificadores, validaciones  y detalles a la caja de texto del correoEelctronico del asesor de proveedores -->
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
+                    <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
+                      
+                      <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaverAsesores2">
+                          <thead >
+                              <tr class="bgcolor btn-facebook">									
+                                
+                                  <th class="text-center">Codigo</th>
+                                  <th class="text-center">Nombre</th>
+                                  <th class="text-center">Telefono </th>
+                                  <th class="text-center">Estado</th>
+                                  <th class="text-center">Acciones</th>
+                                
+                              </tr>
+                          </thead>
+                          
+                          <tbody>
+                             
+                                    <tr>
+                               
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"></td>
+                                    </tr>
+                        
+                          </tbody>
+                                                
+                      </table>
+                </div>
 
 
     
-                  <div class="w-100"></div>
-
-
-                  <div class="col-md-6">
-                    <!-- Input quinto bloque donde se selecciona el estado del asesor si aun esta activo o inactivo-->
-                    <div class="mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                      Estado de actividad del Asesor
-                        <span class="text-danger">*</span>
-                      </label>
-                        <select class="custom-select" name="estadoAsesor" id="estadoAsesor"> 
-                        
-                            <option selected="true" value="1">ACTIVO</option>
-                            <option value="0">INACTIVO</option>               
-                        </select> <!-- se asignan identificadores y detalles al selector de estado de actividad del asesor de proveedores -->
-                      </div>
-                    <!-- End Input -->
-                  </div>
-
-
-                  <div class="col-md-6">
-                  </div>
-  
-
-                <div class="w-100"></div>
-                 
                   
-                </div>
                 <!-- End Billing Form -->
-                <input  type="text" name="action" id="action" value="agregar_Asesor" hidden>
-                <input  type="text" name="intencion" id="intencion" value="intencion" hidden>
-                <!-- Buttons -->
-                <div class="d-sm-flex justify-content-sm-center align-items-sm-center">
-                <input type="submit" class="btn btn-facebook btn-xs text-center"  data-next-step="asignarAsesor" value="Asignar Asesor" name="asignarAsesor"></input>
+               
  
 
           </form>
@@ -207,7 +168,14 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   </main>
   <!-- ========== END MAIN CONTENT ========== -->
 
-
+<!-- ========== LLama a ventanas Modales ========== -->
+<?php
+            //  include("modal/modalprueba.php") ; // modal que permite Guardar el usuario
+             include("modal/modalVerAsesor.php") ;// modal que permite Guardar el usuario
+              // include("modal/editarProveedor.php") ; // modal que permite editar el usuario
+        
+        ?>
+        
 
 
 
@@ -257,15 +225,12 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   <script src="../../../assets/js/components/hs.cubeportfolio.js"></script>
   <script src="../../../assets/js/components/hs.video-player.js"></script>
   <script src="../../../assets/js/components/hs.go-to.js"></script>
-
-  <!-- JS Plugins Init. -->
-<!-- Libreria DataTables para talbas -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+ <!-- Libreria DataTables para talbas -->
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
  
-
-
+  <!-- JS Plugins Init. -->
   <script>
     $(window).on('load', function () {
       // initialization of HSMegaMenu component
