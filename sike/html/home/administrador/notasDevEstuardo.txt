@@ -62,3 +62,6 @@ si un producto se asocia a una sucursal hay que vover a ingresar un mismo produc
 NOTAS ASIGNAR PRECIO sucursal
 -- ver Estado y SubCAGTEGORIA no por ID sino por frase  MOdal ver 
 -- ver  SubCAGTEGORIA no por ID sino por frase  MOdal Asignar 
+-- ESTADO activo/Inactivo es de producto de la sucursal
+
+Modulo EGRESOS o GASTOS
