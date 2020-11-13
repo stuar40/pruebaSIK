@@ -62,7 +62,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
               <!-- Step Form Item -->
               <li class="list-inline-item u-shopping-cart-step-form__item mb-3">
                
-                <span class="u-shopping-cart-step-form__title">Nuevo Egreso Economico</span>  <!-- titulo del formulario en texto-->
+                <span class="u-shopping-cart-step-form__title">Ver Egresos Economicos</span>  <!-- titulo del formulario en texto-->
               </li>
             </ul>
             <!-- End Step Form Header -->
@@ -108,11 +108,11 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                     <!-- Input 2 segundo bloque ingreso de NIT del proveedor -->
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase"> <!-- etiqueta del campo de texto  donde se almacena el NIT comercial del proveedor -->
-                      Descripcion del Egreso
+                      Sucursal Seleccionada
                       <span class="text-danger">*</span>
                       </label>
                       <div class="js-focus-state input-group form">
-                        <input  class="form-control form__input" type="text" name="descripcionEgreso" id="descripcionEgreso" required
+                        <input  class="form-control form__input" type="text" name="sucursalSeleccionada" id="sucursalSeleccionada" required
                                 title="Ingrese Descripcion del Egreso economico o Gasto"
                                 minlength="1" 
                                 placeholder="Ingrese descripcion del Egreso"> <!-- se asignan identificadores y detalles al campo de texto del NIT  comercial del proveedor -->
@@ -129,16 +129,15 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                     <!-- Input3 bloque de ingreso de direccion del proveedor -->
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se ingresa la direccion comercial del proveedor -->
-                        Monto del Egreso
+                        Fecha de Inico
                         <span class="text-danger">*</span>
                       </label>
 
                       <div class="js-focus-state input-group form">
-                      <input  class="form-control form__input" type="text" name="montoEgreso" id="montoEgreso" required
-                                        minlength="1" maxlength="50"
-                                        pattern="^[0-9]+(\.[0-9]{1,2})?$"  title="Solo numeros. Tamaño mínimo: 0.01 "
-                                        data-error-class="u-has-error"
-                                        data-success-class="u-has-success"> <!-- se asignan identificadores y detalles al campo de texto de la direccion comercial del proveedor -->
+                      <input  class="form-control form__input" name="fechaInicioEgreso" id="fechaInicioEgreso" type="date" required
+                              data-msg="Por favor ingrese la fecha del Egreso."
+                               data-error-class="u-has-error"
+                               data-success-class="u-has-success"><!-- se asignan identificadores y detalles al campo de texto del No telefono del proveedor -->
                       </div>
                     </div>
                     <!-- End Input -->
@@ -149,12 +148,12 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                     <!-- Input bloque de ingreso de numero de telefono del proveedor-->
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se ingresa el numero del proveedor -->
-                        Fecha
+                        Fecha Final
                         <span class="text-danger">*</span>
                       </label>
 
                       <div class="js-focus-state input-group form">
-                      <input class="form-control form__input" name="fechaEgreso" id="fechaEgreso" type="date" required
+                      <input class="form-control form__input" name="fechaFinalEgreso" id="fechaFinalEgreso" type="date" required
                               data-msg="Por favor ingrese la fecha del Egreso."
                                data-error-class="u-has-error"
                                data-success-class="u-has-success"><!-- se asignan identificadores y detalles al campo de texto del No telefono del proveedor -->
@@ -167,34 +166,28 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
     
                   <div class="w-100"></div>   <!-- Bloque de ancho de la fila -->
 
-                  <div class="col-md-12">   <!--Bloque de Columna son 2 columnas por fila -->
-                    <!-- Input Bloque de ingreso de la descripcion del proveedor-->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se ingresa la descripcion del proveedor -->
-                        Usuario Encargado
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                      <select class="custom-select" name="usuarioEgreso" id="usuarioEgreso" required > 
-                              <option value ="" selected="true" disabled="disabled" >Usuario Encargado</option>                     
-                              <?php
-                                    $sql= "SELECT id,nombre_usuario from usuarios";
-                                    $res=mysqli_query($con,$sql);
-                                    while ($data=mysqli_fetch_row($res))
-                                            {
-                                              $idUsuario = $data[0];
-                                              $nombreUsuario = $data[1];
+                  <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
+					
+                    <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaProductosSinAsignar">
+                        <thead >
+                            <tr class="bgcolor btn-facebook">									
+                               
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Monto</th>
+                                <th class="text-center">Descripcion</th>
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Usuario</th>
+                                <th class="text-center">Accione s</th>
+                               
+                            </tr>
+                        </thead>
+                        
+                        <tbody> 
+                              
+                        </tbody>
                                               
-                                    ?>
-                                              <option value="<?php echo $idUsuario; ?>"> <?php echo $nombreUsuario; ?></option>
-                                    <?php 	} ?>        
-                                              
-                            </select> <!-- se asignan identificadores y detalles al select de proveedores -->
-
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
+                    </table>
+              </div>
 
                   <div class="col-md-6">
                     <!-- Input -->
@@ -225,10 +218,8 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
   <!-- ========== END MAIN CONTENT ========== -->
 
 
-  <!-- ========== LLama a ventanas Modales ========== -->
-    <?php
-             include("modal/modalValidarEgreso.php") ; // modal que permite Guardar el usuario   
-    ?>
+
+
 
   <!-- ========== ARCHIVOS NECESARIOS PARA EL FUNCIONAMIENTO ========== -->
   <a class="js-go-to u-go-to" href="javascript:;"

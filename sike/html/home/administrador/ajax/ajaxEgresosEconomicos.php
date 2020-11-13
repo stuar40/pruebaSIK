@@ -96,6 +96,33 @@ if ($_POST) {
                 
     } //fin 
 
+    if ($_POST['action'] == "validaAdministrador" ) {
+        # code...
+             //$n1=$_POST[1];
+             $idSucursal =$_POST['idSucursal'];
+             $usuarioAdministrador=$_POST['usuarioAdministrador'];
+             $passAdministrador =$_POST['passAdministrador'];
+            
+             
+    
+             $sqlValidarAdmin= "SELECT * FROM usuarios where nombre_usuario = '$usuarioAdministrador' AND password = '$passAdministrador' AND sucursal_id = '$idSucursal' AND roles_id = 1";
+             $res1=mysqli_query($con,$sqlValidarAdmin);
+        
+             while ($data=mysqli_fetch_row($res1)){
+                                                 $numero = $data[0];
+                                                 }
+     
+             if ($numero > 0)   {
+                             echo 'valido';
+                             }
+             else    {
+    
+                 
+                    echo 'invalido';
+                             
+                     }
+                     exit;
+             } 
 
 } //=========================FIN del if del AJAX=============================
 ?>
