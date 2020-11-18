@@ -107,14 +107,7 @@ $num_rows = mysqli_num_rows($query_select);
                   <div class="col-md-6">
                     <!-- Input segundo bloque donde se ingresa el nombre del asesor de algun proveedor-->
                     <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se almacena el nombre del asesor del proveedor -->
-                        Telefono
-                        <span class="text-danger">*</span>
-                      </label>
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="telefonoProveedor" id="telefonoProveedor"
-                               placeholder="Telefono Proveedor" disabled > <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
-                      </div>
+                      
                     </div>
                     <!-- End Input -->
                   </div>

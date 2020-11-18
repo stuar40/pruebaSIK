@@ -47,7 +47,7 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                               <div class="js-focus-state input-group form">
                                 <input  class="form-control form__input" type="text" name="nombreComercial" id="nombreComercial" required
                                         data-msg="Ingrese Nombre Comercial."
-                                        minlength="1" maxlength="25"
+                                        minlength="1" maxlength="150"
                                         data-error-class="u-has-error"
                                         data-success-class="u-has-success">  <!-- se asignan identificadores y detalles al campo de texto del nombre comercial del proveedor -->
                               </div> 
@@ -92,7 +92,7 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                                 <input  class="form-control form__input" type="text" name="proveedorDireccion" id="proveedorDireccion" 
                                         
                                         data-msg="Por favor ingrese la direccion"
-                                        minlength="1" maxlength="50"
+                                        minlength="1" maxlength="150"
                                         data-error-class="u-has-error"
                                         data-success-class="u-has-success"> <!-- se asignan identificadores y detalles al campo de texto de la direccion comercial del proveedor -->
                               </div>
@@ -133,8 +133,8 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                               <textarea class="form-control form__input" type="text" name="descripcionProveedor" id="descripcionProveedor" 
                                         
                                         data-msg="ingrese una descripcion del Proveedor."
-                                        maxlength="50"
-                                        pattern="[0-9]{0,50}"  title="Números. Tamaño máximo: 12"
+                                        maxlength="150"
+                                        pattern="[0-9]{0,150}"  title="Números. Tamaño máximo: 150"
                                         data-error-class="u-has-error"
                                         data-success-class="u-has-success"></textarea><!-- se asignan identificadores y detalles al campo de texto de la descripcion del proveedor -->
                               </div>
@@ -209,13 +209,13 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                           <!-- Input primer bloque donde selecciona el proveedor al cual asignara el asesor que se ingreseara-->
                           <div class="js-form-message mb-6">
                             <label class="h6 small d-block text-uppercase">  <!-- etiqueta del campo de texto  donde se almacena el nombre comercial del proveedor -->
-                              Seleccione Proveedor
+                              Nombre del Proveedor
                               <span class="text-danger">*</span>
                             </label>
       
                             <div class="js-focus-state input-group form">
-                              <input class="form-control form__input" type="text" name="nombreProveedorAsociado" id="nombreProveedorAsociado" placeholder="Nombre Proveedor" disabled > <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
                               <input class="form-control form__input" type="text" name="idProveedorAsociado" id="idProveedorAsociado" disabled > <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
+                              <input class="form-control form__input" type="text" name="nombreProveedorAsociado" id="nombreProveedorAsociado" placeholder="Nombre Proveedor" disabled > <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
                             </div>
                           </div>
                           <!-- End Input -->

@@ -87,7 +87,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                         <input class="form-control form__input" type="text" name="nombreComercial" id="nombreComercial" required 
                                placeholder="Ingrese Nombre Comercial del proveedor"
                                data-msg="Ingrese Nombre Comercial."
-                               minlength="1" maxlength="25"
+                               minlength="1" maxlength="99"
                                data-error-class="u-has-error"
                                data-success-class="u-has-success">     <!-- se asignan identificadores y detalles al campo de texto del nombre comercial del proveedor -->
                       </div> 
@@ -128,7 +128,8 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                         <input class="form-control form__input" type="text" name="proveedorDireccion" id="proveedorDireccion" 
                                placeholder="Ingrese Direccion comercial del proveedor"
                                data-msg="Por favor ingrese la direccion"
-                               minlength="1" maxlength="50"
+                               title="Direccion del Proveedor"
+                               minlength="1" maxlength="150"
                                data-error-class="u-has-error"
                                data-success-class="u-has-success"> <!-- se asignan identificadores y detalles al campo de texto de la direccion comercial del proveedor -->
                       </div>
@@ -148,7 +149,7 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       <div class="js-focus-state input-group form">
                         <input  class="form-control form__input" type="num" name="telefonoProveedor" id="telefonoProveedor" required
                                 minlength="3" maxlength="12"
-                                pattern="[0-9]{3,12}"  title="Telefono. Tamaño mínimo: 3. Tamaño máximo: 12"
+                                pattern="[0-9]{3,12}"  title="Telefono solo numeros. Tamaño mínimo: 3 máximo: 12"
                                 placeholder="Ingrese No. de Telefono"> <!-- se asignan identificadores y detalles al campo de texto del No telefono del proveedor -->
                       </div>
                     </div>
@@ -168,10 +169,10 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
 
                       <div class="js-focus-state input-group form">
                         <textarea class="form-control form__input" type="text" name="descripcionProveedor" id="descripcionProveedor" 
-                               placeholder="Descripcion del Proveedor"
+                               placeholder="ingrese una descripcion del Proveedor"
                                data-msg="ingrese una descripcion del Proveedor."
-                               maxlength="50"
-                               pattern="[0-9]{0,50}"  title="Números. Tamaño máximo: 12"
+                               maxlength="150"
+                               pattern="[0-9]{0,150}"  title="Descripcion. Texto máximo: 150"
                                data-error-class="u-has-error"
                                data-success-class="u-has-success"></textarea> <!-- se asignan identificadores y detalles al campo de texto de la descripcion del proveedor -->
                       </div>

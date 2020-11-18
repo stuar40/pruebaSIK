@@ -389,7 +389,7 @@ $("#Formguardar_Proveedor").submit(function( event ) { // cuando tiene un submit
              
                 else  { // de lo contrario el msj sera usuario guardado 
                   Swal.fire({
-                          title: "Usuario Guardado",
+                          title: "Proveedor Guardado Exitosamente",
                           icon: 'success',
                           timer: 2000
                           }).then(function() {
@@ -408,7 +408,7 @@ $("#Formguardar_Proveedor").submit(function( event ) { // cuando tiene un submit
 //************************************* */
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// JS para cuando realizan un POS con el boton Guardar del formulario  
+// ACTAULIZACION POST JS para cuando realizan un POS con el boton Guardar del formulario  MODAL
 // puede GUardar -- Editar  Proveedores
 $("#guardar_Proveedor2").submit(function( event ) { // cuando tiene un submit el formulario  con el id guardar_Proveedor2 por un post del un boton del formulario se incia este evento
   
@@ -454,7 +454,7 @@ $("#guardar_Proveedor2").submit(function( event ) { // cuando tiene un submit el
                else if(data2 == 'actualizado') // en caso de ser actualizado la respuesta del ajaxProveedor entonces la opcion completada fue un UPDATE en la BD
                {
                 Swal.fire({
-                  title: "El usuario Fue Actualizado",
+                  title: "Proveedor Actualizado Correctamente",
                   icon: 'success',
                   timer: 2000   
                   }).then(function() {
@@ -515,7 +515,7 @@ $("#guardar_asesor").submit(function( event ) {
                 console.log(response);
                 if(response == 'replica'){
                         Swal.fire({
-                        title: "El usuario/Correo Ya existe",
+                        title: "El Correo/usuario Ya existe",
                         icon: 'error',
                         timer: 2000
                         });
@@ -523,7 +523,7 @@ $("#guardar_asesor").submit(function( event ) {
                         }
                 if (response == 'successful' ) {
                     Swal.fire({
-                            title: "Usuario Guardado",
+                            title: "Asesor Asociado Correctamente",
                             icon: 'success',
                             timer: 2000
                             }).then(function() {
@@ -958,6 +958,8 @@ $("#seleccionaProveedor").change(function(){
   console.log(idProveedoAsesor); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
   console.log(action); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
   intencion = 'intencion'; //incializa la variable para que pueda encajar en el AJAX 
+  
+
   
 $('#tablaverAsesores').DataTable().destroy();//destruy el datatable en caso de haberse incializado antes
 var tablaAsesoresAsociados2 = $("#tablaverAsesores").DataTable({

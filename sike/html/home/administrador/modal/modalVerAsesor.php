@@ -65,7 +65,11 @@ $num_rows = mysqli_num_rows($query_select);
                         <span class="text-danger">*</span>
                       </label>
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="nombreAsesor" id="nombreAsesor"
+                        <input class="form-control form__input" type="text" name="nombreAsesor" id="nombreAsesor" required
+                        
+                               data-msg="Ingrese Nombre Completo."
+                               minlength="1" maxlength="22"
+                               title="Nombre Completo Tamaño máximo: 22 Caracteres"
                                placeholder="Ingrese Nombre Completo"> <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
                       </div>
                     </div>
@@ -85,7 +89,10 @@ $num_rows = mysqli_num_rows($query_select);
 
                       <div class="js-focus-state input-group form">
                         <input class="form-control form__input" type="text" name="telefonoAsesor" id="telefonoAsesor" required
-                               placeholder="Ingrese No Telefono"
+                        minlength="3" maxlength="12"
+                                pattern="[0-9]{3,12}"  title="Telefono. Tamaño mínimo: 3. Tamaño máximo: 12"
+                                placeholder="Ingrese No. de Telefono"
+                               
                                data-msg="Ingrese No Telefono."
                                data-error-class="u-has-error"
                                data-success-class="u-has-success"> <!-- se asignan identificadores y detalles a la caja de texto del numero del asesor de proveedores -->
@@ -100,11 +107,11 @@ $num_rows = mysqli_num_rows($query_select);
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase">
                         Correo Electronico
-                        <span class="h10 small">(opcional)</span>
+                        <span class="h10 small">(UNICO)</span>
                       </label>
 
                       <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="email" name="correoAsesor" id="correoAsesor"
+                        <input class="form-control form__input" type="email" name="correoAsesor" id="correoAsesor" required
                                placeholder="Ingrese Correo Electronico del Asesor"><!-- se asignan identificadores, validaciones  y detalles a la caja de texto del correoEelctronico del asesor de proveedores -->
                       </div>
                     </div>

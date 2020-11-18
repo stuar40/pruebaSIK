@@ -85,7 +85,7 @@ $num_rows = mysqli_num_rows($query_select);
                     <!-- Input primer bloque donde selecciona el proveedor al cual asignara el asesor que se ingreseara-->
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase">  <!-- etiqueta del campo de texto  donde se almacena el nombre comercial del proveedor -->
-                        Seleccione Sucursal
+                        Productos sin precio asignado por Sucursal
                         <span class="text-danger">*</span>
                       </label>
 
@@ -115,15 +115,15 @@ $num_rows = mysqli_num_rows($query_select);
                     <!-- Input segundo bloque donde se ingresa el nombre del asesor de algun proveedor-->
                     <div class="js-form-message mb-6">
                       <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se almacena el nombre del asesor del proveedor -->
-                        Nombre Sucursal Seleccionada
+                        Sucursal Seleccionada
                         <span class="text-danger">*</span>
                       </label>
                       <div class="js-focus-state input-group form">
                         <input class="form-control form__input" type="text" name="nombreSucursalSinAsignar" id="nombreSucursalSinAsignar" required
-                               placeholder="Ingrese Nombre Completo"
-                               data-msg="Ingrese Nombre Completo."
-                               minlength="1" maxlength="22"
-                               title="Nombre Completo Tamaño máximo: 22 Caracteres"
+                               placeholder="Sucursal"
+                               data-msg="Sucursal Seleccionada."
+                               minlength="1" maxlength="150"
+                               title="Sucursal Tamaño máximo: 150 Caracteres"
                                data-error-class="u-has-error"
                                data-success-class="u-has-success">   <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
                       </div>

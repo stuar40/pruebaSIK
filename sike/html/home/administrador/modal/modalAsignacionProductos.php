@@ -523,7 +523,7 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                             <!-- Input Bloque de ingreso de la descripcion del proveedor-->
                             <div class="js-form-message mb-6">
                               <label class="h6 small d-block text-uppercase"><!-- etiqueta del campo de texto  donde se ingresa la descripcion del proveedor -->
-                                Estado Activo/Desactivado del Precio
+                              Habilitar producto para esta sucursal
                               </label>
         
                               <div class="js-focus-state input-group form">

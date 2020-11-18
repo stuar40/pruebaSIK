@@ -12,7 +12,8 @@ $("#Formguardar_Egresos").submit(function( event ) {
     idSucursal=$('#SeleccionSucursalEgreso').val();
     $("#SucursalAdministrador").val(idSucursal).change();                
     console.log("mostrar modal");
-    
+    $("#usuario").val("");
+    $("#Contraseña").val("");
 /*
     idSucursal=$('#SeleccionSucursalEgreso').val();
     descripcionEgreso=$.trim($("#descripcionEgreso").val());
@@ -118,9 +119,28 @@ $("#formValidarAdministrador").submit(function( event ) {
       console.log("Respuesta validacion");
       console.log(response);
      
-      if(response === 'invalido'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
+      if(response === 'sinacceso'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
         Swal.fire({
-        title: "Usuario sin Permisos", //titulo del modal
+        title: "Usuario o Contraseña Incorrecto", //titulo del modal
+        icon: 'error', //tipo de advertencia modal
+        timer: 3000                     
+        });
+         // vacia el input ProveedorNIT del modal 
+        console.log("rechazado EGRESO ERROR");   // // imprime en consola para el desarrolador ver el valro que esta obteniendo 
+      }
+      else if(response === 'nosucursal'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
+        Swal.fire({
+        title: "Usuario no Pertenece a Sucursal", //titulo del modal
+        icon: 'error', //tipo de advertencia modal
+        timer: 3000                     
+        });
+         // vacia el input ProveedorNIT del modal 
+        console.log("rechazado EGRESO ERROR");   // // imprime en consola para el desarrolador ver el valro que esta obteniendo 
+      }
+
+      else if(response === 'noadministrador'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
+        Swal.fire({
+        title: "Usuario sin Privilegios de Administrador", //titulo del modal
         icon: 'error', //tipo de advertencia modal
         timer: 3000                     
         });

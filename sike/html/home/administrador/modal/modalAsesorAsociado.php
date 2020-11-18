@@ -42,14 +42,15 @@ $num_rows = mysqli_num_rows($query_select);
                       <!-- Input primer bloque donde selecciona el proveedor al cual asignara el asesor que se ingreseara-->
                       <div class="js-form-message mb-6">
                         <label class="h6 small d-block text-uppercase">  <!-- etiqueta del campo de texto  donde se almacena el nombre comercial del proveedor -->
-                          Seleccione Proveedor
+                          Nombre del Proveedor
                           <span class="text-danger">*</span>
                         </label>
   
                         <div class="js-focus-state input-group form">
+                        <input class="form-control form__input" type="text" name="idProveedorAsociado" id="idProveedorAsociado" disabled > <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
                         <input class="form-control form__input" type="text" name="nombreProveedorAsociado" id="nombreProveedorAsociado"
                                  placeholder="Nombre Proveedor" disabled > <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
-                        <input class="form-control form__input" type="text" name="idProveedorAsociado" id="idProveedorAsociado" disabled > <!-- se asignan identificadores y detalles alnombre del asesor de proveedores -->
+                        
                         </div>
                       </div>
                       <!-- End Input -->
