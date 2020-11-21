@@ -160,3 +160,17 @@ MODULO ASIGNAR PRECIOS
     >> en el select cambiar titulo a productos sin  precio asignado por Sucursla (LISTO)
     MODAL DE ASIGNACION DE PRECIOS
     >> el input de ACtiVAr/descativar, indica si el producto esta disponible para esa sucursal cambiar de titulo a "Activar producto para esta sucursal" (LISTO)
+
+
+KARDEX
+// consulta el nombre del proveedor para insertar en kardes detalles 
+    $sqlNombreProveedor = "select nombre from empresa where id = '$proveedor'";
+    $resultNombreProveedor = mysqli_query($con,$sqlNombreProveedor);
+    while($rows2 = mysqli_fetch_assoc($resultNombreProveedor)){
+    $nombreProveedorRecargas = $rows2['nombre'];
+    }
+    //insertar en el kardex el movimiento 
+    $sqlKardex="INSERT INTO `kardex` (`factura`, `detalle`, `movimiento`, `cantcompra`, `preciocompra`, `totalcompra`, `existencia`, `sucursal_idsucursal`) 
+        VALUES ('$factura', '$nombreProveedorRecargas', 'INGRESO', '1', '$monto', '$monto', '$nuevos', '$sucursal')";
+        $resultadoKardex=mysqli_query($con,$sqlKardex);
+    }
