@@ -231,7 +231,7 @@
                 <ul id="clientesSubMenu" class="list-inline hs-sub-menu u-header__sub-menu mb-0" style="min-width: 260px;"
                     aria-labelledby="clientesMegaMenu">
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevoCliente.php">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="newCliente.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/client.svg" alt="Image Description">
                         <div class="media-body">
@@ -242,7 +242,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="verCliente.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/clients.svg" alt="Image Description">
                         <div class="media-body">
@@ -272,19 +272,19 @@
                 <ul id="productosSubMenu" class="list-inline hs-sub-menu u-header__sub-menu mb-0" style="min-width: 260px;"
                     aria-labelledby="productosMegaMenu">
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevaRecarga.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/recharge.svg" alt="Image Description">
                         <div class="media-body">
                           <span class="d-block text-dark font-weight-medium">Saldo</span>
-                          <small class="d-block">Nuevo Saldo</small>
+                          <small class="d-block">Asignar Saldo</small>
                         </div>
                       </div>
                     </a>
                   </li>
 
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevoProducto.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/products.svg" alt="Image Description">
                         <div class="media-body">
@@ -296,11 +296,11 @@
                   </li>
 
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="verRecargas.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/setting-recharge.svg" alt="Image Description">
                         <div class="media-body">
-                          <span class="d-block text-dark font-weight-medium">Configuración Recargas</span>
+                          <span class="d-block text-dark font-weight-medium">Configuración Saldo</span>
                           <small class="d-block">Editar/Desactivar/Activar</small>
                         </div>
                       </div>
@@ -308,7 +308,7 @@
                   </li>
 
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="verProductos.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/setting-book.svg" alt="Image Description">
                         <div class="media-body">
@@ -318,6 +318,19 @@
                       </div>
                     </a>
                   </li>
+
+                  <li class="dropdown-item u-header__sub-menu-list-item py-0">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="asignarPrecios.php">
+                      <div class="media align-items-center">
+                        <img class="max-width-5 mr-3" src="../../img/setting-book.svg" alt="Image Description">
+                        <div class="media-body">
+                          <span class="d-block text-dark font-weight-medium">Asignar Precios</span>
+                          <small class="d-block">Asignar Precios a Productos</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+
                 </ul>
               </li>
               <!-- End Productos -->
@@ -353,7 +366,7 @@
                     <ul id="navSubmenuproveedorClassic" class="hs-sub-menu list-unstyled u-header__sub-menu u-header__sub-menu-offset" style="min-width: 220px;"
                         aria-labelledby="navLinkMovimientosClassic">
                         <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nempresa.php">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevaComprar.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/recharge-purchase.svg" alt="Image Description">
                         <div class="media-body">
@@ -364,7 +377,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nasesor.php">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevaCompra.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/purchase-product.svg" alt="Image Description">
                         <div class="media-body">
@@ -391,7 +404,7 @@
                     <ul id="navSubmenuproveedorClassic" class="hs-sub-menu list-unstyled u-header__sub-menu u-header__sub-menu-offset" style="min-width: 220px;"
                         aria-labelledby="navLinkMovimientosClassic">
                         <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nempresa.php">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevaVentar.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/recharge-sold.svg" alt="Image Description">
                         <div class="media-body">
@@ -402,7 +415,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nasesor.php">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevaVenta.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/sold-product.svg" alt="Image Description">
                         <div class="media-body">
@@ -429,7 +442,7 @@
                     <ul id="navSubmenuproveedorClassic" class="hs-sub-menu list-unstyled u-header__sub-menu u-header__sub-menu-offset" style="min-width: 220px;"
                         aria-labelledby="navLinkMovimientosClassic">
                         <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nempresa.php">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevoEgresoEconomico.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/gastos.svg" alt="Image Description">
                         <div class="media-body">
@@ -440,7 +453,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nasesor.php">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/list-gastos.svg" alt="Image Description">
                         <div class="media-body">
@@ -473,13 +486,75 @@
                 <!-- Reportes - Submenu -->
                 <ul id="ReportesSubMenu" class="list-inline hs-sub-menu u-header__sub-menu mb-0" style="min-width: 260px;"
                     aria-labelledby="ReportesMegaMenu">
+
+                    <li class="dropdown-item hs-has-sub-menu">
+                    <a id="navLinkMovimientosClassic" class="nav-link u-header__sub-menu-nav-link" href="javascript:;"
+                       aria-haspopup="true"
+                       aria-expanded="false"
+                       aria-controls="navSubmenuMovimientosClassic">
+                       Ventas
+                      <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
+                    </a>
+
+                    <!-- Submenu (level 2) -->
+                    <ul id="navSubmenuproveedorClassic" class="hs-sub-menu list-unstyled u-header__sub-menu u-header__sub-menu-offset" style="min-width: 220px;"
+                        aria-labelledby="navLinkMovimientosClassic">
+
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="#">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="ventasProductos.php">
                       <div class="media align-items-center">
-                        <img class="max-width-5 mr-3" src="../../img/tablero.svg" alt="Image Description">
+                        <img class="max-width-5 mr-3" src="../../img/libreria.svg" alt="Image Description">
                         <div class="media-body">
-                          <span class="d-block text-dark font-weight-medium">Cierre</span>
-                          <small class="d-block">Cierre de Caja</small>
+                          <span class="d-block text-dark font-weight-medium">Librería</span>
+                          <small class="d-block">Ventas de Librería</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="dropdown-item u-header__sub-menu-list-item py-0">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="ventasRecargas.php">
+                      <div class="media align-items-center">
+                        <img class="max-width-5 mr-3" src="../../img/recargas.svg" alt="Image Description">
+                        <div class="media-body">
+                          <span class="d-block text-dark font-weight-medium">Recarga</span>
+                          <small class="d-block">Ventas de Recargas</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                    </ul>
+                    <!-- End Submenu (level 2) -->
+                  </li>
+
+                  <li class="dropdown-item u-header__sub-menu-list-item py-0">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="kardex.php">
+                      <div class="media align-items-center">
+                        <img class="max-width-5 mr-3" src="../../img/kardex.svg" alt="Image Description">
+                        <div class="media-body">
+                          <span class="d-block text-dark font-weight-medium">Kardex</span>
+                          <small class="d-block">Movimientos de productos</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="dropdown-item u-header__sub-menu-list-item py-0">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="inventario.php">
+                      <div class="media align-items-center">
+                        <img class="max-width-5 mr-3" src="../../img/stock.svg" alt="Image Description">
+                        <div class="media-body">
+                          <span class="d-block text-dark font-weight-medium">Inventario</span>
+                          <small class="d-block">Inventario de productos</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="dropdown-item u-header__sub-menu-list-item py-0">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="cuadreDiario">
+                      <div class="media align-items-center">
+                        <img class="max-width-5 mr-3" src="../../img/cuadre.svg" alt="Image Description">
+                        <div class="media-body">
+                          <span class="d-block text-dark font-weight-medium">Cuadre </span>
+                          <small class="d-block">Cuadre de caja diario</small>
                         </div>
                       </div>
                     </a>
