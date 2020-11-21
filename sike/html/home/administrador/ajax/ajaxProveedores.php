@@ -46,7 +46,7 @@ if ($_POST['action'] == 'searchContactKey') {
 }
 
 ///////Guardar Proveedor
-if (isset($_POST['action']) == 'agregar_Proveedor' AND !empty($_POST['intencion'])) {
+if ($_POST['action'] == 'agregar_Proveedor' AND !empty($_POST['intencion'])) {
         //console.log("Entro A Guardar");
         # code...
         $data2 = array();
@@ -116,7 +116,7 @@ if (isset($_POST['action']) == 'agregar_Proveedor' AND !empty($_POST['intencion'
 
 
             // Obtener datos
-if (isset($_POST['action']) == "obtener_datos" ) {
+if ($_POST['action'] == "obtener_datos" ) {
         # code...
        
         
@@ -150,47 +150,49 @@ if (isset($_POST['action']) == "obtener_datos" ) {
 //----------------fin obbtener datos
 //Guardar Asesor de Porveedor
 
-if (isset($_POST['action']) == "agregar_Asesor" ) {
+if ($_POST['action'] == "agregar_Asesor" ) {
     # code...
          //$n1=$_POST[1];
-         $n1 =$_POST['nombreAsesor'];
-         $n2=$_POST['telefonoAsesor'];
-         $n3 =$_POST['correoAsesor'];
-         $n4=$_POST['estadoAsesor'];
-         $n5=$_POST['idProveedor'];
+         $nombreAsesor =$_POST['nombreAsesor'];
+         $telefonoAsesor=$_POST['telefonoAsesor'];
+         $correoAsesor =$_POST['correoAsesor'];
+         $estadoAsesor=$_POST['estadoAsesor'];
+         $idProveedor=$_POST['idProveedor'];
          //$n5=$_POST[0];
          
 
-         $sqldpi= "SELECT correo FROM asesor where correo = $n2";
-         $res1=mysqli_query($con,$sqldpi);
-    
-         while ($data=mysqli_fetch_row($res1)){
-                                             $numero = $data[0];
-                                             }
+         $sqlCorreoAsesor= "SELECT correo FROM asesor where correo = $correoAsesor";
+         $res1=mysqli_query($con,$sqlCorreoAsesor);
+         //$numero=mysqli_num_rows($res1);
+       while ($data=mysqli_fetch_row($res1)){
+                                           $numero = $data[0];
+                                           }
  
-         if ($numero > 0)   {
+         if ($numero > 0) {
                          echo 'replica';
                          }
          else    {
 
-                 $sql="INSERT INTO `asesor` (`nombre`, `telefono`, `correo`, `estado`, `empresa_id`) VALUES ('$n1','$n2','$n3','$n4','$n5')";
+                 $sql="INSERT INTO `asesor` (`nombre`, `telefono`, `correo`, `estado`, `empresa_id`) VALUES ('$nombreAsesor','$telefonoAsesor','$correoAsesor','$estadoAsesor','$idProveedor')";
                  $res=mysqli_query($con,$sql);
                  if($res){
                          echo 'successful';
                          }
                  else    {
-                         die("Error".mysqli_error($con));
+                        echo $numero; 
+                        die("Error".mysqli_error($con));
+                         echo "holaperros";
                          }
                  }
                  exit;
          } 
-//fin del if que almacena datos del proveedor
+//fin del if que almacena datos del Asesor
             //////////////////////////////////////////
 
 //Actualizar datos Asesor de Porveedor
 
 
-if (isset($_POST['action']) == 'editar_Asesor' AND !empty($_POST['intencion'])) {
+if ($_POST['action'] == 'editar_Asesor' AND !empty($_POST['intencion'])) {
         # code...
                //$numero = "";                              
                 
@@ -235,30 +237,46 @@ if (isset($_POST['action']) == 'editar_Asesor' AND !empty($_POST['intencion'])) 
 
 //--------------- Actualizar Proveedor
 
-if(isset($_POST['action']) == 'editar_Proveedor'){
-        console.log("Entro A editar");
+if($_POST['action'] == 'editar_Proveedor'){
+      //  console.log("Entro A editar");
+       # code...
         $data2 = array();
-        $n0 = $_POST['nombreComercial'];
-        $n1=$_POST['proveedorNIT'];
-        $n2 =$_POST['proveedorDireccion'];
-        $n3=$_POST['telefonoProveedor'];
-        $n4 =$_POST['descripcionProveedor'];
-        $idProveedor= $_POST['idProv'];
-     
-        # code...
-        $sql = "UPDATE `empresa` SET `nombre`='$n0', `nit`='$n1', `direccion`='$n2', `telefono`='$n3', `descripcion`='$n4' WHERE `id`='$idProveedor'";
-    
-        $res=mysqli_query($con,$sql);
-        if($res){
-                $data2=mysqli_fetch_array($res);
-    
-        }else{
-                $data2 = 'replica';
-                die("Error".mysqli_error($con));
+        $action = $_POST['action'];
+        $n1=$_POST['nombreComercial'];
+        $n2 =$_POST["proveedorNIT"];
+        $n3=$_POST['proveedorDireccion'];
+        $n4 =$_POST['telefonoProveedor'];
+        $n5=$_POST['descripcionProveedor'];
+        $sqldpi= "SELECT nit FROM empresa where nit =  $n2";
+        $res1=mysqli_query($con,$sqldpi);
+      
+           
+
+                $n0 = $_POST['nombreComercial'];
+                $n1=$_POST['proveedorNIT'];
+                $n2 =$_POST['proveedorDireccion'];
+                $n3=$_POST['telefonoProveedor'];
+                $n4 =$_POST['descripcionProveedor'];
+                $idProveedor= $_POST['idProv'];
+             
+                # code...
+                $sql = "UPDATE `empresa` SET `nombre`='$n0', `nit`='$n1', `direccion`='$n2', `telefono`='$n3', `descripcion`='$n4' WHERE `id`='$idProveedor'";
             
-        }
+                $res=mysqli_query($con,$sql);
+                if($res){
+                        $data2="actualizado";
+            
+                }else{
+                        $data2 = 'replica';
+                        die("Error".mysqli_error($con));
+                    
+                }
+               
+            
+        
         echo json_encode($data2); //devuelve el resultado
         exit;
+       
         }
 //-------------------Fin actualizar Proeveedor
 

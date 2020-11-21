@@ -505,15 +505,16 @@ $("#guardar_asesor").submit(function( event ) {
     var parametros = $(this).serialize();
        $.ajax({
                 type: "POST",
-                url: "ajax/ajaxProveedores.php",
+                url: "ajax/ajaxAsesores.php",
                 error: function() {
                   console.log("No se ha podido obtener la información");
                 },
                 data: parametros,
+                dataType: 'json', 
                 beforeSend: function(objeto){},
                 success: function(response){
                 console.log(response);
-                if(response == 'replica'){
+                if(response == "replica"){
                         Swal.fire({
                         title: "El Correo/usuario Ya existe",
                         icon: 'error',

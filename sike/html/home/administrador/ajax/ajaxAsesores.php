@@ -10,7 +10,7 @@ $sucursal = "";
 
 //===================incio del archivo ajaxAsesore
 // Obtener datos
-if (isset($_POST['action']) == 'obtener_datos_asesor' ) {
+if ($_POST['action'] == 'obtener_datos_asesor' ) {
     # code...
    
     
@@ -45,7 +45,7 @@ if (isset($_POST['action']) == 'obtener_datos_asesor' ) {
 
 //guardar edicion
 ////// Boton Guardar del modal del DataTable funcion 
-if (isset($_POST['action']) == 'editar_Asesor' AND !empty($_POST['intencion'])) {
+if ($_POST['action'] == 'editar_Asesor' AND !empty($_POST['intencion'])) {
     //console.log("Entro A Guardar");
     # code...
     $data2 = array();
@@ -116,7 +116,7 @@ if (isset($_POST['action']) == 'editar_Asesor' AND !empty($_POST['intencion'])) 
 //fin guardar edicion
 
 ////// Boton ELIMINAR Asesor ASOCIADO del  DataTable del formulario verAsesor.php 
-if (isset($_POST['action']) == 'borrar_asesorAsociado') {
+if ($_POST['action'] == 'borrar_asesorAsociado') {
     //console.log("Entro A Guardar");
     # code...
     $data2 = array();
@@ -191,7 +191,7 @@ if (isset($_POST['action']) == 'cargar_Asesores' AND !empty($_POST['intencion'])
 
 
 //////PRUEBAAAA datos del asesores asociados a un proveedores para el dataTable************************************
-if (isset($_POST['action']) == 'cargar_AsesoresAsociados' AND !empty($_POST['intencion'])) {
+if ($_POST['action'] == 'cargar_AsesoresAsociados' AND !empty($_POST['intencion'])) {
     $idProveedoAsesor=$_POST['idProveedoAsesor'];//captura la variable que recibe desde jquery proveedores.js
     $sqlConsulta= "SELECT id,nombre,telefono,estado,empresa_id   FROM asesor where empresa_id = $idProveedoAsesor "; //realiza una consulta para ver los asesores que estas asociados al id del proveedor
     //$sqlConsulta= "SELECT id,nombre,telefono,estado,empresa_id   FROM asesor     "; //realiza una consulta para ver los asesores que estas asociados al id del proveedor
@@ -230,7 +230,41 @@ if (isset($_POST['action']) == 'cargar_AsesoresAsociados' AND !empty($_POST['int
 
 } //fin del if que consulta datos del asesor 
 
+if ($_POST['action'] === "agregar_Asesor" ) {
+    # code...
+         //$n1=$_POST[1];
+         $nombreAsesor =$_POST['nombreAsesor'];
+         $telefonoAsesor=$_POST['telefonoAsesor'];
+         $correoAsesor =$_POST['correoAsesor'];
+         $estadoAsesor=$_POST['estadoAsesor'];
+         $idProveedor=$_POST['idProveedor'];
+         //$n5=$_POST[0];
+         
 
+         $sqlCorreoAsesor= "SELECT correo FROM asesor where correo = '$correoAsesor'";
+         $res1=mysqli_query($con,$sqlCorreoAsesor);
+        $numero=mysqli_num_rows($res1);
+      // while ($data=mysqli_fetch_row($res1)){
+      //                                     $numero = $data[0];
+      //                                     }
+ 
+         if ($numero > 0) {
+                         echo json_encode("replica");
+                         }
+         else    {
+
+                 $sql="INSERT INTO `asesor` (`nombre`, `telefono`, `correo`, `estado`, `empresa_id`) VALUES ('$nombreAsesor','$telefonoAsesor','$correoAsesor','$estadoAsesor','$idProveedor')";
+                 $res=mysqli_query($con,$sql);
+                 if($res){
+                         echo json_encode('successful');
+                         }
+                 else    {
+                        die("Error".mysqli_error($con));
+                        
+                         }
+                 }
+                 exit;
+         } 
 
 } //=========================fin del if del AJAXX===============================================================================================================================================================
 

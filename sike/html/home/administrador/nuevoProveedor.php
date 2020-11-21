@@ -104,8 +104,8 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       </label>
                       <div class="js-focus-state input-group form">
                         <input  class="form-control form__input" type="text" name="proveedorNIT" id="proveedorNIT" required
-                                minlength="8" maxlength="9"
-                                pattern="[0-9]{8,12}"  title="Numero de NIT (Sin Guion) Tamaño mínimo: 8. Tamaño máximo: 12"
+                                minlength="6" maxlength="9"
+                                pattern="[0-9]{6,9}"  title="Numero de NIT (Sin Guion) Tamaño mínimo: 6. Tamaño máximo: 9"
                                 placeholder="Ingrese NIT del proveedor"> <!-- se asignan identificadores y detalles al campo de texto del NIT  comercial del proveedor -->
                       </div>
                     </div>

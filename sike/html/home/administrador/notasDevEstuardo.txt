@@ -102,9 +102,9 @@ modulo ingresar usuario
  >> cambiar alerta cuando se edita un proveedor a = "PROVEEDOR Actualizado" (LISTO)
  >> descripcion al pasar el cursor sobre el input muestra que el tamanio minimo es 12== modificarlo  (LISTO)
  >> modal de ver asesores asociados, poner el ID antes del nombre del proveedor (LISTO)
- >> cuando se ve un Estado  en el modal de asesor asociado lo  muestra como 1 y no como ACTIVO o Desactivado, modidicar en BD o en CODIGO (mas simple en BD)
+ >> cuando se ve un Estado  en el modal de asesor asociado lo  muestra como 1 y no como ACTIVO o Desactivado, modidicar en BD o en CODIGO (mas simple en BD) (LISTO)
  >> Alerta de guardar un asesor, debe decir "Asesor asociado correctamene" (LISTO)
- >> LISTAR asesores, al seleccionar un proveedor especifico el estado ya no marca como  Activo/ INACTIVO sino como 1/0
+ >> LISTAR asesores, al seleccionar un proveedor especifico el estado ya no marca como  Activo/ INACTIVO sino como 1/0 (LISTO)
  >> setear el telefono del proveedor seleccionado en listar PROVEEDOR (LISTO )
  >> modal de ver asesor, setearlo por defaul como  y desactivarlo   
  >> Alert de proveedor, modificar a Asesor Actualizado (LISTO)

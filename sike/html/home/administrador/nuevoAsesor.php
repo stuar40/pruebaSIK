@@ -176,8 +176,8 @@ include("enca.php"); // llama al encabezado de la pagina NavBar
                       </label>
                         <select class="custom-select" name="estadoAsesor" id="estadoAsesor"> 
                         
-                            <option selected="true" value="1">ACTIVO</option>
-                            <option value="0">INACTIVO</option>               
+                            <option selected="true" value="ACTIVO">ACTIVO</option>
+                            <option value="INACTIVO">INACTIVO</option>               
                         </select> <!-- se asignan identificadores y detalles al selector de estado de actividad del asesor de proveedores -->
                       </div>
                     <!-- End Input -->

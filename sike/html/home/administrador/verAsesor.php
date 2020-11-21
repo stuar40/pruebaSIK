@@ -150,18 +150,8 @@ $num_rows = mysqli_num_rows($query_select);
                                     <td class="text-center"><?php echo $row['id']?></td>
                                     <td><?php echo $row['nombre']?></td>
                                     <td><?php echo $row['telefono']?></td>
-                                    <td class="text-center"><?php
-                                    if($row['estado'] =='1') //condicional que pasa el estado de 1/0 del asesor a un ACTIVO/INACTIVO
-                                    {
-                                      $estadoAsesor="ACTIVO";
-                                    }
-                                else
-                                    {
-                                      $estadoAsesor="INACTIVO";
-                                  
-                                    } //fin de condicional
-                                    echo $estadoAsesor
-                                    ?> </td>
+                                    <td><?php echo $row['estado']?></td>
+                                    
                                     <td class="text-center"> </td>
                                     </tr>
                           <?php }

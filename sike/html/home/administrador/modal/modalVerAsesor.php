@@ -132,8 +132,8 @@ $num_rows = mysqli_num_rows($query_select);
                       </label>
                         <select class="custom-select" name="estadoAsesor" id="estadoAsesor"> 
                         <option selected="true" disabled="disabled">Seleccione Estado del Asesor</option>                     
-                            <option value="1">ACTIVO</option>
-                            <option value="0">INACTIVO</option>               
+                            <option value="ACTIVO">ACTIVO</option>
+                            <option value="INACTIVO">INACTIVO</option>               
                         </select> <!-- se asignan identificadores y detalles al selector de estado de actividad del asesor de proveedores -->
                       </div>
                     <!-- End Input -->
