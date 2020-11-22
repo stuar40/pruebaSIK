@@ -152,7 +152,7 @@ MODULO COMPRAS
 
 MODULO EGRESOS ECONOMICO 
     formulario EGRESOS
-    >> indicar si un usario no tiene permisos especificaos para esa sucursal, o el usuario no es administrador 
+    >> indicar si un usario no tiene permisos especificaos para esa sucursal, o el usuario no es administrador (LISTO)
     >> vaciar el modal de validacion cada que se agreugue (LISTO)
     >> NO HAY lista de egresos por dia / fecha / maximo por rango de 7 dias o una semana    
 
@@ -174,3 +174,5 @@ KARDEX
         VALUES ('$factura', '$nombreProveedorRecargas', 'INGRESO', '1', '$monto', '$monto', '$nuevos', '$sucursal')";
         $resultadoKardex=mysqli_query($con,$sqlKardex);
     }
+    Notas nuevas 
+    cuando abre el modal de asignar precio, si no se recarga rapido permite guardar varias veces al clickear 

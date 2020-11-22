@@ -78,8 +78,8 @@ if ($_POST) {
             
 
             
-                $sql="INSERT INTO `egresos` (`monto`, `fecha`, `descripcion`, `usuarios_id`) 
-                VALUES ('$montoEgreso', '$fechaEgreso', '$descripcionEgreso', '$usuarioEgreso') ";
+                $sql="INSERT INTO `egresos` (`monto`, `fecha`, `descripcion`, `usuarios_id`, `sucursal_id`) 
+                VALUES ('$montoEgreso', '$fechaEgreso', '$descripcionEgreso', '$usuarioEgreso',' $idSucursal') ";
                 $res=mysqli_query($con,$sql);
                 
                 if($res){
@@ -107,40 +107,42 @@ if ($_POST) {
     
              
 
-             $sqlValidarAdminUsuario= "SELECT * FROM usuarios where nombre_usuario = '$usuarioAdministrador' AND password = '$passAdministrador'";
+             $sqlValidarAdminUsuario= "SELECT count(*) FROM usuarios where nombre_usuario = '$usuarioAdministrador' AND password = '$passAdministrador'";
              $resValidarUsuario=mysqli_query($con,$sqlValidarAdminUsuario);
         ///valida si el nombre de usuario existe
              while ($data=mysqli_fetch_row($resValidarUsuario)){
                                                  $numero = $data[0];
+                                                 
                                                  }
      
              if ($numero > 0)   { //filtro de si pertenece a la sucursal
-                                $sqlValidarAdminSucursal= "SELECT * FROM usuarios where nombre_usuario = '$usuarioAdministrador' AND password = '$passAdministrador' AND sucursal_id = '$idSucursal'";
+                                $sqlValidarAdminSucursal= "SELECT count(*) FROM usuarios where nombre_usuario = '$usuarioAdministrador' AND password = '$passAdministrador' AND sucursal_id = '$idSucursal'";
                                 $resValidarSucursal=mysqli_query($con,$sqlValidarAdminSucursal);
                                 ///valida si el usuario tiene privilegios en la sucursal
                                 while ($data=mysqli_fetch_row($resValidarSucursal)){
                                                                     $numero = $data[0];
                                                     }
                                 if ($numero > 0)   { //valida si es administrador 
-                                    $sqlValidarAdmin= "SELECT * FROM usuarios where nombre_usuario = '$usuarioAdministrador' AND password = '$passAdministrador' AND sucursal_id = '$idSucursal' AND roles_id = 1";
+                                    $sqlValidarAdmin= "SELECT count(*) FROM usuarios where nombre_usuario = '$usuarioAdministrador' AND password = '$passAdministrador' AND roles_id = 1";
                                     $res1=mysqli_query($con,$sqlValidarAdmin);
                                     while ($data=mysqli_fetch_row($res1)){
                                         $numero = $data[0];
                                         }
                                     if ($numero > 0){
-                                            echo 'valido';
+                                            echo json_encode ('valido');
+                                            
                                         }
                                     else {
-                                            echo 'noadministrador';
+                                            echo json_encode ('noadministrador');
                                         }
                                 }
                                 else    { //de lo contrario el usuario no pertenece a la sucursal
-                                        echo 'nosucursal';
+                                        echo json_encode('nosucursal');
                                         }
                                 
                              }
              else    { //de lo contrario el usuario o contrasenia son invalidos
-                    echo 'sinacceso';
+                    echo json_encode('sinacceso');
                      }
                      exit;
              } 

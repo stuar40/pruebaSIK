@@ -109,7 +109,7 @@ $("#formValidarAdministrador").submit(function( event ) {
   $.ajax({ //ajax que va obtener valores de tabla de proveedor con id
     url: './ajax/ajaxEgresosEconomicos.php', //al documento php ajax al cual iran los datos y de donde retornara valores de la consulta
     type: "POST",
-    //dataType: 'json', 
+    dataType: 'json', 
     async: true,
     data: {action:action,
       idSucursal:idSucursal,
@@ -138,7 +138,7 @@ $("#formValidarAdministrador").submit(function( event ) {
         console.log("rechazado EGRESO ERROR");   // // imprime en consola para el desarrolador ver el valro que esta obteniendo 
       }
 
-      else if(response === 'noadministrador'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
+      else if(response === "noadministrador"){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
         Swal.fire({
         title: "Usuario sin Privilegios de Administrador", //titulo del modal
         icon: 'error', //tipo de advertencia modal
