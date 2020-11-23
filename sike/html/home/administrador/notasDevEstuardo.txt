@@ -176,3 +176,9 @@ KARDEX
     }
     Notas nuevas 
     cuando abre el modal de asignar precio, si no se recarga rapido permite guardar varias veces al clickear 
+    setear la fecha automaticament o no permitir una anterior al dia de hoy en el sistem 
+    Listar egresos por sucursal y fecha 
+
+    NIT del modal editar proveedor no tiene la nueva validacion de 8 y 9 digitos
+    Ordenar desde ultima fecha a fecha actual en la consulta del kardex
+    meter en responsive la tabla de kardex 

@@ -1,15 +1,15 @@
-<?php 
-require_once ("../config/db.php");
-require_once ("../config/conexion.php");
+<?php
+
+
+require_once("../config/db.php");
+require_once("../config/conexion.php");
 ?>
 
-<?php
-include("enca.php");
-?>
 
 <!DOCTYPE html>
 
 <html lang="es">
+
 <head>
   <!-- Title -->
   <title>SIKE</title>
@@ -38,6 +38,9 @@ include("enca.php");
   <link rel="stylesheet" href="../../../assets/css/theme.css">
 </head>
 
+<?php
+include("enca.php");
+?>
 
 <body class="responsive-mode">
   <!-- Skippy -->
@@ -47,364 +50,427 @@ include("enca.php");
     </div>
   </a>
   <!-- End Skippy -->
- <!-- ========== MAIN CONTENT ========== -->
+  <!-- ========== MAIN CONTENT ========== -->
   <main id="content" role="main">
-  <div class="container space-2 space-3-top--lg space-2-bottom--lg">
+    <div class="container space-2 space-3-top--lg space-2-bottom--lg">
       <div class="row">
         <div class="col-lg-2 order-lg-3 mb-10 mb-lg-2">
-          </div>
-        </div>
-
-        <div class="col-lg-12 order-lg-1">
-          <!-- Checkout Form -->
-          <form class="form-horizontal" method="post" id="guardar_usuario" name="guardar_usuario">
-              
-            <!-- Step Form Header -->
-            <ul id="stepFormProgress" class="js-step-progress list-inline u-shopping-cart-step-form mb-4">
-              <!-- Step Form Item -->
-              <li class="list-inline-item u-shopping-cart-step-form__item mb-3">
-               
-                <span class="u-shopping-cart-step-form__title">Nuevo Usuario</span>
-              </li>
-            </ul>
-            <!-- End Step Form Header -->
-
-            <!-- Step Form Content -->
-            <div id="stepFormContent">
-              <!-- Customer Info -->
-              <div id="newuser" class="active">
-                
-                <!-- Billing Form -->
-                <div class="row">
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Primer Nombre
-                        <span class="text-danger">*</span>
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="pnombre" id="pnombre" required
-                               placeholder="Ingrese Primer Nombre"
-                               data-msg="Ingrese Primer Nombre."
-                               data-error-class="u-has-error"
-                               data-success-class="u-has-success">
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Segundo Nombre
-                        <span class="h10 small">(opcional)</span>
-                      </label>
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="snombre" id="snombre"
-                               placeholder="Ingrese Segundo Nombre">
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-
-            
-
-                  <div class="w-100"></div>
-                  
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Primer Apellido
-                        <span class="text-danger">*</span>
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="papellido" id="papellido" required
-                               placeholder="Ingrese Primer Apellido"
-                               data-msg="Por favor ingrese Primer Apellido."
-                               data-error-class="u-has-error"
-                               data-success-class="u-has-success">
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-
-
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Segundo Apellido
-                        <span class="h10 small">(opcional)</span>
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="sapellido" id="sapellido"
-                               placeholder="Ingrese Segundo Apellido">
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-
-
-    
-                  <div class="w-100"></div>
-
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Numero de DPI
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="number" name="cui" id="cui" required
-                               placeholder="Ingrese Numero de DPI"
-                               data-msg="Por favor ingrese el número de DPI."
-                               data-error-class="u-has-error"
-                               data-success-class="u-has-success">
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Fecha de Nacimiento
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" name="fecha" id="fecha" type="date" required
-                              data-msg="Por favor ingrese la fecha de nacimiento."
-                               data-error-class="u-has-error"
-                               data-success-class="u-has-success">
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-
-
-
-                  <div class="w-100"></div>
-                  
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Usuario
-                        <span class="text-danger">*</span>
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="text" name="usuario" id="usuario" required
-                               placeholder="Ingrese Nombre de Usuario"
-                               data-msg="Por favor ingrese Usuario."
-                               data-error-class="u-has-error"
-                               data-success-class="u-has-success">
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-
-
-
-
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                      Correo Electronico
-                        <span class="text-danger">*</span>
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="email" name="email" id="email"  required
-                               placeholder="Ingrese Correo Electronico"
-                               data-msg="Por favor ingrese Correo."
-                               data-error-class="u-has-error"
-                               data-success-class="u-has-success">
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-
-
-
-
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Contraseña
-                        <span class="text-danger">*</span>
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" type="password" name="pass" id="pass" required
-                               placeholder="Ingrese Contraseña"
-                               data-msg="Por Favor Ingrese Una Contraseña."
-                               data-error-class="u-has-error"
-                               data-success-class="u-has-success">
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-
-                  <div class="w-100"></div>
-
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                      Estado del Usuario
-                        <span class="text-danger">*</span>
-                      </label>
-                        <select class="custom-select" name="estad" id="estad"> 
-                        <option selected="true" disabled="disabled">Seleccione Estado</option>                     
-                            <option value="ACTIVO">ACTIVAR</option>
-                            <option value="INACTIVO">DESACTIVAR</option>               
-                        </select>
-                      </div>
-                    <!-- End Input -->
-                  </div>
-
-
-                  <div class="col-md-6">
-                    <div class="mb-6">
-                     <label class="h6 small d-block text-uppercase">
-                       Tipo de Usuario
-                       <span class="text-danger">*</span>
-                     </label>
-                     <select class="custom-select" name="rol" id="rol">
-                     <option selected="true" disabled="disabled">Seleccione tipo de Usuario</option>
-                        <?php
-		            
-		                $sql= "SELECT * FROM roles";
-		                $res=mysqli_query($con,$sql);
-			                while ($data=mysqli_fetch_row($res))
-										{
-											$d1 = $data[0];
-											$d2 = $data[1];
-										?>
-                        <option value="<?php echo $d1; ?>"> <?php echo $d2; ?></option>
-                                    <?php	} ?>
-                     </select>
-                    </div>
-                  </div>
-  
-
-                  <div class="w-100"></div>
-                    
-                    <!-- Select -->
-                    <div class="col-md-6">
-                        <div class="mb-6">
-                         <label class="h6 small d-block text-uppercase">
-                          Sucursal
-                          <span class="text-danger">*</span>
-                         </label>
-                        <select class="custom-select" name="sids" id="sids">
-                        <option selected="true" disabled="disabled">Seleccione Sucursal</option>
-                            <?php
-		                
-		                    $sql= "SELECT * from sucursal";
-		                    $res=mysqli_query($con,$sql);
-			                while ($data=mysqli_fetch_row($res))
-										{
-                                            $d1 = $data[0];
-                                            $d2 = $data[1];
-                                            $d3 = $data[2];
-                            ?>
-                                <option value="<?php echo $d1; ?>">  <?php echo $d2, "-"; ?> <?php echo $d3, ",  "; ?></option>
-                            <?php } ?>
-
-                        </select>
-                     </div>
-                   <!-- End Select -->
-                    </div>
-
-
-                    <!-- Select -->
-                    <div class="col-md-6">
-                        <div class="mb-6">
-                         <label class="h6 small d-block text-uppercase">
-                     Horario
-                          <span class="text-danger">*</span>
-                         </label>
-                        <select class="custom-select" name="hora" id="hora">
-                        <option selected="true" disabled="disabled">Seleccione Horario</option>
-                            <?php
-		   
-		                    $sql= "SELECT  * from horarios";
-		                    $res=mysqli_query($con,$sql);
-			                while ($data=mysqli_fetch_row($res))
-										{
-                                            $d1 = $data[0];
-                                            $d2 = $data[1];
-                                         
-                            ?>
-                                <option value="<?php echo $d1; ?>"> <?php echo $d1, "-"; ?> <?php echo $d2?></option>
-                            <?php } ?>
-
-                        </select>
-                     </div>
-                   <!-- End Select -->
-                    </div>
-                    
-                 
-                
-                <div class="w-100"></div>
-                     <!-- Input -->
-                    <div class="col-md-6">
-                        <div class="js-form-message mb-6">
-                            <label class="h6 small d-block text-uppercase">
-                             Dirección Domiciliar
-                             <span class="text-danger">*</span>
-                            </label>
-                            <div class="js-focus-state input-group form">
-                             <input class="form-control form__input" type="text" name="dir" id="dir" required
-                               placeholder="Ingrese la Dirección del Usuario"
-                               data-msg="Por favor ingrese una direccion válida."
-                               data-error-class="u-has-error"
-                               data-success-class="u-has-success">
-                            </div>
-                        </div>
-                     <!-- End Input -->
-                    </div>
-
-                  <div class="col-md-6">
-                    <!-- Input -->
-                    <div class="js-form-message mb-6">
-                      <label class="h6 small d-block text-uppercase">
-                        Número de Teléfono
-                      </label>
-
-                      <div class="js-focus-state input-group form">
-                        <input class="form-control form__input" name="telefono" id="telefono" type="number"
-                               placeholder="Ingrese Numero de Telefono">
-                      </div>
-                    </div>
-                    <!-- End Input -->
-                  </div>
-                  
-                </div>
-                <!-- End Billing Form -->
-                <input  type="text" name="action" id="action" value="agregar_usuario" hidden>
-                <input  type="text" name="intencion" id="intencion" value="intencion" hidden>
-                <!-- Buttons -->
-                <div class="d-sm-flex justify-content-sm-center align-items-sm-center">
-                <input type="submit" class="btn btn-facebook btn-xs text-center"  data-next-step="agregar" value="Agregar" name="insertar"></input>
- 
-
-          </form>
-          <!-- End Checkout Form -->
         </div>
       </div>
+
+      <div class="col-lg-12 order-lg-1">
+        <!-- Checkout Form -->
+        <form class="form-horizontal js-validate" method="post" id="guardar_usuario" name="guardar_usuario">
+
+          <!-- Step Form Header -->
+          <ul id="stepFormProgress" class="js-step-progress list-inline u-shopping-cart-step-form mb-4">
+            <!-- Step Form Item -->
+            <li class="list-inline-item u-shopping-cart-step-form__item mb-3">
+
+              <span class="u-shopping-cart-step-form__title">Nuevo Usuario</span>
+            </li>
+          </ul>
+          <!-- End Step Form Header -->
+
+          <!-- Step Form Content -->
+          <div id="stepFormContent">
+            <!-- Customer Info -->
+            <div id="newuser" class="active">
+
+              <!-- Billing Form -->
+              <div class="row">
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Primer Nombre
+                      <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" type="text" name="pnombre" id="pnombre" required 
+                      placeholder="Ingrese Primer Nombre"
+                      data-rule-required="true"
+                      minlength="2"
+                      maxlength="25"
+                      data-msg-minlength="El nombre debe contener al menos 2 letras"
+                      data-msg-maxlength="El nombre no debe contener más de 25 letras"
+                      data-msg="Ingrese Primer Nombre." 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Segundo Nombre
+                      <span class="h10 small">(opcional)</span>
+                    </label>
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" type="text" name="snombre" id="snombre" 
+                      placeholder="Ingrese Segundo Nombre">
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+
+
+                <div class="w-100"></div>
+
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Primer Apellido
+                      <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" type="text" name="papellido" id="papellido" required 
+                      placeholder="Ingrese Primer Apellido" 
+                      data-rule-required="true"
+                      minlength="2"
+                      maxlength="25"
+                      data-msg-minlength="El primer apellido debe contener al menos 1 letras"
+                      data-msg-maxlength="El primer apellido no debe contener más de 25 letras"
+                      data-msg="Por favor ingrese Primer Apellido." 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Segundo Apellido
+                      <span class="h10 small">(opcional)</span>
+                    </label>
+
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" type="text" name="sapellido" id="sapellido" placeholder="Ingrese Segundo Apellido">
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+
+
+                <div class="w-100"></div>
+
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Numero de DPI
+                    </label>
+
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" type="number" name="cui" id="cui" required 
+                      placeholder="Ingrese Numero de DPI" 
+                      data-rule-required="true"
+                      minlength="13"
+                      maxlength="13"
+                      data-msg-minlength="El CUI debe contener al menos 13 digitos."
+                      data-msg-maxlength="El cui no debe contener más de 13 digitos."
+                      data-msg="Por favor ingrese el número de DPI." 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Fecha de Nacimiento
+                    </label>
+
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" name="fecha" id="fecha" type="date" required 
+                      data-rule-required="true"
+                      data-msg="Por favor ingrese la fecha de nacimiento." 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+
+
+                <div class="w-100"></div>
+
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Usuario
+                      <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" type="text" name="usuario" id="usuario" required 
+                      placeholder="Ingrese Nombre de Usuario"
+                      data-rule-required="true"
+                      minlength="4"
+                      maxlength="15"
+                      data-msg-minlength="El usuario debe contener al menos 4 caracteres"
+                      data-msg-maxlength="El usuario no debe contener más de 15 caracteres"
+                      data-msg="Por favor ingrese Usuario." 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+
+
+
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Correo Electronico
+                      <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" type="email" name="email" id="email" required
+                      placeholder="Ingrese Correo Electronico"
+                      data-rule-email="true"
+                      maxlength="50"
+                      data-msg-maxlength="El nombre no debe contener más de 50 letras"
+                      data-msg="Por favor ingrese Correo." 
+                      data-msg-email="Ingrese un correo válido"
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Contraseña
+                      <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" type="password" name="pass" id="pass" required 
+                      placeholder="Ingrese Contraseña" 
+                      data-rule-required="true"
+                      minlength="6"
+                      maxlength="15"
+                      data-msg-minlength="La contraseña debe contener al menos 6 caracteres"
+                      data-msg-maxlength="La contraseña no debe contener más de 15 letras"
+                      data-msg="Por Favor Ingrese Una Contraseña." 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+                <div class="w-100"></div>
+
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Estado del Usuario
+                      <span class="text-danger">*</span>
+                    </label>
+<<<<<<< HEAD
+                    <select class="custom-select" name="estad" id="estad" required 
+                      data-rule-required="true"
+                      data-msg="Seleccione un Estado" 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                      <option selected="true" disabled="disabled">Seleccione Estado</option>
+=======
+                    <select class="custom-select" name="estad" id="estad" required>
+                      <option selected="true" disabled="disabled" value="">Seleccione Estado</option>
+>>>>>>> 1fa3df5962042c77006f5239b8913d9c1032774e
+                      <option value="ACTIVO">ACTIVAR</option>
+                      <option value="INACTIVO">DESACTIVAR</option>
+                    </select>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+
+                <div class="col-md-6">
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Tipo de Usuario
+                      <span class="text-danger">*</span>
+                    </label>
+                    <select class="custom-select" name="rol" id="rol"  required 
+                      data-rule-required="true"
+                      data-msg="Seleccione un tipo de Usuario" 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                      <option selected="true" disabled="disabled" value="">Seleccione tipo de Usuario</option>
+                      <?php
+
+                      $sql = "SELECT * FROM roles";
+                      $res = mysqli_query($con, $sql);
+                      while ($data = mysqli_fetch_row($res)) {
+                        $d1 = $data[0];
+                        $d2 = $data[1];
+                      ?>
+                        <option value="<?php echo $d1; ?>"> <?php echo $d2; ?></option>
+                      <?php  } ?>
+                    </select>
+                  </div>
+                </div>
+
+
+                <div class="w-100"></div>
+
+                <!-- Select -->
+                <div class="col-md-6">
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Sucursal
+                      <span class="text-danger">*</span>
+                    </label>
+
+                    <select class="custom-select" name="sids" id="sids" required 
+                      data-rule-required="true"
+                      data-msg="Seleccione una sucursal" 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                      <option value="" selected="true" disabled="disabled" >Seleccione Sucursal</option>
+                      <?php
+
+                      $sql = "SELECT * from sucursal";
+                      $res = mysqli_query($con, $sql);
+                      while ($data = mysqli_fetch_row($res)) {
+                        $d1 = $data[0];
+                        $d2 = $data[1];
+                        $d3 = $data[2];
+                      ?>
+                        <option value="<?php echo $d1; ?>"> <?php echo $d2, "-"; ?> <?php echo $d3, ",  "; ?></option>
+                      <?php } ?>
+
+                    </select>
+                  </div>
+
+                </div>
+
+
+
+
+
+
+
+                <div class="col-md-6">
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Horario
+                      <span class="text-danger">*</span>
+                    </label>
+                    <select class="custom-select" name="hora" id="hora" required 
+                      data-rule-required="true"
+                      data-msg="Seleccione un horario" 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                      <option selected="true" disabled="disabled" value="">Seleccione Horario</option>
+                      <?php
+
+                      $sql = "SELECT  * from horarios";
+                      $res = mysqli_query($con, $sql);
+                      while ($data = mysqli_fetch_row($res)) {
+                        $d1 = $data[0];
+                        $d2 = $data[1];
+                      ?>
+                        <option value="<?php echo $d1; ?>"> <?php echo $d1, "-"; ?> <?php echo $d2 ?></option>
+                      <?php } ?>
+
+
+                    </select>
+                  </div>
+
+                </div>
+
+
+                <div class="w-100"></div>
+
+
+
+                <div class="col-md-6">
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Dirección
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" type="text" name="dir" id="dir" required 
+                      placeholder="Ingrese la Dirección del Usuario" 
+                      data-rule-required="true"
+                      minlength="2"
+                      maxlength="75"
+                      data-msg-minlength="El la dirección debe contener al menos 6 letras"
+                      data-msg-maxlength="El dirección no debe contener más de 75 letras"
+                      data-msg="Por favor ingrese una direccion válida." 
+                      data-error-class="u-has-error" 
+                      data-success-class="u-has-success">
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+
+                <div class="col-md-6">
+                  <!-- Input -->
+                  <div class="js-form-message mb-6">
+                    <label class="h6 small d-block text-uppercase">
+                      Número de Teléfono
+                    </label>
+
+                    <div class="js-focus-state input-group form">
+                      <input class="form-control form__input" name="telefono" id="telefono" type="number" 
+                      placeholder="Ingrese Numero de Telefono"
+                      minlength="8"
+                      maxlength="8"
+                      data-msg-minlength="El número debe contener al menos 8 digitos"
+                      data-msg-maxlength="El número no debe contener más de 8 digitos">
+                      
+                    </div>
+                  </div>
+                  <!-- End Input -->
+                </div>
+
+
+              </div>
+              <!-- End Billing Form -->
+              <input type="text" name="action" id="action" value="agregar_usuario" hidden>
+              <input type="text" name="intencion" id="intencion" value="intencion" hidden>
+              <!-- Buttons -->
+              <div class="d-sm-flex justify-content-sm-center align-items-sm-center">
+
+
+                <input type="submit" class="btn btn-facebook btn-xs text-center" data-next-step="agregar" value="Agregar" name="insertar"></input>
+
+
+        </form>
+        <!-- End Checkout Form -->
+      </div>
+    </div>
   </main>
   <!-- ========== END MAIN CONTENT ========== -->
 
@@ -413,19 +479,13 @@ include("enca.php");
 
 
   <!-- ========== ARCHIVOS NECESARIOS PARA EL FUNCIONAMIENTO ========== -->
-  <a class="js-go-to u-go-to" href="javascript:;"
-    data-position='{"bottom": 15, "right": 15 }'
-    data-type="fixed"
-    data-offset-top="400"
-    data-compensation="#header"
-    data-show-effect="slideInUp"
-    data-hide-effect="slideOutDown">
+  <a class="js-go-to u-go-to" href="javascript:;" data-position='{"bottom": 15, "right": 15 }' data-type="fixed" data-offset-top="400" data-compensation="#header" data-show-effect="slideInUp" data-hide-effect="slideOutDown">
     <span class="fa fa-arrow-up u-go-to__inner"></span>
   </a>
   <!-- End Go to Top -->
 
-  <script type="text/javascript" src="js/jquery.min.js">  </script> 
-   <script type="text/javascript" src="js/usuarios.js">  </script> 
+  <script type="text/javascript" src="js/jquery.min.js"> </script>
+  <script type="text/javascript" src="js/usuarios.js"> </script>
 
   <!-- JS Global Compulsory -->
   <script src="../../../assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -460,7 +520,7 @@ include("enca.php");
 
   <!-- JS Plugins Init. -->
   <script>
-    $(window).on('load', function () {
+    $(window).on('load', function() {
       // initialization of HSMegaMenu component
       $('.js-mega-menu').HSMegaMenu({
         event: 'hover',
@@ -470,13 +530,13 @@ include("enca.php");
       });
     });
 
-    $(document).on('ready', function () {
+    $(document).on('ready', function() {
       // initialization of header
       $.HSCore.components.HSHeader.init($('#header'));
 
       // initialization of unfold component
       $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
-        afterOpen: function () {
+        afterOpen: function() {
           if (!$('body').hasClass('IE11')) {
             $(this).find('input[type="search"]').focus();
           }
@@ -518,9 +578,9 @@ include("enca.php");
       // initialization of go to
       $.HSCore.components.HSGoTo.init('.js-go-to');
     });
-
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- ========== FIN DE ARCHIVOS NECESARIOS ========== -->
 </body>
+
 </html>
