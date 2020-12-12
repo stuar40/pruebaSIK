@@ -4,164 +4,189 @@ $(document).ready(function(){
   
 
     if($('#txtSearch').length){
-
         $('#txtSearch').keyup(function(){
-        const dataSearch = $('#txtSearch').val();
-        const dataSearch3 = $('#txtSearch2').val();
-        const action = 'searchContactKey';
-        var dataContact = '';
-        $.ajax({
-        url: './ajax/ajaxUsuarios.php',
-        type: "POST",
-        async: true,
-        data:   {
-        action:action, dataSearch:dataSearch,dataSearch3: dataSearch3
-                },
-            beforeSend: function(){
-                
-                                    },
-        success: function(response){
-        if (response == 'notData') {
-        dataContact = "No hay registros para mostrar44";
-        }else{
-        var info = JSON.parse(response);
-        dataContact = info;
-        }
-        $('#rowsUsuarios').html(dataContact);
-        },
-        error: function(error){
-        }
-        });
-        });
-            }
-    //SDFAFSDSAFSD
+            const dataSearch = $('#txtSearch').val();
+            const dataSearch3 = $('#txtSearch2').val();
+    const action = 'searchContactKey';
+    var dataContact = '';
+    $.ajax({
+    url: './ajax/ajaxUsuarios.php',
 
-    if($('#txtSearch2').length){
-        $('#txtSearch2').keyup(function(){
-        const dataSearch = $('#txtSearch2').val();
-        const action = 'searchSucural';
-        var dataContact = '';
-        $.ajax({
-        url: './ajax/ajaxUsuarios.php',
-        type: "POST",
-        async: true,
-        data: {
-        action:action, dataSearch2:dataSearch
-        },
-        beforeSend: function(){ },
-        success: function(response){
-        if (response == 'notData') {
-            dataContact = "No hay registros para mostrar33";
-        }else{
-        var info = JSON.parse(response);
-        dataContact = info; 
-        }
-        $('#rowsUsuarios').html(dataContact);
-        },
-        error: function(error){
-        }  
-        });
-        });
-        }
-        
+ 
+    type: "POST",
+    async: true,
+    data: {
+    action:action, dataSearch:dataSearch,dataSearch3: dataSearch3
+    },
+    beforeSend: function(){
     
-    ///222
+    },
+    success: function(response){
+    if (response == 'notData') {
+        dataContact = "No hay registros para mostrar";
+        
+    }else{
+    var info = JSON.parse(response);
+    dataContact = info;
+    
+    }
+    $('#rowsUsuarios').html(dataContact);
+    },
+    error: function(error){
+    
+    }
+        
+    });
+    
+        });
+       }
+    
+
+       if($('#txtSearch2').length){
+        $('#txtSearch2').keyup(function(){
+            const dataSearch = $('#txtSearch2').val();
+    const action = 'searchSucural';
+    var dataContact = '';
+    $.ajax({
+    url: './ajax/ajaxUsuarios.php',
+
+ 
+    type: "POST",
+    async: true,
+    data: {
+    action:action, dataSearch2:dataSearch
+    },
+    beforeSend: function(){
+    
+    },
+    success: function(response){
+    if (response == 'notData') {
+        dataContact = "No hay registros para mostrar";
+        
+    }else{
+    var info = JSON.parse(response);
+    dataContact = info;
+    
+    }
+    $('#rowsUsuarios').html(dataContact);
+    },
+    error: function(error){
+    
+    }
+        
+    });
+    
+        });
+       }
+    
+    
+    
     if ($('#tblUsuarios').length) {
         fntusuarios();
-        }
+        
+        
+    }
+
 
 
     if ($('#btn_nuevo_usuario').length) {
         $('#btn_nuevo_usuario').click(function(){
-        $.ajax({
+    
+    $.ajax({
         url : window.location.href='nusuarios.php',
+    });
+    
         });
-        });
-        }
+    
+    }
+
 
     if ($('#idenviar').length) {
         $('#idenviar').click(function(){
-        $.ajax({
+    
+    $.ajax({
         url : window.location.href='nusuarios.php',
+    });
+    
         });
-        });
-        }
+    
+    }
 /// Insertar Usuarios
 
-    $("#guardar_usuario").submit(function( event ) {
+    $( "#guardar_usuario" ).submit(function( event ) {
         $('#guardar_datos').attr("disabled", true);
-        var parametros = $(this).serialize();
+          var parametros = $(this).serialize();
            $.ajax({
-                    type: "POST",
-                    url: "ajax/ajaxUsuarios.php",
-                    data: parametros,
-                    beforeSend: function(objeto){},
-                    success: function(response){
-                    if(response == 'replica'){
-                            Swal.fire({
+                  type: "POST",
+                  url: "ajax/ajaxUsuarios.php",
+                  data: parametros,
+                   beforeSend: function(objeto){
+                    
+                    },
+                  success: function(response){
+
+                if(response == 'replica'){
+                  
+
+                        Swal.fire({
                             title: "El usuario Ya existe",
                             icon: 'error',
                             });
-                            $('#cui').val('');
-                            }
-                    if (response == 'successful' ) {
-                        Swal.fire({
-                                title: "Usuario Guardado",
-                                icon: 'success',
-                                });
+                        $('#cui').val('');
+                  }
+                if (response == 'successful' ) {
+               
+                    Swal.fire({
+                        title: "Usuario Guardado",
+                        icon: 'success',
+                        });
                      
-                    $('#pnombre').val('');
-                    $('#snombre').val('');
-                    $('#papellido').val('');
-                    $('#sapellido').val('');
-                    $('#cui').val('');
-                    $('#fecha').val('');
-                    $('#usuario').val('');
-                    $('#email').val('');
-                    $('#pass').val('');
-                    $('#dir').val('');
-                    $('#telefono').val('');
-                    $('#estad').val('Seleccione Estado');
-                    $('#rol').val('Seleccione Tipo de Usuario');
-                    $('#sids').val('Seleccione Sucursal');
-                    $('#hora').val('Seleccione Horario');
+                        window.location="../administrador/user.php";
                     
                 }
+     
+        
+             
                 }
+                
+                
           });
         event.preventDefault();
       })
 
 //Editar usuarios
 $( "#editar_usuario" ).submit(function( event ) {
-                                $('#actualizar_datos2').attr("disabled", true);
-                            
-                            var parametros = $(this).serialize();
-                                $.ajax({
-                                        type: "POST",
-                                        url:  "ajax/ajaxUsuarios.php",
-                                        data: parametros,
-                                        beforeSend: function(objeto){
-                                            $("#resultados_ajax2").html("Mensaje: Cargando...");
-                                            },
-                                        success: function(datos){
-                                            
-                                            $("#cerrar").click();
-                                            $("#span").click();
-                                            console.log(datos);
-                                        
-                                            fntusuarios();
-                                            alert('Empleado editado correctamente');
+    $('#actualizar_datos2').attr("disabled", true);
+  
+   var parametros = $(this).serialize();
+       $.ajax({
+              type: "POST",
+              url:  "ajax/ajaxUsuarios.php",
+              data: parametros,
+               beforeSend: function(objeto){
+                  $("#resultados_ajax2").html("Mensaje: Cargando...");
+                },
+              success: function(datos){
+                
+                $("#cerrar").click();
+                $("#span").click();
+                console.log(datos);
+              
+                fntusuarios();
+                alert('Empleado editado correctamente');
 
-                                        }
-                                });
-                                event.preventDefault();
-                            })
+            }
+      });
+    event.preventDefault();
+  })
 
 
-   }); // FIN DEL READY de la carga de la pagina 
 
-   //incian las funciones 
+
+
+
+    
+ }); // End Ready
 
 
  //Listar usuarios
@@ -182,7 +207,7 @@ $( "#editar_usuario" ).submit(function( event ) {
     
     success: function(response){
         if(response == 'notData'){
-            data = "No hay datos para mostrar22";
+            data = "No hay datos para mostrar";
         }else{
     var data = JSON.parse(response);
 
@@ -233,7 +258,7 @@ function obtener_datos(idempleados){
                 $('#telefono2').val(info.telefono);
                 $('#cui2').val(info.dpi);
                 $('#estad2').val(info.estado);
-                $('#ridr2').val(info.roles_id);
+                $('#rol2').val(info.roles_id);
                 $('#sids2').val(info.sucursal_id);
                 $('#fecha2').val(info.nacimiento);
                 $('#dir2').val(info.direccion);

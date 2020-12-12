@@ -84,9 +84,7 @@ class Login
 
 
                     $pass= $result_row->password;
-                  echo $pass;
-
-                    echo $user_name;
+        
                     // using PHP 5.5's password_verify() function to check if the provided password fits
                     // the hash of that user's password
                     if (($_POST['password'] == $pass)) {
@@ -94,6 +92,7 @@ class Login
                         // write user data into PHP SESSION (a file on your server)
                         $_SESSION['user_id'] = $result_row->id;
                         $_SESSION['roles_id'] = $result_row->roles_id;
+                        $_SESSION['sucursal_id'] = $result_row->sucursal_id;
                         $_SESSION['user_login_status'] = 1;
 
                     } else {

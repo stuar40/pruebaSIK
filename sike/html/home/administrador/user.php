@@ -99,21 +99,19 @@ include("enca.php");
     </nav>
     </div>
 
-    <div id="myTabContent" class="tab-content-center d-flex justify-content-center ">
+    <div id="myTabContent" class="tab-content-center d-flex  table-responsive-sm  col-12 col-lg-15 col-xxl-13 d-flex">
 					
 
 							
         
-                    <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tblUsuarios">
+                    <table class="table  table-condensed table-hover table-responsive-sm  justify-center tab-content-center  " id="tblUsuarios">
                                           <thead >
                             <tr class="bgcolor btn-facebook">									
                           
-                                                  <th class="text-center">Nombre</th>
+                                                 
                                                   <th class="text-center">Usuario </th>
                                                   <th class="text-center">Telefono</th>
-                                                  <th class="text-center">Direccion</th>
                                                   <th class="text-center">DPI</th>
-                                              
                                                   <th class="text-center">Estado</th>
                                                   <th class="text-center">Tipo de Usuario</th>
                                                   <th class="text-center">Horario</th>

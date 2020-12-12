@@ -293,17 +293,8 @@ include("enca.php");
                       Estado del Usuario
                       <span class="text-danger">*</span>
                     </label>
-<<<<<<< HEAD
-                    <select class="custom-select" name="estad" id="estad" required 
-                      data-rule-required="true"
-                      data-msg="Seleccione un Estado" 
-                      data-error-class="u-has-error" 
-                      data-success-class="u-has-success">
-                      <option selected="true" disabled="disabled">Seleccione Estado</option>
-=======
                     <select class="custom-select" name="estad" id="estad" required>
                       <option selected="true" disabled="disabled" value="">Seleccione Estado</option>
->>>>>>> 1fa3df5962042c77006f5239b8913d9c1032774e
                       <option value="ACTIVO">ACTIVAR</option>
                       <option value="INACTIVO">DESACTIVAR</option>
                     </select>

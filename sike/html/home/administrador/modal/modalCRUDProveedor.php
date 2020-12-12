@@ -64,8 +64,8 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                               </label>
                               <div class="js-focus-state input-group form">
                                 <input  class="form-control form__input" type="text" name="proveedorNIT" id="proveedorNIT" required
-                                        minlength="8" maxlength="9"
-                                        pattern="[0-9]{8,12}"  title="Numero de NIT (Sin Guion) Tamaño mínimo: 8. Tamaño máximo: 12"
+                                        minlength="6" maxlength="9"
+                                        pattern="[0-9]{6,12}"  title="Numero de NIT (Sin Guion) Tamaño mínimo: 8. Tamaño máximo: 12"
                                         placeholder="Ingrese NIT del proveedor"> <!-- se asignan identificadores y detalles al campo de texto del NIT  comercial del proveedor -->
                               </div>
                             </div>
@@ -186,8 +186,7 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
             </div>
             <div class="modal-body">
                  <!-- Checkout Form -->
-                <form class="form-horizontal" method="post" id="verAsesorAsociado" name="verAsesorAsociado"><!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
-                  
+                 
                   <!-- Step Form Header -->
                   <ul id="headerformAsesorAsociado" class="js-step-progress list-inline u-shopping-cart-step-form mb-4">
                     <!-- Step Form Item -->
@@ -197,7 +196,8 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                     </li>
                   </ul>
                   <!-- End Step Form Header -->
-      
+                  <form class="form-horizontal" method="post" id="verAsesorAsociado" name="verAsesorAsociado"><!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
+                
                   <!-- Step Form Content -->
                   <div id="stepFormContentAsesorAsociado">
                     <!-- Customer Info -->
@@ -239,9 +239,14 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                         
                         </div>
                       </div>
-
-                          <div id="myTabContent2" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center">
-                              <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaAsesoresAsociados">
+                    </div>
+                  </div>
+      
+      
+      </form>
+      <div class="col-lg-12 order-lg-1 ">
+              <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 responsive-mode tab-content-center table-responsive-md justify-center" >
+					           <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaAsesoresAsociados">
                                     <thead >
                                       <tr class="bgcolor btn-facebook">									
                                         <th class="text-center">Codigo</th>
@@ -259,17 +264,13 @@ require_once ("../config/conexion.php");//Contiene funcion que conecta a la base
                             </div>
                         
                     <!-- End Billing Form -->
-                  </div>
-      
-      
-                </form>               <!-- End Checkout Form -->
+               <!-- End Checkout Form -->
           </div> <!--div del modalbody-->
       </div> <!--div del modalcontent-->
     </div> <!--div del modaldialog-->
   </div> <!--div del modal-->
+</div>
 <!--fin del modal donde se lista el asesor asociado-->
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -113,11 +113,14 @@ $num_rows = mysqli_num_rows($query_select);
                   </div>
 
             
-
-                  <div class="w-100"></div>
-                  
-                    <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
-                      
+                </div>
+              </div>
+            </div>
+            
+          </form>
+          <div class="col-lg-12 order-lg-1 ">
+              <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 responsive-mode tab-content-center table-responsive-md justify-center" >
+					
                       <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaverAsesores">
                           <thead >
                               <tr class="bgcolor btn-facebook">									
@@ -174,7 +177,6 @@ $num_rows = mysqli_num_rows($query_select);
                
  
 
-          </form>
           <!-- End Checkout Form -->
         </div>
       </div>

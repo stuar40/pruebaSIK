@@ -9,16 +9,16 @@ $num_rows = mysqli_num_rows($query_select);
 ?>
 	
 	<!-- Modal Asesor asociado-->
-	<div class="modal fade" id="Modal_AsesorAsociado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"> 	<!-- etiqueta y de id al modal -->
+	<div class="modal fade responsive-mode" id="Modal_AsesorAsociado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"> 	<!-- etiqueta y de id al modal -->
 	  <div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content modal-xl">
 		<div class="modal-header">
             <h5 class="modal-title" id="modalLabelverAsesor"></h5>
             <button type="button" id="cerrar" class="close" data-dismiss="modal" aria-label="Close"><span id="span" aria-hidden="true">&times;</span></button>
-		</div>
-		    <div class="modal-body">
-    
-               <!-- Checkout Form -->
+    </div>
+          
+		    <div class="modal-body responsive-mode">
+        
           <form class="form-horizontal" method="post" id="verAsesorAsociado" name="verAsesorAsociado"><!-- le asigna un identificador al formulario para generar un post y enviar los datos  -->
               
               <!-- Step Form Header -->
@@ -71,13 +71,16 @@ $num_rows = mysqli_num_rows($query_select);
                       <!-- End Input -->
                     </div>
   
-              
-  
-                    <div class="w-100"></div>
-                    
-                      <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
-                        
-                        <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaAsesoresAsociados">
+                  </div>
+
+                </div>      
+              </div>
+          </form>
+		   
+          <div class="col-lg-12 order-lg-1 ">
+              <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 responsive-mode tab-content-center table-responsive-md justify-center" >
+					
+                      <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaAsesoresAsociados">
                             <thead >
                                 <tr class="bgcolor btn-facebook">									
                                   
@@ -95,22 +98,9 @@ $num_rows = mysqli_num_rows($query_select);
                                                   
                         </table>
                   </div>
-  
-  
-      
-                    
-                  <!-- End Billing Form -->
-                 
-   
-  
-            </form>
-            <!-- End Checkout Form -->
-      
-                 
-				  
-			
 
-
-		</div>
-	  </div>
+            </div>
+        </div>
+    </div>
+    </div>
 	</div>

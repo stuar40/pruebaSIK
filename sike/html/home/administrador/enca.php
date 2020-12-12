@@ -257,7 +257,7 @@
               <!-- End Clientes -->
 
                 <!-- Productos -->
-  <li class="nav-item hs-has-sub-menu u-header__nav-item"
+                  <li class="nav-item hs-has-sub-menu u-header__nav-item"
                   data-event="hover"
                   data-animation-in="fadeInUp"
                   data-animation-out="fadeOut">
@@ -322,7 +322,7 @@
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
                     <a class="nav-link d-block u-header__sub-menu-nav-link" href="asignarPrecios.php">
                       <div class="media align-items-center">
-                        <img class="max-width-5 mr-3" src="../../img/setting-book.svg" alt="Image Description">
+                        <img class="max-width-5 mr-3" src="../../img/asignar.svg" alt="Image Description">
                         <div class="media-body">
                           <span class="d-block text-dark font-weight-medium">Asignar Precios</span>
                           <small class="d-block">Asignar Precios a Productos</small>
@@ -352,7 +352,17 @@
                 <!-- Movimientos - Submenu -->
                 <ul id="MovimientosSubMenu" class="list-inline hs-sub-menu u-header__sub-menu mb-0" style="min-width: 220px;"
                     aria-labelledby="MovimientosMegaMenu">
-
+                    <li class="dropdown-item u-header__sub-menu-list-item py-0">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="nuevoDia.php">
+                      <div class="media align-items-center">
+                        <img class="max-width-5 mr-3" src="../../img/comienzo.svg" alt="Image Description">
+                        <div class="media-body">
+                          <span class="d-block text-dark font-weight-medium">Inicio</span>
+                          <small class="d-block">Inicio del día</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
               <li class="dropdown-item hs-has-sub-menu">
                     <a id="navLinkMovimientosClassic" class="nav-link u-header__sub-menu-nav-link" href="javascript:;"
                        aria-haspopup="true"
@@ -505,8 +515,8 @@
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/libreria.svg" alt="Image Description">
                         <div class="media-body">
-                          <span class="d-block text-dark font-weight-medium">Librería</span>
-                          <small class="d-block">Ventas de Librería</small>
+                          <span class="d-block text-dark font-weight-medium">Productos</span>
+                          <small class="d-block">Ventas de Productos</small>
                         </div>
                       </div>
                     </a>
@@ -532,24 +542,24 @@
                         <img class="max-width-5 mr-3" src="../../img/kardex.svg" alt="Image Description">
                         <div class="media-body">
                           <span class="d-block text-dark font-weight-medium">Kardex</span>
-                          <small class="d-block">Movimientos de productos</small>
+                          <small class="d-block">Movimientos de Productos</small>
                         </div>
                       </div>
                     </a>
                   </li>
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="inventario.php">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="inventarioProductos.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/stock.svg" alt="Image Description">
                         <div class="media-body">
                           <span class="d-block text-dark font-weight-medium">Inventario</span>
-                          <small class="d-block">Inventario de productos</small>
+                          <small class="d-block">Inventario en Tiendas</small>
                         </div>
                       </div>
                     </a>
                   </li>
                   <li class="dropdown-item u-header__sub-menu-list-item py-0">
-                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="cuadreDiario">
+                    <a class="nav-link d-block u-header__sub-menu-nav-link" href="cuadreDiario.php">
                       <div class="media align-items-center">
                         <img class="max-width-5 mr-3" src="../../img/cuadre.svg" alt="Image Description">
                         <div class="media-body">

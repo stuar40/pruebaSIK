@@ -322,7 +322,7 @@ $(document).ready(function(){
                
                 if(data2 == 'replica'){ // en caso de que el valor de data2 que viene del ajaxProveedore sea replica es porque la comparacion con BD ya existia el dato y no se pudo ejecutar la consulta 
                     Swal.fire({
-                    title: "ERROR al asignar PRECIO", //titulo del modal
+                    title: "EROR al Asignar Precio", //titulo del modal
                     icon: 'error', //tipo de advertencia modal
                     timer: 3000                     
                     });

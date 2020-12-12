@@ -10,7 +10,6 @@ $query_select = mysqli_query($con,"select id,sku,nombre,marca from producto WHER
 $num_rows = mysqli_num_rows($query_select);
 
 ?>
-
 <!DOCTYPE html>
 
 <html lang="es">
@@ -52,7 +51,7 @@ $num_rows = mysqli_num_rows($query_select);
   <!-- End Skippy -->
 
 <!-- ========== MAIN CONTENT ========== -->
-  <main id="content" role="main">
+  <main id="content" role="main" class="responsive-mode">
   <div class="container space-2 space-3-top--lg space-2-bottom--lg">
       <div class="row">
         <div class="col-lg-2 order-lg-3 mb-10 mb-lg-2">
@@ -137,7 +136,7 @@ $num_rows = mysqli_num_rows($query_select);
 
                 <div class="row">
 
-      <div class="col-md-6">
+          <div class="col-md-6">
             <!-- Input primer bloque donde selecciona el proveedor al cual asignara el asesor que se ingreseara-->
               <div class="js-form-message mb-6">
                 <label class="h6 small d-block text-uppercase">  <!-- etiqueta del campo de texto  donde se almacena el nombre comercial del proveedor -->
@@ -192,21 +191,24 @@ $num_rows = mysqli_num_rows($query_select);
             </div>
             <!-- End Input -->
           </div><!-- fin del div col 6-->
-      </div>
+   
 
       
-      </div>
-                      
-
+           
 
           
+      </div>       
+     
+  </div>
 
-
-
-              <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
+                                            </div>
+      </form>
+     
+        <div class="col-lg-12 order-lg-1 ">
+              <div id="myTabContent" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 responsive-mode tab-content-center table-responsive-md justify-center" >
 					
-                    <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaKardex">
-                        <thead >
+                    <table class="table table-condensed table-hover table-responsive-md  justify-center " id="tablaKardex">
+                        <thead  >
                             <tr class="bgcolor btn-facebook">									
                                
                                 <th class="text-center">ID</th>
@@ -225,50 +227,19 @@ $num_rows = mysqli_num_rows($query_select);
                                 
                                
                             </tr>
-                        </thead>
+                        </thead >
                         
-                        <tbody> 
+                        <tbody class="table table-condensed table-hover table-responsive-md"> 
                               
                         </tbody>
                                               
                     </table>
               </div>
+ 
+        </div> 
+              </div>      
+  </div>
 
-
-                <section class="d-flex justify-content-center responsive-mode" >
-                    
-	
-		<div class="d-flex justify-content-center "  >
-			<div class="page-header justify-center">
-              <h1 class="text-content"><i class="card navicon"></i>  <small></small></h1>
-              
-              
-			</div>
-			</div>
-      
-      <div class="container-fluid ">
-			<div class="row">
-				<div class="container ">
-
-       
-        
-  
-        </div>
-        
-      </div>
-      
-			</div>
-	</section>
-
-  
-                  
-                </div>
-            
-
-</form>
-          <!-- End Checkout Form -->
-        </div>
-      </div>
   </main>
   
   

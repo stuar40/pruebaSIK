@@ -84,7 +84,7 @@ include ("encabezados/vendedor.php");
 
   <div class="card card-frame mb-7">
     <!-- Listing -->
-    <a class="card-body p-4" href="#">
+    <a class="card-body p-4" href="newCliente.php">
       <div class="media">
         <img class="max-width-12 mb-2" src="../../img/clients-color.svg" alt="Image Description">
         <div class="media-body px-3">
