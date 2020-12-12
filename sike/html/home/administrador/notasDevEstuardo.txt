@@ -1,7 +1,79 @@
 
+Directorio MODULO PROVEEDOR 
+http://localhost/pruebaSIK/sike/html/home/administrador/nuevoProveedor.php   >> Crea un nuevoProveedor
+
+http://localhost/pruebaSIK/sike/html/home/administrador/verProveedores.php  >> Lista todos los proveedore //  ve los detalles // Modifica info de proveedor // ve asesores asociados
 
 
-NOTAS DE TESTEO DEL SISTEMA GENERAL
+http://localhost/pruebaSIK/sike/html/home/administrador/nuevoAsesor.php >> Asocia un Asesor a un Proveedor
+
+
+
+Notas Modulo Proveedor
+=================================
+
+****************************************************
+Formulario Nuevo Proveedor
+
+****************************************
+VerProveedores // lista los proveedore
+>Manejar el ID Correlativo 
+
+boton de nuevo VerProveedor
+            
+            
+             
+            > validad los campos para aceptar tipo de texto o longitud
+            > validar longitud de nit y solo numeros
+            >validad numeros de telefono en modal
+            
+            >revisar variables y codigo inutil
+            >
+Boton Editar Proveedor 
+            > al guardar proveedor actualizar la pagina
+Botono ver Proveedor mostrar un formulario con la informacion del proeveedor
+
+Boton Asesor> al clickear, enviar la pagina de asesores desplegando los asesores asociados que tiene 
+tabla donde lista todos los proveedores 
+
+
+*************************************************
+Formulario Asesor 
+    *el correo es unico, se necesita un validador para el correo de lo contrarion no muestra error
+
+**********************************************************
+FORMULARIO NUEVO ASESOR
+validar cuando no selecciona un proveedor no puede asignar
+Modificar longitud de nombre Completo en BD solo tineen 25 caracteres
+validad 2 correos iguales
+
+
+
+Notas
+Tabular pasar en orden de tabulacion a los input
+cambiar variables n y nombres variables
+
+quitar boton nuevo proveedor
+
+Notas Gerardo
+si un producto se asocia a una sucursal hay que vover a ingresar un mismo producto 2 veces solo para asociarlo a otra sucursal  
+
+
+NOTAS ASIGNAR PRECIO sucursal
+-- ver Estado y SubCAGTEGORIA no por ID sino por frase  MOdal ver 
+-- ver  SubCAGTEGORIA no por ID sino por frase  MOdal Asignar 
+-- ESTADO activo/Inactivo es de producto de la sucursal
+-- ver que todas las tablas y campos tengan el mismo tamanio en GENERAL
+-- ver colores para encabezado de modales y botones 
+-- ver tipo de fuentes para todo el sistema 
+-- FAlta un FORMULARIO que muestre los productos que tiene asociada una sucursal con info del producot y el precio base y precio venta 
+-- Tener un acceso rapido de nueva venta en el menu principal  
+
+Modulo EGRESOS o GASTOS
+
+
+
+NOTAS DEL SISTEMA GENERAL
 Quitar del encabezado las opciones queno funcionan 
 > las alertas deben ser iguales para todos los modulos o alerts o sweet alerts
 > la ubicacion de los botones debe ser igual para todos los formularios (izquiera: cerrar  // derecha: acepatar o viceversa )
@@ -24,21 +96,21 @@ modulo ingresar usuario
  >> deber tener accion de ver y editar, asi en la tabla solo se ven lo campos mas utiles 
 
  MODULO PROVEEDORES
- >> modificar la longitud de campos como nombre, direccion y descripcion a 150
- >> la alerta de validacion indicar que solo numero y sin guiones ni signos para algunso campos 
- >> cambiar el sweetAlert de usuario guardado = Proveedor Guardado
- >> cambiar alerta cuando se edita un proveedor a = "PROVEEDOR Actualizado"
- >> descripcion al pasar el cursor sobre el input muestra que el tamanio minimo es 12== modificarlo 
- >> modal de ver asesores asociados, poner el ID antes del nombre del proveedor
- >> cuando se ve un Estado  en el modal de asesor asociado lo  muestra como 1 y no como ACTIVO o Desactivado, modidicar en BD o en CODIGO (mas simple en BD)
- >> Alerta de guardar un asesor, debe decir "Asesor asociado correctamene"
- >> LISTAR asesores, al seleccionar un proveedor especifico el estado ya no marca como  Activo/ INACTIVO sino como 1/0
- >> setear el telefono del proveedor seleccionado en listar PROVEEDOR
- >> modal de ver asesor, setearlo por defaul como  y desactivarlo 
- >> Alert de proveedor, modificar a Asesor Actualizado 
- >> validar campo de nombre de asesor en el modal editar, para que no permita guardar con el campo vacio
- >> validar campo de correo de asesor en el modal editar, para que no permita guardar con el campo vacio
- >> validar el formulario completo de modal de editar asesor
+ >> modificar la longitud de campos como nombre, direccion y descripcion a 150 (LISTO)
+ >> la alerta de validacion indicar que solo numero y sin guiones ni signos para algunso campos (LISTO)
+ >> cambiar el sweetAlert de usuario guardado = Proveedor Guardado (LISTO)
+ >> cambiar alerta cuando se edita un proveedor a = "PROVEEDOR Actualizado" (LISTO)
+ >> descripcion al pasar el cursor sobre el input muestra que el tamanio minimo es 12== modificarlo  (LISTO)
+ >> modal de ver asesores asociados, poner el ID antes del nombre del proveedor (LISTO)
+ >> cuando se ve un Estado  en el modal de asesor asociado lo  muestra como 1 y no como ACTIVO o Desactivado, modidicar en BD o en CODIGO (mas simple en BD) (LISTO)
+ >> Alerta de guardar un asesor, debe decir "Asesor asociado correctamene" (LISTO)
+ >> LISTAR asesores, al seleccionar un proveedor especifico el estado ya no marca como  Activo/ INACTIVO sino como 1/0 (LISTO)
+ >> setear el telefono del proveedor seleccionado en listar PROVEEDOR (LISTO )
+ >> modal de ver asesor, setearlo por defaul como  y desactivarlo   
+ >> Alert de proveedor, modificar a Asesor Actualizado (LISTO)
+ >> validar campo de nombre de asesor en el modal editar, para que no permita guardar con el campo vacio  (LISTO)
+ >> validar campo de correo de asesor en el modal editar, para que no permita guardar con el campo vacio  (LISTO)
+ >> validar el formulario completo de modal de editar asesor (LISTO)
  >> quita la opcion Asesores del menu Rapido
 
  MODULO PRODUCTOS
@@ -80,11 +152,33 @@ MODULO COMPRAS
 
 MODULO EGRESOS ECONOMICO 
     formulario EGRESOS
-    >> indicar si un usario no tiene permisos especificaos para esa sucursal, o el usuario no es administrador 
-    >> vaciar el modal de validacion cada que se agreugue 
+    >> indicar si un usario no tiene permisos especificaos para esa sucursal, o el usuario no es administrador (LISTO)
+    >> vaciar el modal de validacion cada que se agreugue (LISTO)
     >> NO HAY lista de egresos por dia / fecha / maximo por rango de 7 dias o una semana    
 
 MODULO ASIGNAR PRECIOS
-    >>en el select cambiar titulo a productos sin  precio asignado por Sucursla
+    >> en el select cambiar titulo a productos sin  precio asignado por Sucursla (LISTO)
     MODAL DE ASIGNACION DE PRECIOS
-    >> el input de ACtiVAr/descativar, indica si el producto esta disponible para esa sucursal cambiar de titulo a "Activar producto para esta sucursal"
+    >> el input de ACtiVAr/descativar, indica si el producto esta disponible para esa sucursal cambiar de titulo a "Activar producto para esta sucursal" (LISTO)
+
+
+KARDEX
+// consulta el nombre del proveedor para insertar en kardes detalles 
+    $sqlNombreProveedor = "select nombre from empresa where id = '$proveedor'";
+    $resultNombreProveedor = mysqli_query($con,$sqlNombreProveedor);
+    while($rows2 = mysqli_fetch_assoc($resultNombreProveedor)){
+    $nombreProveedorRecargas = $rows2['nombre'];
+    }
+    //insertar en el kardex el movimiento 
+    $sqlKardex="INSERT INTO `kardex` (`factura`, `detalle`, `movimiento`, `cantcompra`, `preciocompra`, `totalcompra`, `existencia`, `sucursal_idsucursal`) 
+        VALUES ('$factura', '$nombreProveedorRecargas', 'INGRESO', '1', '$monto', '$monto', '$nuevos', '$sucursal')";
+        $resultadoKardex=mysqli_query($con,$sqlKardex);
+    }
+    Notas nuevas 
+    cuando abre el modal de asignar precio, si no se recarga rapido permite guardar varias veces al clickear 
+    setear la fecha automaticament o no permitir una anterior al dia de hoy en el sistem 
+    Listar egresos por sucursal y fecha 
+
+    NIT del modal editar proveedor no tiene la nueva validacion de 8 y 9 digitos
+    Ordenar desde ultima fecha a fecha actual en la consulta del kardex
+    meter en responsive la tabla de kardex 
