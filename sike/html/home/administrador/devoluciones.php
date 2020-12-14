@@ -139,7 +139,7 @@ $num_rows = mysqli_num_rows($query_select);
 
                   <div class="w-100"></div>
                   
-                    <div id="contenedorTablaDevoluciones" style="display: none" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
+                  <div id="contenedorTablaDevoluciones" style="display: none" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" class="tab-content-center d-flex justify-content-center " >
                       
                       <table class="table  table-condensed table-hover table-responsive-md  justify-center " id="tablaDevoluciones">
                           <thead >
@@ -202,14 +202,14 @@ $num_rows = mysqli_num_rows($query_select);
                                   <th class="text-center">Total </th>
                                   
                                   <th class="text-center">Cliente</th>
-                                  
+                                  <th class="text-center">Acciones</th>
                                 
                               </tr>
                           </thead>
                           
                           <tbody>
                             <?php 
-                            $query_select = mysqli_query($con,"SELECT * FROM encabezado_venta;");
+                            $query_select = mysqli_query($con,"SELECT numfactura,fecha,totalfactura,nombre FROM encabezado_venta inner join clientes on clientes.id=encabezado_venta.clientes_id;");
                             $num_rows = mysqli_num_rows($query_select);
                             ?>
                           <?php
@@ -225,7 +225,7 @@ $num_rows = mysqli_num_rows($query_select);
                                     <td class="text-center"><?php echo $row['numfactura']?></td>
                                     <td><?php echo $row['fecha']?></td>
                                     <td><?php echo $row['totalfactura']?></td>
-                                    <td><?php echo $row['clientes_id']?></td>
+                                    <td><?php echo $row['nombre']?></td>
                                     
                                     <td class="text-center"> </td>
                                     </tr>
@@ -311,11 +311,11 @@ $num_rows = mysqli_num_rows($query_select);
   <script src="../../../assets/js/components/hs.cubeportfolio.js"></script>
   <script src="../../../assets/js/components/hs.video-player.js"></script>
   <script src="../../../assets/js/components/hs.go-to.js"></script>
- <!-- Libreria DataTables para talbas -->
- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+ 
+<!-- Libreria DataTables para talbas -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
- 
   <!-- JS Plugins Init. -->
   <script>
     $(window).on('load', function () {

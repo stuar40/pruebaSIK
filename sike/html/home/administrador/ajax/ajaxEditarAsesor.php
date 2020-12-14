@@ -21,7 +21,7 @@ include("../../config/conexion.php");
             $n4=$_POST['estadoAsesor'];
             $n5=$_POST['idProveedor'];
             $n6=$_POST['idAsesor'];
-            
+               
 
             $sqldpi= "SELECT id  FROM asesor where id = $n6";
             $res1=mysqli_query($con,$sqldpi);

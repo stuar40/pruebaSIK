@@ -182,3 +182,15 @@ KARDEX
     NIT del modal editar proveedor no tiene la nueva validacion de 8 y 9 digitos
     Ordenar desde ultima fecha a fecha actual en la consulta del kardex
     meter en responsive la tabla de kardex 
+
+
+
+
+    NOTAS FINALEs
+Cuando se incia la primera vez una recarga en el apartado Asignar recarga, 
+no muestra ningun msj que indique que ya se incializo la recarga solo lo 
+registra en la BD pero no muestra nada 
+
+en el form nueva Ventas cuando se ingresa el nombre del producto y 
+cuando aparece la sugerencia y le doy enter carga pero lo limpia de nuevo, 
+tiene que ser seleccionado con el mouse para cargar la info del detalle 
