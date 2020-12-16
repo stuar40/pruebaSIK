@@ -68,7 +68,8 @@ if ($_POST['action'] == 'guardarDevolucion') {
         $cantidadIntercambiar=$_POST['cantidadIntercambiar'];
         $motivoIntercambio=$_POST['motivoIntercambio'];
 
-        $sql="INSERT INTO `devolucion` (`facturadevolucion`, `detallefacturadevolucion`, `movimientodevolucion`, `productodevolucion`, `preciodevolucion`, `cantidaddevolucion`, `motivodevolucion`) VALUES ('$numFacturaIntercambiar', '$codProductoIntercambiar', 'INTERCAMBIO', '$codProductoIntercambiar', '$precioIntercambio', '$cantidadIntercambiar', '$motivoIntercambio')";
+        $sql="INSERT INTO `devolucion` (`facturadevolucion`, `detallefacturadevolucion`, `movimientodevolucion`, `productodevolucion`, `preciodevolucion`, `cantidaddevolucion`, `motivodevolucion`) 
+        VALUES ('$numFacturaIntercambiar', '$codProductoIntercambiar', 'INTERCAMBIO', '$codProductoIntercambiar', '$precioIntercambio', '$cantidadIntercambiar', '$motivoIntercambio')";
            
            $res=mysqli_query($con,$sql);
             

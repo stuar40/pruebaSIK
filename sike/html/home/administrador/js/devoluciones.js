@@ -32,7 +32,7 @@ tablaVentas = $('#tablaVentas').DataTable({  // incializa la tabla proveedores
     "targets": -1,
     "data":null,
     // incia 3 botones del dataTable 
-    "defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-success btnIntercarmbiar'>Intercambio<i class='far fa-eye'></i></button> <button type='button' class='btn btn-warning btnDevolver'>Devolver<i class='far fa-edit'></i></button> </div></div>"  
+    "defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-success btnCambiar'>Ver/Cambio<i class='far fa-eye'></i></button><button type='button' class='btn btn-warning btnIntercarmbiar'>Intercambio</button> <button type='button' class='btn btn-facebook btnDevolver'>Devolver</button> </div></div>"  
    }], 
   
   //Para cambiar el lenguaje a español
@@ -81,12 +81,14 @@ tablaVentas = $('#tablaVentas').DataTable({  // incializa la tabla proveedores
     //------------Funcion Click del Boton Cambiar Producto 
   $("#cambiarProducto").click(function(){
   //$(document).on("click", ".cambiarProducto2", function(){
- 
     $(".modal-header").css("background-color","#ffbc42");//cambia de colo el header del modal
     $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
     $(".modal-title").text("Devoluciones");//titulo del header
-    $("#modalDevolucionesProductosSimilar").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
-   
+    //$("#modalGuardarAsignacionProducto").modal("show"); //al clickear el boton nuevo proveedor lanza el modal que tiene el id Modal_Nuevo_Proveedor el cual es una clase alojada en /modal/editarProveedor llamada desde el archivo verProveedor
+  const $estadoTablaVentas = document.querySelector("#contenedorTablaVentas");//selecciona el elemento del modal y lo pasa a una variable local
+  $estadoTablaVentas.style.display = "Block"; // Muestra el boton guardar
+  const $estadoTablaDevoluciones = document.querySelector("#contenedorTablaDevoluciones");//selecciona el elemento del modal y lo pasa a una variable local
+  $estadoTablaDevoluciones.style.display = "none"; // oculta el boton guardar
   });
   //------------fin del Boton Cambiar Producto  
 
@@ -136,14 +138,15 @@ tablaVentas = $('#tablaVentas').DataTable({  // incializa la tabla proveedores
     //------------fin del Boton Cambiar Producto 
   
 //------------btn
-$(document).on("click", ".btnIntercarmbiar", function(){
+$(document).on("click", ".btnCambiar", function(){
   //Variables
   fila = $(this).closest("tr"); //variable que toma la fila 
   
   numFactura=parseInt(fila.find('td:eq(0)').text()); //obitne el value de la primera columan de la fila donde estamos clickeando que estamos seleccionamos
   fechaFactura=fila.find('td:eq(1)').text();
-  totalFactura=parseInt(fila.find('td:eq(2)').text());
-  nombreCliente=fila.find('td:eq(3)').text();
+  nombreCliente=fila.find('td:eq(2)').text();
+  totalFactura=parseInt(fila.find('td:eq(3)').text());
+  
 
   action = 'cargar_DetalleVenta'; //la accion o el id al cual ingresara en el ajaxAsesores
   console.log(numFactura); // imprime en consola para el desarrolador ver el valro que esta obteniendo 
@@ -181,7 +184,7 @@ $(document).on("click", ".btnIntercarmbiar", function(){
                             {"data":"nombre"},
                             {"data":"precio"},
                             {"data":"cantidad"},
-                            {"defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-success btnCambiar'>Intercambiar<i class='far fa-eye'></i></button> </div></div>"}
+                            {"defaultContent": "<div class='text-center'><div class='btn-group'> <button type='button' class='btn btn-success btnCambiarProducto'>Cambiar</button> </div></div>"}
                             
                           ],
 
@@ -215,8 +218,8 @@ $(document).on("click", ".btnIntercarmbiar", function(){
 
 
 });
-//------------btn
-$(document).on("click", ".btnCambiar", function(){
+//------------btn del modal ver detalles ventas
+$(document).on("click", ".btnCambiarProducto", function(){
       //Variables
       fila = $(this).closest("tr"); //variable que toma la fila 
         
@@ -248,7 +251,7 @@ $(document).on("click", ".btnDevolver", function(){
   $(".modal-header").css("background-color","#ffbc42");//cambia de colo el header del modal
   $(".modal-header").css("color","white"); //cambia el color de texto del header a blanco 
   $(".modal-title").text("Devoluciones");//titulo del header
-  //$("#modalDevolucionesProductosSimilar").modal("show"); //al clickear 
+  $("#modalAnularFactura").modal("show"); //al clickear 
 });
 
 
@@ -264,7 +267,7 @@ $("#formGuardarIntercambioProducto").submit(function( event ) {
     codProductoIntercambiar=$('#codProductoIntercambiar').val();
     precioIntercambio=$('#precioIntercambio').val();
     cantidadIntercambiar=$('#cantidadIntercambiar').val();
-    motivoIntercambio=$('#codProductoIntercambiar').val();
+    motivoIntercambio=$('#motivoIntercambio').val();
    
     action="guardarDevolucion";
     console.log(numFacturaIntercambiar);

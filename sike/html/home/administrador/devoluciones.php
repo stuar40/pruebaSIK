@@ -151,6 +151,7 @@ $num_rows = mysqli_num_rows($query_select);
                                   <th class="text-center">Factura Devuelta </th>
                                   <th class="text-center">Producto</th>
                                   <th class="text-center">Motivo</th>
+                                  
                                 
                               </tr>
                           </thead>
@@ -176,7 +177,7 @@ $num_rows = mysqli_num_rows($query_select);
                                     <td><?php echo $row['facturadevolucion']?></td>
                                     <td><?php echo $row['productodevolucion']?></td>
                                     <td><?php echo $row['motivodevolucion']?></td>
-                                    <td class="text-center"> </td>
+                                    
                                     </tr>
                           <?php }
                             
@@ -199,9 +200,10 @@ $num_rows = mysqli_num_rows($query_select);
                                 
                                   <th class="text-center">No. Factura</th>
                                   <th class="text-center">Fecha</th>
-                                  <th class="text-center">Total </th>
+                                 
                                   
                                   <th class="text-center">Cliente</th>
+                                  <th class="text-center">Total </th>
                                   <th class="text-center">Acciones</th>
                                 
                               </tr>
@@ -224,8 +226,9 @@ $num_rows = mysqli_num_rows($query_select);
                                     <tr>
                                     <td class="text-center"><?php echo $row['numfactura']?></td>
                                     <td><?php echo $row['fecha']?></td>
-                                    <td><?php echo $row['totalfactura']?></td>
                                     <td><?php echo $row['nombre']?></td>
+                                    <td><?php echo $row['totalfactura']?></td>
+                                    
                                     
                                     <td class="text-center"> </td>
                                     </tr>
